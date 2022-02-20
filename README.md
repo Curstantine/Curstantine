@@ -1,6 +1,6 @@
 ### Hello there!
 
-I'm a lazy 17-year-old college student that doesn't know how to spend free time in a good way.  
+I'm a lazy 17-year-old college student who doesn't understand how to spend free time in a good way.  
 I usually poke around with rust and typescript projects.
 
 lol I love possums! [Here have a cute possum](https://twitter.com/PossumEveryHour/status/1490460307562586115)
