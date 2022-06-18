@@ -1,5 +1,3 @@
-## Hai~
-
 17-year-old who doesn't know how to spend their time sensibly.
 I like any language that's not dynamically typed.
 
