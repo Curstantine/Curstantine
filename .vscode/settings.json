@@ -1,0 +1,12 @@
+{
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"cSpell.words": [
+		"Attributify",
+		"containerify",
+		"JETBRAINS",
+		"NUNITO",
+		"solidjs",
+		"SONOKAI",
+		"unocss"
+	]
+}
