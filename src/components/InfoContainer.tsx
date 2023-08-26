@@ -12,7 +12,7 @@ export default function InfoContainer() {
 				alt="Profile picture"
 				class="w-48 h-48 transition-box-shadow,border-radius duration-300 ease-standard rounded-xl hover:(shadow-md rounded-lg) "
 			/>
-			<div class="flex flex-col">
+			<div class="flex-1 flex flex-col">
 				<h1 class="font-bold text-2xl leading-tight">Rachala Ovin</h1>
 				<p class="text-center">
 					<span class="text-xs mr-2 ">AKA</span>
@@ -20,7 +20,7 @@ export default function InfoContainer() {
 				</p>
 				<span class="text-sm text-text-2">UI Designer, Developer</span>
 			</div>
-			<div class="flex-1 flex w-full items-end justify-evenly">
+			<div class="grid grid-cols-5 justify-items-center gap-4 w-full">
 				<a
 					target="_blank"
 					aria-label="Gitlab"
@@ -44,6 +44,12 @@ export default function InfoContainer() {
 					aria-label="LinkedIn"
 					href={LINKEDIN}
 					class="i-logos-linkedin-icon w-6 h-6"
+				/>
+				<a
+					target="_blank"
+					ara-label="ListenBrainz"
+					href="https://listenbrainz.org/user/Curstantine"
+					class="i-pref-listenbrainz w-6 h-6"
 				/>
 			</div>
 		</div>

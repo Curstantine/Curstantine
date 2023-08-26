@@ -2,8 +2,11 @@
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"cSpell.words": [
 		"Attributify",
+		"BRAINZ",
 		"containerify",
+		"Iconify",
 		"JETBRAINS",
+		"listenbrainz",
 		"NUNITO",
 		"solidjs",
 		"SONOKAI",

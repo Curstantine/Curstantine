@@ -1,7 +1,7 @@
 export const GITLAB = "https://gitlab.com/Curstantine";
 export const LINKEDIN = "https://www.linkedin.com/in/rachala-ovin-b06437255/";
 export const DISCORD = "https://discord.com/users/793574864657186856";
-export const LASTFM = "https://www.last.fm/user/Curstantine";
+export const LISTEN_BRAINZ = "https://listenbrainz.org/user/Curstantine/";
 export const TWITTER = "https://twitter.com/Curstantine";
 export const BIRTH_DATE = new Date("2005-07-04");
 

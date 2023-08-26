@@ -1,5 +1,4 @@
-import { For } from "solid-js";
-import { LASTFM } from "../constants";
+import { LISTEN_BRAINZ } from "../constants";
 import { getAge } from "../utils";
 
 export default function About() {
@@ -13,12 +12,6 @@ export default function About() {
 				<br />
 				My forte is in frontend web and mobile development, but I do regularly dabble in
 				UI/UX designing and systems programming.
-			</p>
-			<p class="leading-relaxed mt-4">
-				Though, unrelated, I love listening to music. Which you can check here:{" "}
-				<a target="_blank" href={LASTFM}>
-					last.fm
-				</a>
 			</p>
 		</div>
 	);

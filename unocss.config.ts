@@ -8,6 +8,11 @@ import {
 	transformerVariantGroup,
 } from "unocss";
 import type { Theme } from "unocss/preset-uno";
+import type { IconifyJSON } from "@iconify/types";
+
+const importIconCollection = (name: string) => {
+	return () => import(`@iconify-json/${name}/icons.json`).then((i) => i.default) as Promise<IconifyJSON>;
+};
 
 export default defineConfig<Theme>({
 	presets: [
@@ -17,11 +22,22 @@ export default defineConfig<Theme>({
 		}),
 		presetIcons({
 			collections: {
-				// @ts-ignore
-				material: () =>
-					import("@iconify-json/material-symbols/icons.json").then((i) => i.default),
-				// @ts-ignore
-				logos: () => import("@iconify-json/logos/icons.json").then((i) => i.default),
+				material: importIconCollection("material-symbols"),
+				logos: importIconCollection("logos"),
+				pref: () => {
+					const icons: IconifyJSON = {
+						prefix: "pref",
+						icons: {
+							listenbrainz: {
+								body: `<defs><style>.b{fill:#353070;}.c{fill:#eb743b;}</style></defs><polygon class="b" points="13 1 1 8 1 22 13 29 13 1"/><polygon class="c" points="14 1 26 8 26 22 14 29 14 1"/>`,
+								height: 30,
+								width: 27,
+							},
+						},
+					};
+
+					return icons;
+				},
 			},
 		}),
 		presetTypography(),
