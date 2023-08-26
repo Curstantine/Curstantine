@@ -1,14 +1,14 @@
+import type { IconifyJSON } from "@iconify/types";
 import {
 	defineConfig,
 	presetAttributify,
 	presetIcons,
-	presetUno,
 	presetTypography,
+	presetUno,
 	transformerDirectives,
 	transformerVariantGroup,
 } from "unocss";
 import type { Theme } from "unocss/preset-uno";
-import type { IconifyJSON } from "@iconify/types";
 
 const importIconCollection = (name: string) => {
 	return () => import(`@iconify-json/${name}/icons.json`).then((i) => i.default) as Promise<IconifyJSON>;
@@ -29,7 +29,8 @@ export default defineConfig<Theme>({
 						prefix: "pref",
 						icons: {
 							listenbrainz: {
-								body: `<defs><style>.b{fill:#353070;}.c{fill:#eb743b;}</style></defs><polygon class="b" points="13 1 1 8 1 22 13 29 13 1"/><polygon class="c" points="14 1 26 8 26 22 14 29 14 1"/>`,
+								body:
+									`<defs><style>.b{fill:#353070;}.c{fill:#eb743b;}</style></defs><polygon class="b" points="13 1 1 8 1 22 13 29 13 1"/><polygon class="c" points="14 1 26 8 26 22 14 29 14 1"/>`,
 								height: 30,
 								width: 27,
 							},
@@ -60,6 +61,10 @@ export default defineConfig<Theme>({
 			standard: "cubic-bezier(0.2, 0.0, 0, 1.0)",
 			"standard-decelerate": "cubic-bezier(0, 0, 0, 1)",
 			"standard-accelerate": "cubic-bezier(0.3, 0, 1, 1)",
+		},
+		duration: {
+			standard: "300ms",
+			emphasized: "500ms",
 		},
 		colors: {
 			background: "var(--background)",

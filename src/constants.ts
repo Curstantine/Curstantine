@@ -5,6 +5,8 @@ export const LISTEN_BRAINZ = "https://listenbrainz.org/user/Curstantine/";
 export const TWITTER = "https://twitter.com/Curstantine";
 export const BIRTH_DATE = new Date("2005-07-04");
 
+export const PROFILE_IMAGE_SOURCE = "https://twitter.com/octrick";
+
 export const SONOKAI_ATTR = "https://github.com/sainnhe/sonokai";
 export const NUNITO_SANS_ATTR = "https://fonts.google.com/specimen/Nunito+Sans";
 export const JETBRAINS_MONO_ATTR = "https://www.jetbrains.com/lp/mono/";

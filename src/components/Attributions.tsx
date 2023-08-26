@@ -5,8 +5,7 @@ export default function Attributions() {
 		<div id="attributions">
 			<h2>#attributions</h2>
 			<p class="leading-relaxed">
-				Fonts: <a href={NUNITO_SANS_ATTR}>Nunito Sans</a>,{" "}
-				<a href={JETBRAINS_MONO_ATTR}>JetBrains Mono</a>
+				Fonts: <a href={NUNITO_SANS_ATTR}>Nunito Sans</a>, <a href={JETBRAINS_MONO_ATTR}>JetBrains Mono</a>
 				<br />
 				Dark color palette: <a href={SONOKAI_ATTR}>Sonokai Shusia</a>
 				<br />

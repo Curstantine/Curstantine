@@ -1,13 +1,15 @@
 {
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.defaultFormatter": "dprint.dprint",
 	"cSpell.words": [
 		"Attributify",
 		"BRAINZ",
 		"containerify",
+		"Curstantine",
 		"Iconify",
 		"JETBRAINS",
 		"listenbrainz",
 		"NUNITO",
+		"octrick",
 		"solidjs",
 		"SONOKAI",
 		"unocss"

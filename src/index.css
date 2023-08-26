@@ -54,12 +54,11 @@ hr,
 figure,
 p,
 pre {
-	--uno-apply: m-0 text-base font-normal leading-normal;
+	--uno-apply: m-0 font-normal leading-normal;
 }
 
 a {
-	--uno-apply: transition-colors duration-300 ease-standard text-text-accent-2
-	no-underline underline-from-font hover:(underline)
+	--uno-apply: transition-colors duration-300 ease-standard text-text-accent-2 no-underline underline-from-font hover:(underline);
 }
 
 h2 {

@@ -1,6 +1,6 @@
-import InfoContainer from "./components/InfoContainer";
 import About from "./components/About";
 import Attributions from "./components/Attributions";
+import InfoContainer from "./components/InfoContainer";
 import Skills from "./components/Skills";
 import Tools from "./components/Tools";
 
