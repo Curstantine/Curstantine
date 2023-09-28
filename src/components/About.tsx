@@ -1,3 +1,4 @@
+import { CV } from "../constants";
 import { getAge } from "../utils";
 
 export default function About() {
@@ -10,6 +11,9 @@ export default function About() {
 				<br />
 				My forte is in frontend web and mobile development, but I do regularly dabble in UI/UX designing and
 				systems programming.
+			</p>
+			<p class="mt-1">
+				You can check my CV <a target="_blank" href={CV}>here</a>.
 			</p>
 		</div>
 	);
