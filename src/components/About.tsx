@@ -1,4 +1,3 @@
-import { LISTEN_BRAINZ } from "../constants";
 import { getAge } from "../utils";
 
 export default function About() {

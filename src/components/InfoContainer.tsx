@@ -1,7 +1,7 @@
 import { createSignal } from "solid-js";
 
 import ProfilePicture from "../assets/profile.jpg";
-import { DISCORD, GITHUB, LINKEDIN, PROFILE_IMAGE_SOURCE, TWITTER } from "../constants";
+import { DISCORD, GITHUB, LASTFM, LINKEDIN, PROFILE_IMAGE_SOURCE, TWITTER } from "../constants";
 
 export default function InfoContainer() {
 	const [isFigureHovered, setFigureHovered] = createSignal(false);
@@ -59,9 +59,9 @@ export default function InfoContainer() {
 				/>
 				<a
 					target="_blank"
-					ara-label="ListenBrainz"
-					href="https://listenbrainz.org/user/Curstantine"
-					class="i-pref-listenbrainz w-6 h-6"
+					ara-label="Last.fm"
+					href={LASTFM}
+					class="i-pref-lastfm text-[#D41107] w-6 h-6"
 				/>
 			</div>
 		</div>
