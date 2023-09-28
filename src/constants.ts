@@ -1,4 +1,4 @@
-export const GITLAB = "https://gitlab.com/Curstantine";
+export const GITHUB = "https://github.com/Curstantine";
 export const LINKEDIN = "https://www.linkedin.com/in/rachala-ovin-b06437255/";
 export const DISCORD = "https://discord.com/users/793574864657186856";
 export const LISTEN_BRAINZ = "https://listenbrainz.org/user/Curstantine/";

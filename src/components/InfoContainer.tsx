@@ -1,7 +1,7 @@
 import { createSignal } from "solid-js";
 
 import ProfilePicture from "../assets/profile.jpg";
-import { DISCORD, GITLAB, LINKEDIN, PROFILE_IMAGE_SOURCE, TWITTER } from "../constants";
+import { DISCORD, GITHUB, LINKEDIN, PROFILE_IMAGE_SOURCE, TWITTER } from "../constants";
 
 export default function InfoContainer() {
 	const [isFigureHovered, setFigureHovered] = createSignal(false);
@@ -35,9 +35,9 @@ export default function InfoContainer() {
 			<div class="grid grid-cols-5 justify-items-center gap-4 w-full">
 				<a
 					target="_blank"
-					aria-label="Gitlab"
-					href={GITLAB}
-					class="i-logos-gitlab w-6 h-6"
+					aria-label="GitHub"
+					href={GITHUB}
+					class="i-logos-github-icon dark:invert w-6 h-6"
 				/>
 				<a
 					target="_blank"
