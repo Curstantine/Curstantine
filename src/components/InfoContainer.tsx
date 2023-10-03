@@ -1,6 +1,6 @@
-import { createSignal } from "solid-js";
+import { createSignal, Show } from "solid-js";
 
-import ProfilePicture from "../assets/profile.jpg";
+import ProfilePicture from "../assets/profile.png";
 import { DISCORD, GITHUB, LASTFM, LINKEDIN, PROFILE_IMAGE_SOURCE, TWITTER } from "../constants";
 
 export default function InfoContainer() {
@@ -19,14 +19,18 @@ export default function InfoContainer() {
 					src={ProfilePicture}
 					alt="Profile image"
 					aria-hidden="true"
-					class="w-48 h-48 transition-box-shadow,border-radius duration-300 ease-standard rounded-xl hover:(shadow-md rounded-lg) "
+					class="w-48 h-48 transition-box-shadow,border-radius duration-300 ease-standard rounded-xl hover:(shadow-md rounded) "
 				/>
-				<figcaption
-					class="text-xs text-center text-text-2 transition-opacity duration-standard ease-standard"
-					classList={{ "opacity-100": isFigureHovered(), "opacity-0": !isFigureHovered() }}
-				>
-					Original image by <a target="_blank" href={PROFILE_IMAGE_SOURCE}>@octrick</a>
-				</figcaption>
+				<Show when={PROFILE_IMAGE_SOURCE}>
+					{(imageSource) => (
+						<figcaption
+							class="text-xs text-center text-text-2 transition-opacity duration-standard ease-standard"
+							classList={{ "opacity-100": isFigureHovered(), "opacity-0": !isFigureHovered() }}
+						>
+							Original image by <a target="_blank" href={imageSource()}>@octrick</a>
+						</figcaption>
+					)}
+				</Show>
 			</figure>
 			<div class="flex-1 flex flex-col items-center pt-1 pb-8 sm:pb-0">
 				<h1 class="font-bold text-3xl leading-8 tracking-tight">Curstantine</h1>
