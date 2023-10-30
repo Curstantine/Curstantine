@@ -1,16 +1,17 @@
 import { CV } from "../constants";
-import { getAge } from "../utils";
 
 export default function About() {
 	return (
 		<div id="about">
 			<h2>#about</h2>
 			<p class="leading-relaxed">
-				I'm Rachala Ovin, a {getAge()} years old developer from Sri Lanka. <br />{" "}
-				I'm currently pursuing a Software Engineering degree at the Informatics Institute of Technology.
-				<br />
-				My forte is in frontend web and mobile development, but I do regularly dabble in UI/UX designing and
-				systems programming.
+				Hello! I'm Rachala Ovin, a developer from Sri Lanka. <br />
+				I'm currently pursuing a Software Engineering degree at the University of Westminster.
+			</p>
+			<p>
+				I enjoy doing open source projects like <a href="https://github.com/Curstantine/melody">these</a>{" "}
+				while engaging with the FOSS community. Especially the{" "}
+				<a href="https://mozilla-iit.org/">Mozilla Campus Club</a>.
 			</p>
 			<p class="mt-1">
 				You can check my CV <a target="_blank" href={CV}>here</a>.
