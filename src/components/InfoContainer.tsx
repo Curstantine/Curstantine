@@ -19,7 +19,7 @@ export default function InfoContainer() {
 					src={ProfilePicture}
 					alt="Profile image"
 					aria-hidden="true"
-					class="w-48 h-48 transition-box-shadow,border-radius duration-300 ease-standard rounded-xl hover:(shadow-md rounded) "
+					class="w-48 h-48 rounded-xl"
 				/>
 				<Show when={PROFILE_IMAGE_SOURCE}>
 					{(imageSource) => (

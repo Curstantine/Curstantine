@@ -10,6 +10,7 @@ export const CV = "https://www.figma.com/file/yBfIcWSe0pXQmMD3S3StYZ";
 export const PROFILE_IMAGE_SOURCE: string | null = null;
 
 export const SONOKAI_ATTR = "https://github.com/sainnhe/sonokai";
+export const REALTIME_ATTR = "https://www.realtimecolors.com/?colors=200326-f0f0f0-c348d8-efb9f9-b612d3";
 export const NUNITO_SANS_ATTR = "https://fonts.google.com/specimen/Nunito+Sans";
 export const JETBRAINS_MONO_ATTR = "https://www.jetbrains.com/lp/mono/";
 

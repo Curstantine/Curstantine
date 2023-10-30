@@ -16,12 +16,13 @@
 
 @media (prefers-color-scheme: light) {
 	:root {
-		--background: #fdf6e3;
-		--text-1: #302e2b;
+		--background: #f0f0f0;
+		--text-1: #200326;
 		--text-2: #7d7970;
-		--text-3: #eee6d1;
-		--text-accent-1: #ff6188;
-		--text-accent-2: #664de4;
+		--text-3: #efb9f9;
+		--text-accent-1: #b612d3;
+		--text-accent-2: #c348d8;
+
 	}
 }
 

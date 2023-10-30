@@ -1,4 +1,4 @@
-import { JETBRAINS_MONO_ATTR, NUNITO_SANS_ATTR, SONOKAI_ATTR } from "../constants";
+import { JETBRAINS_MONO_ATTR, NUNITO_SANS_ATTR, REALTIME_ATTR, SONOKAI_ATTR } from "../constants";
 
 export default function Attributions() {
 	return (
@@ -9,7 +9,7 @@ export default function Attributions() {
 				<br />
 				Dark color palette: <a href={SONOKAI_ATTR}>Sonokai Shusia</a>
 				<br />
-				Light color palette: Solarized Light
+				Light color palette: <a href={REALTIME_ATTR}>Realtime Colors</a>
 				<br />
 				Scaffolded with Vite, written in SolidJS.
 			</p>
