@@ -68,5 +68,5 @@ h2 {
 }
 
 main {
-	--uno-apply: flex flex-col sm:(flex-row min-h-screen max-h-screen);
+	--uno-apply: flex flex-col lg:(container mx-auto) sm:(flex-row min-h-screen max-h-screen);
 }
