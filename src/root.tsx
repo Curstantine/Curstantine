@@ -4,7 +4,6 @@ import { Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, Tit
 
 import "./root.css";
 import "virtual:uno.css";
-import "@unocss/reset/normalize.css";
 
 export default function Root() {
 	return (

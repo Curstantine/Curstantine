@@ -1,3 +1,5 @@
+@import "modern-normalize/modern-normalize.css";
+
 @import "@fontsource/jetbrains-mono/400.css";
 @import "@fontsource/nunito-sans/400.css";
 @import "@fontsource/nunito-sans/600.css";
@@ -63,10 +65,6 @@ h2 {
 
 ::selection {
 	--uno-apply: bg-text-accent-1 text-background;
-}
-
-body {
-	--uno-apply: m-0;
 }
 
 main {
