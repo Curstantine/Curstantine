@@ -62,7 +62,7 @@ export default function InfoContainer() {
 				/>
 				<a
 					target="_blank"
-					ara-label="Last.fm"
+					aria-label="Last.fm"
 					href={LASTFM}
 					class="i-pref-lastfm text-[#D41107] w-6 h-6"
 				/>
