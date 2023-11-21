@@ -1,5 +1,6 @@
 import { For } from "solid-js";
-import { SKILLS } from "../constants";
+
+import { SKILLS } from "~/utils/constants";
 
 export default function Skills() {
 	return (

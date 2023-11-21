@@ -1,4 +1,4 @@
-import { JETBRAINS_MONO_ATTR, NUNITO_SANS_ATTR, REALTIME_ATTR, SONOKAI_ATTR } from "../constants";
+import { JETBRAINS_MONO_ATTR, NUNITO_SANS_ATTR, REALTIME_ATTR, SONOKAI_ATTR } from "~/utils/constants";
 
 export default function Attributions() {
 	return (
@@ -11,7 +11,7 @@ export default function Attributions() {
 				<br />
 				Light color palette: <a href={REALTIME_ATTR}>Realtime Colors</a>
 				<br />
-				Scaffolded with Vite, written in SolidJS.
+				Written in Solid, scaffolded with SolidStart.
 			</p>
 		</div>
 	);

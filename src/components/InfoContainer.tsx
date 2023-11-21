@@ -1,7 +1,6 @@
 import { createSignal, Show } from "solid-js";
 
-import ProfilePicture from "../assets/profile.png";
-import { GITHUB, GITLAB, LASTFM, LINKEDIN, PROFILE_IMAGE_SOURCE, TWITTER } from "../constants";
+import { GITHUB, GITLAB, LASTFM, LINKEDIN, PROFILE_IMAGE_SOURCE, TWITTER } from "~/utils/constants";
 
 export default function InfoContainer() {
 	const [isFigureHovered, setFigureHovered] = createSignal(false);
@@ -16,7 +15,7 @@ export default function InfoContainer() {
 				onMouseLeave={() => setFigureHovered(false)}
 			>
 				<img
-					src={ProfilePicture}
+					src="/images/profile.png"
 					alt="Profile image"
 					aria-hidden="true"
 					class="w-48 h-48 rounded-xl"

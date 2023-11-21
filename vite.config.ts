@@ -1,10 +1,8 @@
-import UnoCSS from "unocss/vite";
+import vercel from "solid-start-vercel";
+import solid from "solid-start/vite";
+import unocss from "unocss/vite";
 import { defineConfig } from "vite";
-import solidPlugin from "vite-plugin-solid";
 
 export default defineConfig({
-	plugins: [solidPlugin(), UnoCSS()],
-	build: {
-		target: "esnext",
-	},
+	plugins: [unocss(), solid({ adapter: vercel() })],
 });

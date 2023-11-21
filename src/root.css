@@ -4,7 +4,6 @@
 @import "@fontsource/nunito-sans/400.css";
 @import "@fontsource/nunito-sans/600.css";
 
-
 :root {
 	--background: #1a181a;
 	--text-1: #e3e1e4;
@@ -22,7 +21,6 @@
 		--text-3: #efb9f9;
 		--text-accent-1: #b612d3;
 		--text-accent-2: #c348d8;
-
 	}
 }
 
@@ -30,7 +28,6 @@
 	color-scheme: light dark;
 	background-color: var(--background);
 	color: var(--text-1);
-
 	font-family: "Nunito Sans", sans-serif;
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -70,6 +67,6 @@ h2 {
 	--uno-apply: bg-text-accent-1 text-background;
 }
 
-#root {
-	--uno-apply: flex flex-col sm:(flex-row min-h-screen max-h-screen);
+main {
+	--uno-apply: flex flex-col lg:(container mx-auto) sm:(flex-row min-h-screen max-h-screen);
 }

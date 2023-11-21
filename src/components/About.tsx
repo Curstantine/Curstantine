@@ -1,4 +1,4 @@
-import { CV } from "../constants";
+import { CV } from "~/utils/constants";
 
 export default function About() {
 	return (

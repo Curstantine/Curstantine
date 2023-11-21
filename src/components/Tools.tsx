@@ -1,5 +1,6 @@
 import { For } from "solid-js";
-import { TOOLS } from "../constants";
+
+import { TOOLS } from "~/utils/constants";
 
 export default function Tools() {
 	return (

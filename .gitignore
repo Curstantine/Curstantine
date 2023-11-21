@@ -1,2 +1,32 @@
-node_modules
+
 dist
+bkg
+.solid
+.output
+.vercel
+.netlify
+netlify
+
+# Environment
+.env
+.env*.local
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+*.launch
+.settings/
+.vs/
+
+# Temp
+gitignore
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.vercel
