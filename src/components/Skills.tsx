@@ -14,7 +14,7 @@ export default function Skills() {
 							<Show when={frameworks.length > 0}>
 								<ul class="my-1">
 									<For each={frameworks}>
-										{(framework) => <li class="text-text-2 text-sm">{framework}</li>}
+										{(framework) => <li class="text-sm text-text-2">{framework}</li>}
 									</For>
 								</ul>
 							</Show>

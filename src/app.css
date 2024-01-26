@@ -64,10 +64,8 @@ h2 {
 
 body {
 	--uno-apply: overflow-y-auto relative;
-
-
 }
 
 #app {
-	--uno-apply: flex flex-col overflow-y-auto max-h-screen lg:(container mx-auto) sm:(flex-row);
+	--uno-apply: flex flex-col max-h-screen lg:(container mx-auto) sm:(flex-row);
 }
