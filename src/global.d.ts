@@ -1,1 +1,10 @@
-/// <reference types="solid-start/env" />
+/* eslint-disable no-unused-vars */
+/// <reference types="@solidjs/start/env" />
+
+import type { AttributifyAttributes } from "unocss/preset-attributify";
+
+declare module "solid-js" {
+	namespace JSX {
+		interface HTMLAttributes<T> extends AttributifyAttributes {}
+	}
+}
