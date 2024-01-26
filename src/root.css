@@ -1,9 +1,5 @@
 @import "modern-normalize/modern-normalize.css";
 
-@import "@fontsource/jetbrains-mono/400.css";
-@import "@fontsource/nunito-sans/400.css";
-@import "@fontsource/nunito-sans/600.css";
-
 :root {
 	--background: #1a181a;
 	--text-1: #e3e1e4;
@@ -28,7 +24,7 @@
 	color-scheme: light dark;
 	background-color: var(--background);
 	color: var(--text-1);
-	font-family: "Nunito Sans", sans-serif;
+	font-family: "Inter", sans-serif;
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;

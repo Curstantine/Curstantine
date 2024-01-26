@@ -5,6 +5,7 @@ import {
 	presetIcons,
 	presetTypography,
 	presetUno,
+	presetWebFonts,
 	transformerDirectives,
 	transformerVariantGroup,
 } from "unocss";
@@ -17,8 +18,18 @@ const importIconCollection = (name: string) => {
 export default defineConfig<Theme>({
 	presets: [
 		presetAttributify(),
-		presetUno({
-			dark: "media",
+		presetUno({ dark: "media" }),
+		presetWebFonts({
+			fonts: {
+				sans: {
+					name: "Inter",
+					weights: [400, 600],
+				},
+				mono: {
+					name: "JetBrains Mono",
+					weights: [400],
+				},
+			},
 		}),
 		presetIcons({
 			collections: {
@@ -52,10 +63,6 @@ export default defineConfig<Theme>({
 		},
 	}),
 	theme: {
-		fontFamily: {
-			mono: "JetBrains Mono, monospace",
-			sans: "Nunito Sans, sans-serif",
-		},
 		easing: {
 			DEFAULT: "cubic-bezier(0.4, 0.0, 0.2, 1.0)",
 			standard: "cubic-bezier(0.2, 0.0, 0, 1.0)",
