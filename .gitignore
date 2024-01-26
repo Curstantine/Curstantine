@@ -1,11 +1,10 @@
-
 dist
-bkg
 .solid
 .output
 .vercel
 .netlify
 netlify
+.vinxi
 
 # Environment
 .env
@@ -20,7 +19,6 @@ netlify
 .classpath
 *.launch
 .settings/
-.vs/
 
 # Temp
 gitignore
@@ -28,5 +26,3 @@ gitignore
 # System Files
 .DS_Store
 Thumbs.db
-
-.vercel
