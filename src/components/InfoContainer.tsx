@@ -1,6 +1,14 @@
 import { createSignal, Show } from "solid-js";
 
-import { GITHUB, GITLAB, LASTFM, LINKEDIN, PROFILE_IMAGE_SOURCE, TWITTER } from "~/utils/constants";
+import {
+	GITHUB,
+	GITLAB,
+	LASTFM,
+	LINKEDIN,
+	PROFILE_IMAGE_SOURCE,
+	PROFILE_IMAGE_SOURCE_LABEL,
+	TWITTER,
+} from "~/utils/constants";
 
 export default function InfoContainer() {
 	const [isFigureHovered, setFigureHovered] = createSignal(false);
@@ -26,7 +34,8 @@ export default function InfoContainer() {
 							class="text-xs text-center text-text-2 transition-opacity duration-standard ease-standard"
 							classList={{ "opacity-100": isFigureHovered(), "opacity-0": !isFigureHovered() }}
 						>
-							Original image by <a target="_blank" href={imageSource()}>@octrick</a>
+							Original image by{" "}
+							<a target="_blank" href={imageSource()}>{PROFILE_IMAGE_SOURCE_LABEL ?? "N/A"}</a>
 						</figcaption>
 					)}
 				</Show>
