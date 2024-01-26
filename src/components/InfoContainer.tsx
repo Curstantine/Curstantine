@@ -15,7 +15,7 @@ export default function InfoContainer() {
 
 	return (
 		<div
-			class="flex flex-col items-center sm:(w-72 min-w-72) md:(w-xs min-w-xs) py-4 px-8 my-4"
+			class="flex flex-col items-center sm:(w-72 min-w-72) md:(w-xs min-w-xs) py-4 px-8 my-4 sticky inset-y-4 left-0"
 			border="r-0 sm:r-1 r-solid r-text-3"
 		>
 			<figure
@@ -40,8 +40,8 @@ export default function InfoContainer() {
 					)}
 				</Show>
 			</figure>
-			<div class="flex-1 flex flex-col items-center pt-1 pb-8 sm:pb-0">
-				<h1 class="font-bold text-3xl leading-8 tracking-tight">Curstantine</h1>
+			<div class="flex-1 flex flex-col items-center pt-4 pb-8 sm:pb-0">
+				<h1 class="font-medium text-3xl leading-8 tracking-tight">Curstantine</h1>
 				<span class="text-sm text-text-2">UI Designer, Developer</span>
 			</div>
 			<div class="grid grid-cols-5 justify-items-center gap-4 w-full">

@@ -1,5 +1,3 @@
-@import "modern-normalize/modern-normalize.css";
-
 :root {
 	--background: #1a181a;
 	--text-1: #e3e1e4;
@@ -33,6 +31,7 @@
 	scroll-behavior: smooth;
 }
 
+
 a,
 span,
 blockquote,
@@ -52,7 +51,7 @@ pre {
 }
 
 a {
-	--uno-apply: transition-colors duration-300 ease-standard text-text-accent-2 no-underline underline-from-font hover:(underline);
+	--uno-apply: transition-colors use-transition-standard;
 }
 
 h2 {
@@ -63,6 +62,12 @@ h2 {
 	--uno-apply: bg-text-accent-1 text-background;
 }
 
-main {
-	--uno-apply: flex flex-col lg:(container mx-auto) sm:(flex-row min-h-screen max-h-screen);
+body {
+	--uno-apply: overflow-y-auto relative;
+
+
+}
+
+#app {
+	--uno-apply: flex flex-col overflow-y-auto max-h-screen lg:(container mx-auto) sm:(flex-row);
 }

@@ -16,9 +16,9 @@ export const NUNITO_SANS_ATTR = "https://fonts.google.com/specimen/Nunito+Sans";
 export const JETBRAINS_MONO_ATTR = "https://www.jetbrains.com/lp/mono/";
 
 export const SKILLS: [string, string[]][] = [
+	["Rust", []],
 	["JavaScript/TypeScript", ["SolidJS", "Preact", "Svelte", "Vue", "React"]],
 	["Dart", ["Flutter"]],
-	["Rust", []],
 	["Kotlin", ["Jetpack Compose"]],
 ];
 

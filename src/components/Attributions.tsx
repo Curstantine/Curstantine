@@ -2,9 +2,9 @@ import { JETBRAINS_MONO_ATTR, NUNITO_SANS_ATTR, REALTIME_ATTR, SONOKAI_ATTR } fr
 
 export default function Attributions() {
 	return (
-		<div id="attributions">
+		<div id="attributions" class="prose">
 			<h2>#attributions</h2>
-			<p class="leading-relaxed">
+			<p>
 				Fonts: <a href={NUNITO_SANS_ATTR}>Nunito Sans</a>, <a href={JETBRAINS_MONO_ATTR}>JetBrains Mono</a>
 				<br />
 				Dark color palette: <a href={SONOKAI_ATTR}>Sonokai Shusia</a>

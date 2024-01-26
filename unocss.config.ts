@@ -15,6 +15,19 @@ const importIconCollection = (name: string) => {
 	return () => import(`@iconify-json/${name}/icons.json`).then((i) => i.default) as Promise<IconifyJSON>;
 };
 
+const colorDefinitions = {
+	background: "var(--background)",
+	text: {
+		1: "var(--text-1)",
+		2: "var(--text-2)",
+		3: "var(--text-3)",
+		accent: {
+			1: "var(--text-accent-1)",
+			2: "var(--text-accent-2)",
+		},
+	},
+} as const;
+
 export default defineConfig<Theme>({
 	presets: [
 		presetAttributify(),
@@ -52,7 +65,33 @@ export default defineConfig<Theme>({
 				},
 			},
 		}),
-		presetTypography(),
+		presetTypography({
+			cssExtend: (theme) => {
+				const colors = theme.colors as typeof colorDefinitions;
+				const fonts = theme.fontFamily as Record<"sans" | "mono", string>;
+				const fontSizes = theme.fontSize as Record<"xs" | "sm" | "lg" | "xl" | `${number}xl`, string>;
+
+				return {
+					a: {
+						color: colors.text.accent[1],
+						"text-decoration": "none",
+						"text-decoration-thickness": "from-font",
+					},
+					"a:visited": {
+						color: colors.text.accent[2],
+					},
+					"a:hover": {
+						"text-decoration": "underline",
+					},
+					h2: {
+						color: colors.text.accent[1],
+						font: fonts.mono,
+						"font-weight": 500,
+						"font-size": fontSizes["3xl"],
+					},
+				};
+			},
+		}),
 	],
 	transformers: [transformerDirectives(), transformerVariantGroup()],
 	extendTheme: (theme) => ({
@@ -73,17 +112,10 @@ export default defineConfig<Theme>({
 			standard: "300ms",
 			emphasized: "500ms",
 		},
-		colors: {
-			background: "var(--background)",
-			text: {
-				1: "var(--text-1)",
-				2: "var(--text-2)",
-				3: "var(--text-3)",
-				accent: {
-					1: "var(--text-accent-1)",
-					2: "var(--text-accent-2)",
-				},
-			},
-		},
+		colors: colorDefinitions,
+	},
+	shortcuts: {
+		"use-transition-standard": "duration-standard ease-standard",
+		"use-transition-emphasized": "duration-emphasized ease-emphasized",
 	},
 });
