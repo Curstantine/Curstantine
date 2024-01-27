@@ -1,4 +1,4 @@
-import { JETBRAINS_MONO_ATTR, NUNITO_SANS_ATTR, REALTIME_ATTR, SONOKAI_ATTR } from "~/utils/constants";
+import { FONT_MONO_ATTR, FONT_SANS_ATTR, REALTIME_ATTR, SONOKAI_ATTR } from "~/utils/constants";
 
 export default function Attributions() {
 	return (
@@ -6,7 +6,7 @@ export default function Attributions() {
 			<h2>#attributions</h2>
 			<ul>
 				<li>
-					Fonts: <a href={NUNITO_SANS_ATTR}>Nunito Sans</a>, <a href={JETBRAINS_MONO_ATTR}>JetBrains Mono</a>
+					Fonts: <a href={FONT_SANS_ATTR}>Inter</a>, <a href={FONT_MONO_ATTR}>JetBrains Mono</a>
 				</li>
 				<li>
 					Dark color palette: <a href={SONOKAI_ATTR}>Sonokai Shusia</a>
