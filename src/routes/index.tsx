@@ -8,7 +8,7 @@ export default function Home() {
 	return (
 		<>
 			<InfoContainer />
-			<div class="w-full flex flex-col gap-2 px-6">
+			<div class="flex flex-1 flex-col gap-2 px-6">
 				<About />
 				<Skills />
 				<Tools />

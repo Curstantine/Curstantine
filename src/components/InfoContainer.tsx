@@ -15,7 +15,7 @@ export default function InfoContainer() {
 
 	return (
 		<div
-			class="my-4 flex flex-col items-center px-8 py-4 md:(sticky inset-y-4 left-0 min-w-xs w-xs) sm:(min-w-72 w-72)"
+			class="flex flex-col items-center px-8 py-4 md:(sticky inset-y-4 left-0 max-h-[calc(100vh-2rem)] min-w-xs w-xs py-4) sm:(min-w-72 w-72)"
 			border="r-0 sm:r-1 r-solid r-text-3"
 		>
 			<figure

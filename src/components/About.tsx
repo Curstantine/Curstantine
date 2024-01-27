@@ -2,11 +2,11 @@ import { CV } from "~/utils/constants";
 
 export default function About() {
 	return (
-		<div id="about" class="prose">
+		<div id="about" class="prose md:max-w-2xl">
 			<h2>#about</h2>
 			<p>
 				I am Rachala Ovin, a frontend developer, and a designer of sorts. <br />{" "}
-				Currently pursuing BEng at University of Westminster. (IIT, LK)
+				Currently pursuing a Software Engineering degree at University of Westminster. (IIT, LK)
 			</p>
 			<p>
 				I enjoy doing open source projects like <a href="https://github.com/Curstantine/melody">these</a>{" "}

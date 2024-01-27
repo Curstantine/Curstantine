@@ -87,7 +87,18 @@ export default defineConfig<Theme>({
 						color: colors.text.accent[1],
 						font: fonts.mono,
 						"font-weight": 500,
-						"font-size": fontSizes["3xl"],
+						"font-size": fontSizes["4xl"],
+						"margin-top": "2rem",
+					},
+					"p:last-child": {
+						"margin-bottom": "0rem",
+					},
+					"h2 + p": {
+						"margin-top": "0rem",
+					},
+					ul: {
+						"margin-top": "0rem",
+						"margin-bottom": "0rem",
 					},
 				};
 			},
