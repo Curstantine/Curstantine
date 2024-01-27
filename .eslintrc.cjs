@@ -4,6 +4,7 @@ module.exports = {
 		es2021: true,
 	},
 	extends: [
+		"@unocss",
 		"eslint:recommended",
 		"plugin:solid/typescript",
 	],

@@ -5,6 +5,7 @@ import {
 	presetIcons,
 	presetTypography,
 	presetUno,
+	presetWebFonts,
 	transformerDirectives,
 	transformerVariantGroup,
 } from "unocss";
@@ -14,11 +15,34 @@ const importIconCollection = (name: string) => {
 	return () => import(`@iconify-json/${name}/icons.json`).then((i) => i.default) as Promise<IconifyJSON>;
 };
 
+const colorDefinitions = {
+	background: "var(--background)",
+	text: {
+		1: "var(--text-1)",
+		2: "var(--text-2)",
+		3: "var(--text-3)",
+		accent: {
+			1: "var(--text-accent-1)",
+			2: "var(--text-accent-2)",
+		},
+	},
+} as const;
+
 export default defineConfig<Theme>({
 	presets: [
 		presetAttributify(),
-		presetUno({
-			dark: "media",
+		presetUno({ dark: "media" }),
+		presetWebFonts({
+			fonts: {
+				sans: {
+					name: "Inter",
+					weights: [400, 600],
+				},
+				mono: {
+					name: "JetBrains Mono",
+					weights: [400],
+				},
+			},
 		}),
 		presetIcons({
 			collections: {
@@ -41,7 +65,44 @@ export default defineConfig<Theme>({
 				},
 			},
 		}),
-		presetTypography(),
+		presetTypography({
+			cssExtend: (theme) => {
+				const colors = theme.colors as typeof colorDefinitions;
+				const fonts = theme.fontFamily as Record<"sans" | "mono", string>;
+				const fontSizes = theme.fontSize as Record<"xs" | "sm" | "lg" | "xl" | `${number}xl`, string>;
+
+				return {
+					a: {
+						color: colors.text.accent[1],
+						"text-decoration": "none",
+						"text-decoration-thickness": "from-font",
+					},
+					"a:visited": {
+						color: colors.text.accent[2],
+					},
+					"a:hover": {
+						"text-decoration": "underline",
+					},
+					h2: {
+						color: colors.text.accent[1],
+						font: fonts.mono,
+						"font-weight": 500,
+						"font-size": fontSizes["4xl"],
+						"margin-top": "2rem",
+					},
+					"p:last-child": {
+						"margin-bottom": "0rem",
+					},
+					"h2 + p": {
+						"margin-top": "0rem",
+					},
+					ul: {
+						"margin-top": "0rem",
+						"margin-bottom": "0rem",
+					},
+				};
+			},
+		}),
 	],
 	transformers: [transformerDirectives(), transformerVariantGroup()],
 	extendTheme: (theme) => ({
@@ -52,10 +113,6 @@ export default defineConfig<Theme>({
 		},
 	}),
 	theme: {
-		fontFamily: {
-			mono: "JetBrains Mono, monospace",
-			sans: "Nunito Sans, sans-serif",
-		},
 		easing: {
 			DEFAULT: "cubic-bezier(0.4, 0.0, 0.2, 1.0)",
 			standard: "cubic-bezier(0.2, 0.0, 0, 1.0)",
@@ -66,17 +123,10 @@ export default defineConfig<Theme>({
 			standard: "300ms",
 			emphasized: "500ms",
 		},
-		colors: {
-			background: "var(--background)",
-			text: {
-				1: "var(--text-1)",
-				2: "var(--text-2)",
-				3: "var(--text-3)",
-				accent: {
-					1: "var(--text-accent-1)",
-					2: "var(--text-accent-2)",
-				},
-			},
-		},
+		colors: colorDefinitions,
+	},
+	shortcuts: {
+		"use-transition-standard": "duration-standard ease-standard",
+		"use-transition-emphasized": "duration-emphasized ease-emphasized",
 	},
 });
