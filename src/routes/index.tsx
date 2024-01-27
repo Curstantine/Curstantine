@@ -1,3 +1,4 @@
+import { inject as injectAnalytics } from "@vercel/analytics";
 import { injectSpeedInsights } from "@vercel/speed-insights";
 import { onMount } from "solid-js";
 
@@ -11,6 +12,7 @@ import Tools from "~/components/Tools";
 export default function Home() {
 	onMount(() => {
 		injectSpeedInsights();
+		injectAnalytics();
 	});
 
 	return (
