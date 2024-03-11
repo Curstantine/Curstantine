@@ -1,0 +1,19 @@
+---
+interface Props {
+	skill: string;
+	subSkills: string[];
+}
+
+const { skill, subSkills } = Astro.props;
+---
+
+<li>
+	{skill}
+	{
+		subSkills.length > 0 && (
+			<ul class="my-1">
+				{subSkills.map((sub) => <li class="text-sm text-text-2">{sub}</li>)}
+			</ul>
+		)
+	}
+</li>

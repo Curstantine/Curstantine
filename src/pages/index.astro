@@ -1,0 +1,139 @@
+---
+import {
+	CV,
+	FONT_MONO_ATTR,
+	FONT_SANS_ATTR,
+	GITHUB,
+	GITLAB,
+	LASTFM,
+	LINKEDIN,
+	PROJECTS,
+	REALTIME_ATTR,
+	SKILLS,
+	SONOKAI_ATTR,
+	TOOLS,
+	ICON_BXL_ATTR,
+	TWITTER,
+} from "~/utils/constants";
+
+import Layout from "~/layouts/Layout.astro";
+
+import Project from "~/components/Project.astro";
+import Skill from "~/components/Skill.astro";
+---
+
+<Layout title="Curstantine">
+	<main class="flex flex-col sm:flex-row relative lg:(container mx-auto)">
+		<div
+			class="flex flex-col items-center px-8 py-4 md:(sticky inset-y-4 left-0 max-h-[calc(100vh-2rem)] min-w-xs w-xs py-4) sm:(min-w-72 w-72)"
+			border="r-0 sm:r-1 r-solid r-text-3"
+		>
+			<img
+				src="/images/profile.png"
+				alt="Profile image"
+				aria-hidden="true"
+				class="h-48 w-48 rounded-xl"
+			/>
+			<div class="flex flex-1 flex-col items-center pb-8 pt-4 sm:pb-0">
+				<h1 class="text-3xl font-medium leading-8 tracking-tight">Curstantine</h1>
+				<span class="text-sm text-text-2">UI Designer, Developer</span>
+			</div>
+			<div class="grid grid-cols-5 w-full justify-items-center gap-4 text-accent-1">
+				<a
+					target="_blank"
+					aria-label="GitHub"
+					href={GITHUB}
+					class="i-bxl-github h-6 w-6"
+				/>
+				<a
+					target="_blank"
+					aria-label="GitLab"
+					href={GITLAB}
+					class="i-bxl-gitlab h-6 w-6"
+				/>
+				<a
+					target="_blank"
+					aria-label="Twitter"
+					href={TWITTER}
+					class="i-bxl-twitter h-6 w-6"
+				/>
+				<a
+					target="_blank"
+					aria-label="LinkedIn"
+					href={LINKEDIN}
+					class="i-bxl-linkedin h-6 w-6"
+				/>
+				<a
+					target="_blank"
+					aria-label="Last.fm"
+					href={LASTFM}
+					class="i-pref-lastfm h-6 w-6"
+				/>
+			</div>
+		</div>
+
+		<div class="flex flex-1 flex-col gap-2 px-6">
+			<div id="about" class="prose md:max-w-2xl">
+				<h2>#about</h2>
+				<p>
+					Hello! I am Rachala Ovin, a frontend developer, and a designer of sorts. <br />
+					Currently pursuing a Software Engineering degree at University of Westminster. (IIT, LK)
+				</p>
+				<p>
+					I enjoy doing open source projects like <a href="https://github.com/Curstantine/melody">these</a>
+					while engaging with the OSS community, especially with my university's{" "}
+					<span>
+						<a href="https://mozilla-iit.org/">Mozilla Campus Club</a>.
+					</span>
+				</p>
+				<p>
+					CV is available <a target="_blank" href={CV}>here</a>.
+				</p>
+			</div>
+
+			<div id="projects" class="prose">
+				<h2>#projects</h2>
+				<ul class="space-y-2">
+					{PROJECTS.map((project) => <Project {project} />)}
+				</ul>
+			</div>
+
+			<div id="skills" class="prose">
+				<h2>#skills</h2>
+				<ul>
+					{SKILLS.map(([skill, subSkills]) => <Skill {skill} {subSkills} />)}
+				</ul>
+			</div>
+
+			<div id="tools" class="prose">
+				<h2>#tools</h2>
+				<ul>
+					{TOOLS.map((tool) => <li>{tool}</li>)}
+				</ul>
+			</div>
+
+			<div id="attributions" class="prose">
+				<h2>#attributions</h2>
+				<ul>
+					<li>
+						<span>
+							Fonts: <a href={FONT_SANS_ATTR}>Inter</a>{", "}
+							<a href={FONT_MONO_ATTR}>JetBrains Mono</a>
+						</span>
+					</li>
+					<li>
+						Iconset: <a href={ICON_BXL_ATTR}>BoxIcons Logo</a>
+					<li>
+						Dark color palette: <a href={SONOKAI_ATTR}>Sonokai Andromeda</a>
+					</li>
+					<li>
+						Light color palette: <a href={REALTIME_ATTR}>Realtime Colors</a>
+					</li>
+				</ul>
+				<p class="mt-8 pb-4 text-sm text-text-2">
+					Written in Solid, styled with UnoCSS, and scaffolded with SolidStart.
+				</p>
+			</div>
+		</div>
+	</main>
+</Layout>
