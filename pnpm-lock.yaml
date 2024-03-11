@@ -14,6 +14,9 @@ dependencies:
   '@astrojs/vercel':
     specifier: ^7.3.5
     version: 7.3.5(astro@4.4.15)
+  '@iconify-json/bxl':
+    specifier: ^1.1.10
+    version: 1.1.10
   '@unocss/reset':
     specifier: ^0.58.5
     version: 0.58.5
@@ -31,15 +34,6 @@ dependencies:
     version: 5.4.2
 
 devDependencies:
-  '@iconify-json/bxl':
-    specifier: ^1.1.10
-    version: 1.1.10
-  '@iconify-json/logos':
-    specifier: ^1.1.42
-    version: 1.1.42
-  '@iconify-json/material-symbols':
-    specifier: ^1.1.74
-    version: 1.1.74
   '@iconify/types':
     specifier: ^2.0.0
     version: 2.0.0
@@ -860,23 +854,10 @@ packages:
     resolution: {integrity: sha512-/+9L0XBI7vvP8tU2NVfqr45BjUndbTEaDuU6PERn9zKH0Rtsi9GDpaba7FY8PgA91ugGIpuwUPsFLCofkYreNg==}
     dependencies:
       '@iconify/types': 2.0.0
-    dev: true
-
-  /@iconify-json/logos@1.1.42:
-    resolution: {integrity: sha512-/f+frtPm3m3Z30oy8Pk+QqRDkbmAiIaWGPl5CmsCXm15MVfvw9a/V/gD7WzdyuSGAZcFuQaqbHXj92y/n+2ifg==}
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: true
-
-  /@iconify-json/material-symbols@1.1.74:
-    resolution: {integrity: sha512-cuQKvpGWrMNJq0i3ynO+V6yus0Smiupw92GW8Gq/4MHfYfbl1MrbVmafKQAd8RJVqiEXq4/F084OEcigf77UqQ==}
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: true
+    dev: false
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
-    dev: true
 
   /@iconify/utils@2.1.22:
     resolution: {integrity: sha512-6UHVzTVXmvO8uS6xFF+L/QTSpTzA/JZxtgU+KYGFyDYMEObZ1bu/b5l+zNJjHy+0leWjHI+C0pXlzGvv3oXZMA==}

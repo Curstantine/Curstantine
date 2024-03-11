@@ -46,8 +46,6 @@ export default defineConfig<Theme>({
 		}),
 		presetIcons({
 			collections: {
-				material: importIconCollection("material-symbols"),
-				logos: importIconCollection("logos"),
 				bxl: importIconCollection("bxl"),
 				pref: () => {
 					const icons: IconifyJSON = {
