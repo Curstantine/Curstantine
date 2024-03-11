@@ -1,4 +1,3 @@
 {
-	"editor.defaultFormatter": "dprint.dprint",
-	"deno.enable": false
+	"editor.defaultFormatter": "dprint.dprint"
 }

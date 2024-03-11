@@ -1,0 +1,22 @@
+---
+import About from "~/components/About.tsx";
+import Attributions from "~/components/Attributions.tsx";
+import InfoContainer from "~/components/InfoContainer.tsx";
+import Projects from "~/components/Projects.tsx";
+import Skills from "~/components/Skills.tsx";
+import Tools from "~/components/Tools.tsx";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Curstantine">
+	<main class="flex flex-col sm:flex-row relative lg:(container mx-auto)">
+		<InfoContainer />
+		<div class="flex flex-1 flex-col gap-2 px-6">
+			<About />
+			<Projects />
+			<Skills />
+			<Tools />
+			<Attributions />
+		</div>
+	</main>
+</Layout>
