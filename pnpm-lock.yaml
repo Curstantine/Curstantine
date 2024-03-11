@@ -31,6 +31,9 @@ dependencies:
     version: 5.4.2
 
 devDependencies:
+  '@iconify-json/bxl':
+    specifier: ^1.1.10
+    version: 1.1.10
   '@iconify-json/logos':
     specifier: ^1.1.42
     version: 1.1.42
@@ -851,6 +854,12 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.2:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
+    dev: true
+
+  /@iconify-json/bxl@1.1.10:
+    resolution: {integrity: sha512-/+9L0XBI7vvP8tU2NVfqr45BjUndbTEaDuU6PERn9zKH0Rtsi9GDpaba7FY8PgA91ugGIpuwUPsFLCofkYreNg==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify-json/logos@1.1.42:

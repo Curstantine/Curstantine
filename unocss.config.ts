@@ -16,15 +16,15 @@ const importIconCollection = (name: string) => {
 };
 
 const colorDefinitions = {
-	background: "var(--background)",
+	background: "hsl(var(--background) / <alpha-value>)",
 	text: {
-		1: "var(--text-1)",
-		2: "var(--text-2)",
-		3: "var(--text-3)",
-		accent: {
-			1: "var(--text-accent-1)",
-			2: "var(--text-accent-2)",
-		},
+		1: "hsl(var(--text-1) / <alpha-value>)",
+		2: "hsl(var(--text-2) / <alpha-value>)",
+		3: "hsl(var(--text-3) / <alpha-value>)",
+	},
+	accent: {
+		1: "hsl(var(--accent-1) / <alpha-value>)",
+		2: "hsl(var(--accent-2) / <alpha-value>)",
 	},
 } as const;
 
@@ -48,6 +48,7 @@ export default defineConfig<Theme>({
 			collections: {
 				material: importIconCollection("material-symbols"),
 				logos: importIconCollection("logos"),
+				bxl: importIconCollection("bxl"),
 				pref: () => {
 					const icons: IconifyJSON = {
 						prefix: "pref",
@@ -71,20 +72,19 @@ export default defineConfig<Theme>({
 				const fonts = theme.fontFamily as Record<"sans" | "mono", string>;
 				const fontSizes = theme.fontSize as Record<"xs" | "sm" | "lg" | "xl" | `${number}xl`, string>;
 
+				const textOpPatch = (val: string) => val.replace("<alpha-value>", "var(--un-text-opacity)");
+
 				return {
 					a: {
-						color: colors.text.accent[1],
-						"text-decoration": "none",
+						color: textOpPatch(colors.accent[2]),
 						"text-decoration-thickness": "from-font",
-					},
-					"a:visited": {
-						color: colors.text.accent[2],
+						"text-decoration": "none",
 					},
 					"a:hover": {
 						"text-decoration": "underline",
 					},
 					h2: {
-						color: colors.text.accent[1],
+						color: textOpPatch(colors.accent[1]),
 						font: fonts.mono,
 						"font-weight": 500,
 						"font-size": fontSizes["4xl"],

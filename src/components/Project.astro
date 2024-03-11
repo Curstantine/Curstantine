@@ -1,0 +1,22 @@
+---
+import type { Project } from "~/types";
+
+interface Props {
+	project: Project;
+}
+
+const { project: { name, link, description, points } } = Astro.props;
+---
+
+<li>
+	<span>
+		<a href={link}>{name}</a>{": "}{description}
+	</span>
+	{
+		points.length > 0 && (
+			<ul class="text-sm text-text-2">
+				{points.map((point) => <li>{point}</li>)}
+			</ul>
+		)
+	}
+</li>
