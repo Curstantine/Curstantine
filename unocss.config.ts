@@ -47,6 +47,7 @@ export default defineConfig<Theme>({
 		presetIcons({
 			collections: {
 				bxl: importIconCollection("bxl"),
+				gravity: importIconCollection("gravity-ui"),
 				pref: () => {
 					const icons: IconifyJSON = {
 						prefix: "pref",
@@ -111,6 +112,11 @@ export default defineConfig<Theme>({
 		},
 	}),
 	theme: {
+		container: {
+			center: true,
+			padding: "2rem",
+		},
+
 		easing: {
 			DEFAULT: "cubic-bezier(0.4, 0.0, 0.2, 1.0)",
 			standard: "cubic-bezier(0.2, 0.0, 0, 1.0)",
