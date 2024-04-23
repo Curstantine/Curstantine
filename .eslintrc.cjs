@@ -1,21 +1,11 @@
 module.exports = {
 	extends: [
 		"@unocss",
-		"plugin:solid/typescript",
 		"plugin:astro/jsx-a11y-recommended",
 	],
 	overrides: [
 		{
 			files: ["*.ts"],
-			parser: "@typescript-eslint/parser",
-			parserOptions: {
-				ecmaVersion: "latest",
-				sourceType: "module",
-			},
-		},
-		{
-			files: ["*.tsx"],
-			plugins: ["solid"],
 			parser: "@typescript-eslint/parser",
 			parserOptions: {
 				ecmaVersion: "latest",
@@ -40,14 +30,18 @@ module.exports = {
 			},
 		},
 		{
-			env: {
-				node: true,
-			},
-			files: [
-				".eslintrc.{js,cjs}",
-			],
+			env: { node: true },
+			files: [".eslintrc.{js,cjs}"],
 			parserOptions: {
 				sourceType: "script",
+			},
+		},
+		{
+			env: { node: true },
+			files: ["*.mjs"],
+			parserOptions: {
+				sourceType: "module",
+				ecmaVersion: "latest",
 			},
 		},
 	],
