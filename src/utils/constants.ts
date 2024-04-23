@@ -1,7 +1,7 @@
 import type { Project } from "~/types";
 
 export const LAST_FM_API_URL = "https://ws.audioscrobbler.com/2.0/";
-export const LISTENBRAINZ_NOW_PLAY_API = "https://api.listenbrainz.org/1/user/curstantine/playing-now";
+export const LISTENBRAINZ_NOW_PLAYING_API = "https://api.listenbrainz.org/1/user/curstantine/playing-now";
 
 export const GITHUB = "https://github.com/Curstantine";
 export const GITLAB = "https://gitlab.com/Curstantine";
