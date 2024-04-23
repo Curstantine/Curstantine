@@ -12,7 +12,12 @@ export type NowPlayingResponse = {
 };
 
 export const GET: APIRoute = async () => {
-	const req = await fetch(LISTENBRAINZ_NOW_PLAY_API);
+	const req = await fetch(LISTENBRAINZ_NOW_PLAY_API, {
+		headers: {
+			Authorization: `Token ${import.meta.env.LISTENBRAINZ_API_TOKEN}`,
+		},
+	});
+
 	const data = await req.json();
 	const np = data["payload"]["listens"][0];
 

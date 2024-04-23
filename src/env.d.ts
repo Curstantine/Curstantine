@@ -2,6 +2,14 @@
 
 import type { AttributifyAttributes } from "unocss/preset-attributify";
 
+interface ImportMetaEnv {
+	readonly LISTENBRAINZ_API_TOKEN: string;
+}
+
+interface ImportMeta {
+	readonly env: ImportMetaEnv;
+}
+
 declare module "solid-js" {
 	namespace JSX {
 		interface HTMLAttributes<T> extends AttributifyAttributes {}
