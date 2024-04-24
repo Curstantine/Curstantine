@@ -3,13 +3,16 @@ import type { APIRoute } from "astro";
 import { LISTENBRAINZ_NOW_PLAYING_API } from "~/utils/constants";
 
 type NowPlaying = Record<"artist" | "release" | "track", string> & {
-	links: Record<"release_mbz" | `track_${"apple" | "youtube"}`, string | null>;
+	links: Record<"release_mbz" | `track_${"apple" | "youtube"}`, string>;
 };
 
 export type NowPlayingResponse = {
 	type: "error" | "ok";
 	data?: NowPlaying;
+	message?: string;
 };
+
+export const prerender = false;
 
 export const GET: APIRoute = async () => {
 	const req = await fetch(LISTENBRAINZ_NOW_PLAYING_API, {
@@ -19,11 +22,14 @@ export const GET: APIRoute = async () => {
 	});
 
 	const data = await req.json();
-	console.log(`Sent request to ${req.url}, and server returned ${req.statusText} (${req.statusText}) body: `, data);
+	console.log(`Sent request to ${req.url}, and server returned ${req.statusText} (${req.status})`);
 
 	const np = data["payload"]["listens"][0];
 	if (np === null || np === undefined) {
-		return new Response(JSON.stringify({ type: "error" }), { status: 404 });
+		return new Response(
+			JSON.stringify({ type: "error", message: "Not scrolling currently!" }),
+			{ status: 404 },
+		);
 	}
 
 	const trackMeta = np["track_metadata"];
