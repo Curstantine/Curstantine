@@ -112,10 +112,7 @@ export default defineConfig<Theme>({
 		},
 	}),
 	theme: {
-		container: {
-			center: true,
-			padding: "2rem",
-		},
+		container: { center: true },
 
 		easing: {
 			DEFAULT: "cubic-bezier(0.4, 0.0, 0.2, 1.0)",
