@@ -2,15 +2,15 @@ import { createResource, Match, onCleanup, Switch } from "solid-js";
 
 import type { NowPlayingResponse } from "~/pages/api/currently-listening";
 
-async function getData(base: string): Promise<NowPlayingResponse> {
-	const url = new URL("/api/currently-listening", base);
+async function getData(): Promise<NowPlayingResponse> {
+	const url = new URL("/api/currently-listening", window.location.toString());
 	const request = await fetch(url);
 	const body = await request.json();
 	return body;
 }
 
-export default function CurrentlyListening(props: { base: string }) {
-	const [resource, { refetch }] = createResource(() => props.base, getData, { deferStream: true });
+export default function CurrentlyListening() {
+	const [resource, { refetch }] = createResource(getData, { deferStream: true });
 
 	const interval = setInterval(() => refetch(), 90000);
 	onCleanup(() => clearInterval(interval));
