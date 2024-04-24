@@ -24,30 +24,28 @@ export default function CurrentlyListening() {
 
 			<Switch>
 				<Match when={resource.loading}>
-					<span class="text-sm">Loading...</span>
+					<span class="text-sm text-text-2">Loading...</span>
 				</Match>
 				<Match when={resource()?.type === "error" && resource()}>
 					{(error) => <span>{error().message}</span>}
 				</Match>
 				<Match when={resource()?.type === "ok" && resource()?.data}>
-					{(data) => {
-						return (
-							<>
-								<span class="text-sm text-text-1">{data().artist} - {data().track}</span>
-								<a
-									target="_blank"
-									href={data().links.release_mbz}
-									class="w-fit text-sm text-accent-1"
-								>
-									{data().release}
-								</a>
-								<div class="inline-flex gap-2 text-xs text-text-2">
-									<a href={data().links.track_apple} target="_blank">Apple Music</a>
-									<a href={data().links.track_youtube} target="_blank">YouTube</a>
-								</div>
-							</>
-						);
-					}}
+					{(data) => (
+						<>
+							<span class="text-sm text-text-1">{data().artist} - {data().track}</span>
+							<a
+								target="_blank"
+								href={data().links.release_mbz}
+								class="w-fit text-sm text-accent-1"
+							>
+								{data().release}
+							</a>
+							<div class="inline-flex gap-2 text-xs text-text-2">
+								<a href={data().links.track_apple} target="_blank">Apple Music</a>
+								<a href={data().links.track_youtube} target="_blank">YouTube</a>
+							</div>
+						</>
+					)}
 				</Match>
 			</Switch>
 		</div>
