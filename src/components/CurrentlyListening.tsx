@@ -18,7 +18,7 @@ export default function CurrentlyListening(props: { base: string }) {
 	return (
 		<div class="flex flex-col p-6 lg:col-start-2 xl:(col-start-auto px-0 pb-0)">
 			<div class="mb-1 inline-flex items-center text-text-2">
-				<div class="i-gravity-music-note mr-2 h-4 w-4"></div>
+				<div class="i-gravity-music-note mr-2 size-4" />
 				<span class="select-none text-sm">Currently Listening</span>
 			</div>
 
