@@ -10,7 +10,7 @@ async function getData(): Promise<NowPlayingResponse> {
 }
 
 export default function CurrentlyListening() {
-	const [resource, { refetch }] = createResource(getData, { deferStream: true });
+	const [resource, { refetch }] = createResource(getData);
 
 	const interval = setInterval(() => refetch(), 90000);
 	onCleanup(() => clearInterval(interval));
