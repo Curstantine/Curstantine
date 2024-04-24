@@ -1,3 +1,7 @@
 {
-	"editor.defaultFormatter": "dprint.dprint"
+	"editor.defaultFormatter": "dprint.dprint",
+	"eslint.validate": ["astro"],
+	"cSpell.words": [
+		"LISTENBRAINZ"
+	]
 }

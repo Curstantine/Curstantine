@@ -5,6 +5,7 @@ import {
 	FONT_SANS_ATTR,
 	GITHUB,
 	GITLAB,
+	ICON_BXL_ATTR,
 	LASTFM,
 	LINKEDIN,
 	PROJECTS,
@@ -12,31 +13,35 @@ import {
 	SKILLS,
 	SONOKAI_ATTR,
 	TOOLS,
-	ICON_BXL_ATTR,
 	TWITTER,
 } from "~/utils/constants";
 
 import Layout from "~/layouts/Layout.astro";
 
+import CurrentlyListening from "~/components/CurrentlyListening.tsx";
 import Project from "~/components/Project.astro";
 import Skill from "~/components/Skill.astro";
 ---
 
 <Layout title="Curstantine">
-	<main class="flex flex-col md:flex-row relative lg:(container mx-auto)">
+	<main
+		class="grid lg:container"
+		grid="cols-1 lg:grid-cols-[20rem_1fr] xl:cols-[20rem_1fr_16rem] 2xl:cols-[20rem_1fr_20rem]"
+	>
 		<div
-			class="flex flex-col items-center px-8 py-4 md:(sticky inset-y-4 left-0 max-h-[calc(100vh-2rem)] min-w-xs w-xs py-4)"
-			border="r-0 md:r-1 r-solid r-text-3"
+			class="flex flex-col items-center lg:(sticky inset-y-4 left-0 max-h-[calc(100vh-2rem)] min-w-xs w-xs py-4)"
+			border="r-0 lg:r-1 r-solid r-text-3"
+			p="x-8 b-4 t-12 lg:t-4"
 		>
 			<img
 				src="/images/profile.png"
 				alt="Profile image"
 				aria-hidden="true"
-				class="h-48 w-48 rounded-xl"
 				height="512"
 				width="512"
+				class="h-48 w-48 rounded-xl"
 			/>
-			<div class="flex flex-1 flex-col items-center pb-8 pt-4 md:pb-0">
+			<div class="flex flex-1 flex-col items-center pb-8 pt-4 lg:pb-0">
 				<h1 class="text-3xl font-medium leading-8 tracking-tight">Curstantine</h1>
 				<span class="text-sm text-text-2">UI Designer, Developer</span>
 			</div>
@@ -75,7 +80,7 @@ import Skill from "~/components/Skill.astro";
 		</div>
 
 		<div class="flex flex-1 flex-col gap-2 px-6">
-			<div id="about" class="prose md:max-w-2xl">
+			<div id="about" class="prose lg:max-w-2xl">
 				<h2>#about</h2>
 				<p>
 					Hello! I am Rachala Ovin, a frontend developer, and a designer of sorts. <br />
@@ -125,6 +130,7 @@ import Skill from "~/components/Skill.astro";
 					</li>
 					<li>
 						Iconset: <a href={ICON_BXL_ATTR}>BoxIcons Logo</a>
+					</li>
 					<li>
 						Dark color palette: <a href={SONOKAI_ATTR}>Sonokai Andromeda</a>
 					</li>
@@ -132,10 +138,12 @@ import Skill from "~/components/Skill.astro";
 						Light color palette: <a href={REALTIME_ATTR}>Realtime Colors</a>
 					</li>
 				</ul>
-				<p class="mt-8 pb-4 text-sm text-text-2">
+				<p class="mt-4 text-sm text-text-2 xl:pb-4">
 					Written in Astro and styled with UnoCSS.
 				</p>
 			</div>
 		</div>
+
+		<CurrentlyListening base={Astro.request.url} client:load />
 	</main>
 </Layout>
