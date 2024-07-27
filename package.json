@@ -19,6 +19,7 @@
 		"@unocss/reset": "^0.58.5",
 		"@vercel/speed-insights": "^1.0.10",
 		"astro": "^4.4.15",
+		"sharp": "^0.33.4",
 		"solid-js": "^1.8.17",
 		"typescript": "^5.4.2"
 	},
