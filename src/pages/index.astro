@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 import {
 	CV,
 	FONT_MONO_ATTR,
@@ -10,9 +12,7 @@ import {
 	LINKEDIN,
 	PROJECTS,
 	REALTIME_ATTR,
-	SKILLS,
 	SONOKAI_ATTR,
-	TOOLS,
 	TWITTER,
 } from "~/utils/constants";
 
@@ -20,12 +20,13 @@ import Layout from "~/layouts/Layout.astro";
 
 import CurrentlyListening from "~/components/CurrentlyListening.tsx";
 import Project from "~/components/Project.astro";
-import Skill from "~/components/Skill.astro";
+
+import profileImage from "~/images/profile.jpg";
 ---
 
 <Layout title="Curstantine">
 	<main
-		class="grid lg:container"
+		class="grid lg:container min-h-screen"
 		grid="cols-1 lg:grid-cols-[20rem_1fr] xl:cols-[20rem_1fr_16rem] 2xl:cols-[20rem_1fr_20rem]"
 	>
 		<div
@@ -33,18 +34,22 @@ import Skill from "~/components/Skill.astro";
 			border="r-0 lg:r-1 r-solid r-text-3"
 			p="x-8 b-4 t-12 lg:t-4"
 		>
-			<img
-				src="/images/profile.png"
-				alt="Profile image"
-				aria-hidden="true"
-				height="512"
-				width="512"
-				class="h-48 w-48 rounded-xl"
+			<Image
+				src={profileImage}
+				alt="Profile Image"
+				loading="lazy"
+				decoding="async"
+				quality={100}
+				widths={[256, 512, profileImage.width]}
+				sizes={`256px, (min-width: 1024px): 512px, (min-width: 1280px): ${profileImage.width}px`}
+				class="size-48 rounded-xl"
 			/>
+
 			<div class="flex flex-1 flex-col items-center pb-8 pt-4 lg:pb-0">
 				<h1 class="text-3xl font-medium leading-8 tracking-tight">Curstantine</h1>
-				<span class="text-sm text-text-2">UI Designer, Developer</span>
+				<span class="text-sm text-text-2">FE, BE and Mobile SWE</span>
 			</div>
+
 			<div class="grid grid-cols-5 w-full justify-items-center gap-4 text-accent-1">
 				<a
 					target="_blank"
@@ -83,18 +88,11 @@ import Skill from "~/components/Skill.astro";
 			<div id="about" class="prose lg:max-w-2xl">
 				<h2>#about</h2>
 				<p>
-					Hello! I am Rachala Ovin, a frontend developer, and a designer of sorts. <br />
-					Currently pursuing a Software Engineering degree at University of Westminster. (IIT, LK)
+					Generic software engineer of sorts. Currently pursuing a SE degree at UoW. (IIT, LK) <br />
+					Enthusiatic about making the web a faster and a better place.
 				</p>
 				<p>
-					I enjoy doing open source projects like <a href="https://github.com/Curstantine/melody">these</a>
-					while engaging with the OSS community, especially with my university's{" "}
-					<span>
-						<a href="https://mozilla-iit.org/">Mozilla Campus Club</a>.
-					</span>
-				</p>
-				<p>
-					CV is available <a target="_blank" href={CV}>here</a>.
+					I also have CV <a target="_blank" href={CV}>here</a>.
 				</p>
 			</div>
 
@@ -102,20 +100,6 @@ import Skill from "~/components/Skill.astro";
 				<h2>#projects</h2>
 				<ul class="space-y-2">
 					{PROJECTS.map((project) => <Project {project} />)}
-				</ul>
-			</div>
-
-			<div id="skills" class="prose">
-				<h2>#skills</h2>
-				<ul>
-					{SKILLS.map(([skill, subSkills]) => <Skill {skill} {subSkills} />)}
-				</ul>
-			</div>
-
-			<div id="tools" class="prose">
-				<h2>#tools</h2>
-				<ul>
-					{TOOLS.map((tool) => <li>{tool}</li>)}
 				</ul>
 			</div>
 
@@ -138,9 +122,10 @@ import Skill from "~/components/Skill.astro";
 						Light color palette: <a href={REALTIME_ATTR}>Realtime Colors</a>
 					</li>
 				</ul>
-				<p class="mt-4 text-sm text-text-2 xl:pb-4">
-					Written in Astro and styled with UnoCSS.
-				</p>
+			</div>
+
+			<div class="flex-1 mt-4 flex flex-col justify-end mt-4 xl:pb-4">
+				<p class="text-sm text-text-2">Written in Astro and styled with UnoCSS.</p>
 			</div>
 		</div>
 
