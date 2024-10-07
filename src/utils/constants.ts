@@ -46,6 +46,15 @@ export const PROJECTS: Project[] = [
 		],
 	},
 	{
+		name: "jabascript",
+		link: "https://www.github.com/Curstantine/jabascript",
+		description: "Collection of JavaScript utils",
+		points: [
+			"Targeted to modern ES modules",
+			"Extends javascript primitive STDs with useful methods like takeIf",
+		],
+	},
+	{
 		name: "osu_helper_script",
 		link: "https://www.github.com/Curstantine/osu_helper_script",
 		description: "CLI utility to manage osu!lazer with ease",

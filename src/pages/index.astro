@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 
 import {
+	CV,
 	FONT_MONO_ATTR,
 	FONT_SANS_ATTR,
 	GITHUB,
@@ -25,7 +26,7 @@ import profileImage from "~/images/profile.jpg";
 
 <Layout title="Curstantine">
 	<main
-		class="grid lg:container min-h-screen"
+		class="grid min-h-screen lg:container"
 		grid="cols-1 lg:grid-cols-[20rem_1fr] xl:cols-[20rem_1fr_16rem] 2xl:cols-[20rem_1fr_20rem]"
 	>
 		<div
@@ -33,6 +34,16 @@ import profileImage from "~/images/profile.jpg";
 			border="r-0 lg:r-1 r-solid r-text-3"
 			p="x-8 b-4 t-12 lg:t-4"
 		>
+			<!-- <div class="relative">
+				<Image
+					src={profileImage}
+					alt=""
+					quality={1}
+					widths={[64]}
+					sizes="64px"
+					class="absolute top-0 size-48 rounded-xl blur-md brightness-40 -z-10"
+				/> -->
+			<!-- </div> -->
 			<Image
 				src={profileImage}
 				alt="Profile Image"
@@ -40,6 +51,7 @@ import profileImage from "~/images/profile.jpg";
 				widths={[256, 512, profileImage.width]}
 				sizes={`256px, (min-width: 1024px): 512px, (min-width: 1280px): ${profileImage.width}px`}
 				class="size-48 rounded-xl"
+				draggable={false}
 			/>
 
 			<div class="flex flex-1 flex-col items-center pb-8 pt-4 lg:pb-0">
@@ -88,9 +100,9 @@ import profileImage from "~/images/profile.jpg";
 					Generic software engineer of sorts. Currently pursuing a SE degree at UoW. (IIT, LK) <br />
 					Enthusiatic about making the web a faster and a better place.
 				</p>
-				<!--<p>-->
-				<!--	I also have CV <a target="_blank" href={CV}>here</a>.-->
-				<!--</p>-->
+				<p>
+					I also have CV <a target="_blank" href={CV}>here</a>.
+				</p>
 			</div>
 
 			<div id="projects" class="prose">
@@ -121,7 +133,7 @@ import profileImage from "~/images/profile.jpg";
 				</ul>
 			</div>
 
-			<div class="flex-1 mt-4 flex flex-col justify-end mt-4 xl:pb-4">
+			<div class="mt-4 flex flex-1 flex-col justify-end xl:pb-4">
 				<p class="text-sm text-text-2">Written in Astro and styled with UnoCSS.</p>
 			</div>
 		</div>
