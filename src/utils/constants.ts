@@ -9,6 +9,7 @@ export const LINKEDIN = "https://www.linkedin.com/in/Curstantine/";
 export const LASTFM = "https://www.last.fm/user/Curstantine";
 export const TWITTER = "https://twitter.com/Curstantine";
 export const CV = "https://www.figma.com/file/yBfIcWSe0pXQmMD3S3StYZ";
+export const EMAIL = "curstantine@proton.me";
 
 export const PROFILE_IMAGE_SOURCE: string | null = null;
 export const PROFILE_IMAGE_SOURCE_LABEL: string | null = null;
@@ -30,7 +31,7 @@ export const PROJECTS: Project[] = [
 	{
 		name: "Melody",
 		link: "https://www.github.com/Curstantine/melody",
-		description: "Fast, lightweight and feature-rich cross-platform music player [WIP]",
+		description: "Fast, lightweight and feature-rich cross-platform music player",
 		points: [
 			"Theming support",
 			"Extensible plugin system",
@@ -42,16 +43,19 @@ export const PROJECTS: Project[] = [
 		link: "https://www.github.com/Curstantine/tsync",
 		description: "CLI music library sync utility with on-the-fly transcode support",
 		points: [
-			"ADB and MTP backend support",
+			"Uses Android Debug Bridge to sync between devices",
+			"Sync-list support",
+			"Re-encode files on the fly using ffmpeg or opusenc",
 		],
 	},
 	{
 		name: "jabascript",
 		link: "https://www.github.com/Curstantine/jabascript",
-		description: "Collection of JavaScript utils",
+		description: "A collection of JavaScript utils",
 		points: [
 			"Targeted to modern ES modules",
 			"Extends javascript primitive STDs with useful methods like takeIf",
+			"Typed with JSDoc",
 		],
 	},
 	{
@@ -59,16 +63,52 @@ export const PROJECTS: Project[] = [
 		link: "https://www.github.com/Curstantine/osu_helper_script",
 		description: "CLI utility to manage osu!lazer with ease",
 		points: [
-			"Install, remove, and update lazer easily",
-			".desktop file creating following the XDG-Desktop specification",
+			"Install, remove, and update osu!lazer easily",
+			".desktop file creation following the XDG-Desktop specification",
 		],
 	},
 	{
 		name: "Riba",
 		link: "https://www.github.com/Curstantine/Riba",
-		description: "MD3 compliant MangaDex client written with Flutter [WIP]",
+		description: "MD3 compliant MangaDex client written with Flutter",
 		points: [
 			"Explore and read titles available on MangaDex",
+		],
+	},
+];
+
+export const WORK: Project[] = [
+	{
+		name: "Techxeed",
+		link: "https://techxeed.com",
+		points: [
+			"Made with Next.js, TailwindCSS, react-redux and RTK query",
+			"Maintained and delivered feature implementations",
+			"Optimized page load-times, reduced max bundle sizes and improved WAI-ARIA conditions",
+		],
+	},
+	{
+		name: "Time After Time - In Circles, 24",
+		link: "https://wearetimeless.live/in-circles-24",
+		points: [
+			"Made with Next.js, UnoCSS and framer-motion",
+			"Optimizations to LCP, load times and bundle sizes",
+		],
+	},
+	{
+		name: "Mozilla Campus Club - Site",
+		link: "https://mozilla-iit.org/",
+		points: [
+			"Made with Next.js and UnoCSS",
+			"Product of collaboration with designers and developers",
+		],
+	},
+	{
+		name: "Mozilla Campus Club - OpenHack 2.0",
+		link: "https://openhack.live",
+		points: [
+			"Made with Next.js, TailwindCSS, framer-motion and firebase",
+			"Collaborated with multiple developers and designers",
 		],
 	},
 ];

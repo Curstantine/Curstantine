@@ -22,12 +22,11 @@ export const GET: APIRoute = async () => {
 	});
 
 	const data = await req.json();
-	console.log(`Sent request to ${req.url}, and server returned ${req.statusText} (${req.status})`);
-
 	const np = data["payload"]["listens"][0];
+
 	if (np === null || np === undefined) {
 		return new Response(
-			JSON.stringify({ type: "error", message: "Not scrolling currently!" }),
+			JSON.stringify({ type: "error", message: "Not scrobbling currently!" }),
 			{ status: 404 },
 		);
 	}

@@ -75,12 +75,13 @@ export default defineConfig<Theme>({
 
 				return {
 					a: {
-						color: textOpPatch(colors.accent[2]),
+						color: textOpPatch(colors.text[1]),
 						"text-decoration-thickness": "from-font",
-						"text-decoration": "none",
+						"text-decoration": "underline",
+						"text-decoration-color": textOpPatch(colors.text[3]),
 					},
 					"a:hover": {
-						"text-decoration": "underline",
+						"text-decoration-color": textOpPatch(colors.accent[1]),
 					},
 					h2: {
 						color: textOpPatch(colors.accent[1]),

@@ -10,7 +10,8 @@ const { project: { name, link, description, points } } = Astro.props;
 
 <li>
 	<span>
-		<a href={link}>{name}</a>{": "}{description}
+		<a target="_blank" href={link}>{name}</a>{description && ": "}
+		{description}
 	</span>
 	{
 		points.length > 0 && (

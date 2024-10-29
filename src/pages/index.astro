@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 
 import {
 	CV,
+	EMAIL,
 	FONT_MONO_ATTR,
 	FONT_SANS_ATTR,
 	GITHUB,
@@ -14,6 +15,7 @@ import {
 	REALTIME_ATTR,
 	SONOKAI_ATTR,
 	TWITTER,
+	WORK,
 } from "~/utils/constants";
 
 import Layout from "~/layouts/Layout.astro";
@@ -97,11 +99,13 @@ import profileImage from "~/images/profile.jpg";
 			<div id="about" class="prose lg:max-w-2xl">
 				<h2>#about</h2>
 				<p>
-					Generic software engineer of sorts. Currently pursuing a SE degree at UoW. (IIT, LK) <br />
+					Generic software engineer of sorts. Currently pursuing an SE degree at UoW. (IIT, LK) <br />
 					Enthusiatic about making the web a faster and a better place.
 				</p>
 				<p>
-					I also have CV <a target="_blank" href={CV}>here</a>.
+					You can also see my CV <a target="_blank" href={CV}>here.</a>
+					<br />
+					For work, reach me out at <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
 				</p>
 			</div>
 
@@ -109,6 +113,13 @@ import profileImage from "~/images/profile.jpg";
 				<h2>#projects</h2>
 				<ul class="space-y-2">
 					{PROJECTS.map((project) => <Project {project} />)}
+				</ul>
+			</div>
+
+			<div id="work" class="prose">
+				<h2>#work</h2>
+				<ul class="space-y-2">
+					{WORK.map((project) => <Project {project} />)}
 				</ul>
 			</div>
 
