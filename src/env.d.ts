@@ -5,6 +5,7 @@ import type { AttributifyAttributes } from "unocss/preset-attributify";
 
 interface ImportMetaEnv {
 	readonly LISTENBRAINZ_API_TOKEN: string;
+	readonly PUBLIC_VERCEL_PROJECT_PRODUCTION_URL?: string;
 }
 
 interface ImportMeta {

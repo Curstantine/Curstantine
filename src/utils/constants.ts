@@ -9,7 +9,7 @@ export const LINKEDIN = "https://www.linkedin.com/in/Curstantine/";
 export const LASTFM = "https://www.last.fm/user/Curstantine";
 export const TWITTER = "https://twitter.com/Curstantine";
 export const CV = "https://www.figma.com/file/yBfIcWSe0pXQmMD3S3StYZ";
-export const EMAIL = "curstantine@proton.me";
+export const EMAIL = "curstantine@riamu.lol";
 
 export const PROFILE_IMAGE_SOURCE: string | null = null;
 export const PROFILE_IMAGE_SOURCE_LABEL: string | null = null;
