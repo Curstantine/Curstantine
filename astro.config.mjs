@@ -12,6 +12,5 @@ export default defineConfig({
 		unocss({ injectReset: "@unocss/reset/tailwind-compat.css" }),
 		solidJs(),
 	],
-	output: "server",
 	adapter: vercel({ webAnalytics: { enabled: true } }),
 });
