@@ -29,7 +29,7 @@ import profileImage from "~/images/profile.jpg";
 <Layout title="Curstantine">
 	<main
 		class="grid min-h-screen lg:container"
-		grid="cols-1 lg:grid-cols-[20rem_1fr] xl:cols-[20rem_1fr_16rem] 2xl:cols-[20rem_1fr_20rem]"
+		grid="cols-1 lg:cols-[20rem_1fr] xl:cols-[20rem_1fr_16rem] 2xl:cols-[20rem_1fr_20rem]"
 	>
 		<div
 			class="flex flex-col items-center lg:(sticky inset-y-4 left-0 max-h-[calc(100vh-2rem)])"
@@ -40,6 +40,8 @@ import profileImage from "~/images/profile.jpg";
 				src={profileImage}
 				alt="Curstantine"
 				quality={100}
+				priority
+				loading="eager"
 				widths={[256, 512, profileImage.width]}
 				sizes={`256px, (min-width: 1024px): 512px, (min-width: 1280px): ${profileImage.width}px`}
 				class="size-48 rounded-xl"
@@ -139,11 +141,21 @@ import profileImage from "~/images/profile.jpg";
 			</div>
 		</div>
 
-		<div class="grid">
-			<CurrentlyListening client:only="solid-js" />
-			<div>
-				<span>#tools</span>
+		<div class="grid h-fit gap-6 p-6 lg:col-start-2 xl:(col-start-auto px-0 pb-0)">
+			<div class="">
+				<div class="mb-1 inline-flex items-center text-text-2">
+					<div class="i-gravity-wrench mr-2 size-4" />
+					<span class="select-none text-sm">Tools</span>
+				</div>
+				<ul class="text-sm font-mono">
+					<li>
+						<a href="/tools/favicon">
+							to_favicon<span class="text-accent-1">()</span>
+						</a>
+					</li>
+				</ul>
 			</div>
+			<CurrentlyListening client:only="solid-js" />
 		</div>
 	</main>
 </Layout>
