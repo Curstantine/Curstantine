@@ -1,7 +1,17 @@
 {
 	"editor.defaultFormatter": "dprint.dprint",
-	"eslint.validate": ["astro"],
 	"cSpell.words": [
-		"LISTENBRAINZ"
-	]
+		"Attributify",
+		"LISTENBRAINZ",
+		"unocss"
+	],
+	"eslint.useFlatConfig": true,
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"astro", // Enable .astro
+		"typescript", // Enable .ts
+		"typescriptreact" // Enable .tsx
+	],
+	"typescript.tsdk": "node_modules/typescript/lib"
 }

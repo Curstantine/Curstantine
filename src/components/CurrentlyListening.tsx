@@ -3,10 +3,8 @@ import { createResource, Match, onCleanup, Switch } from "solid-js";
 import type { NowPlayingResponse } from "~/pages/api/currently-listening";
 
 async function getData(): Promise<NowPlayingResponse> {
-	const url = new URL("/api/currently-listening", window.location.toString());
-	const request = await fetch(url);
-	const body = await request.json();
-	return body;
+	const request = await fetch("./api/currently-listening");
+	return await request.json();
 }
 
 export default function CurrentlyListening() {
@@ -16,7 +14,7 @@ export default function CurrentlyListening() {
 	onCleanup(() => clearInterval(interval));
 
 	return (
-		<div class="flex flex-col p-6 lg:col-start-2 xl:(col-start-auto px-0 pb-0)">
+		<div class="h-24 flex flex-col p-6 lg:col-start-2 xl:(col-start-auto px-0 pb-0)">
 			<div class="mb-1 inline-flex items-center text-text-2">
 				<div class="i-gravity-music-note mr-2 size-4" />
 				<span class="select-none text-sm">Currently Listening</span>
@@ -27,7 +25,10 @@ export default function CurrentlyListening() {
 					<span class="text-sm text-text-2">Loading...</span>
 				</Match>
 				<Match when={resource()?.type === "error" && resource()}>
-					{(error) => <span>{error().message}</span>}
+					{(error) => <span class="text-sm">{error().message}</span>}
+				</Match>
+				<Match when={resource()?.type === "ok" && !resource()?.data}>
+					<span class="text-sm">Not listening to anything...</span>
 				</Match>
 				<Match when={resource()?.type === "ok" && resource()?.data}>
 					{(data) => (

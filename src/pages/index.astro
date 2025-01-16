@@ -90,7 +90,7 @@ import profileImage from "~/images/profile.jpg";
 				<h2>#about</h2>
 				<p>
 					Generic software engineer of sorts. Currently pursuing an SE degree at UoW. (IIT, LK) <br />
-					Enthusiatic about making the web a faster and a better place.
+					Enthusiastic about making the web a faster and a better place.
 				</p>
 				<p>
 					You can also see my CV <a target="_blank" href={CV}>here.</a>
@@ -139,6 +139,11 @@ import profileImage from "~/images/profile.jpg";
 			</div>
 		</div>
 
-		<CurrentlyListening client:only="solid-js" />
+		<div class="grid">
+			<CurrentlyListening client:only="solid-js" />
+			<div>
+				<span>#tools</span>
+			</div>
+		</div>
 	</main>
 </Layout>
