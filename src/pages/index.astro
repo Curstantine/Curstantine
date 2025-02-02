@@ -38,13 +38,13 @@ import profileImage from "~/images/profile.jpg";
 		>
 			<Image
 				src={profileImage}
-				alt="Curstantine"
+				alt="Profile Image"
 				quality={100}
 				priority
 				loading="eager"
 				widths={[256, 512, profileImage.width]}
 				sizes={`256px, (min-width: 1024px): 512px, (min-width: 1280px): ${profileImage.width}px`}
-				class="size-48 rounded-xl"
+				class="size-48 rounded-lg"
 				draggable={false}
 			/>
 
@@ -141,7 +141,7 @@ import profileImage from "~/images/profile.jpg";
 			</div>
 		</div>
 
-		<div class="grid h-fit gap-6 p-6 lg:col-start-2 xl:(col-start-auto px-0 pb-0)">
+		<div class="grid h-fit gap-6 p-6 xl:(sticky top-0 col-start-auto px-0 pb-0) lg:col-start-2">
 			<div class="">
 				<div class="mb-1 inline-flex items-center text-text-2">
 					<div class="i-gravity-wrench mr-2 size-4" />
