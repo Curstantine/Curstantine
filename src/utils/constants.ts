@@ -1,4 +1,4 @@
-import type { Project } from "~/types";
+import type { Company, Project } from "~/types";
 
 export const LAST_FM_API_URL = "https://ws.audioscrobbler.com/2.0/";
 export const LISTENBRAINZ_NOW_PLAYING_API = "https://api.listenbrainz.org/1/user/curstantine/playing-now";
@@ -9,7 +9,7 @@ export const LINKEDIN = "https://www.linkedin.com/in/Curstantine/";
 export const LASTFM = "https://www.last.fm/user/Curstantine";
 export const TWITTER = "https://twitter.com/Curstantine";
 export const CV = "https://www.figma.com/file/yBfIcWSe0pXQmMD3S3StYZ";
-export const EMAIL = "curstantine@proton.me";
+export const EMAIL = "curstantine@riamu.lol";
 
 export const PROFILE_IMAGE_SOURCE: string | null = null;
 export const PROFILE_IMAGE_SOURCE_LABEL: string | null = null;
@@ -77,9 +77,24 @@ export const PROJECTS: Project[] = [
 	},
 ];
 
+const COMPANY_THRIVE: Company = { name: "Thrive Solutions", link: "https://thrive-solutions.com" };
+const COMPANY_CREATIVO: Company = { name: "CreativoCode", link: "http://creativo-code.com/" };
+
 export const WORK: Project[] = [
 	{
+		name: "Prasanna Baddewithana",
+		link: "https://pb.lk",
+		asPartOf: COMPANY_CREATIVO,
+		points: [
+			"Made with Next.js, TailwindCSS, motion, and prismic",
+			"Integration with prismic.io for a seamless CMS experience",
+			"Optimizations to frame rates, load times, and bundle sizes",
+			"WAI-ARIA compliance (modals, dialogs and navigation)",
+		],
+	},
+	{
 		name: "Techxeed",
+		asPartOf: COMPANY_THRIVE,
 		link: "https://techxeed.com",
 		points: [
 			"Made with Next.js, TailwindCSS, react-redux and RTK query",
@@ -90,8 +105,9 @@ export const WORK: Project[] = [
 	{
 		name: "Time After Time - In Circles, 24",
 		link: "https://wearetimeless.live/in-circles-24",
+		asPartOf: COMPANY_THRIVE,
 		points: [
-			"Made with Next.js, UnoCSS and framer-motion",
+			"Made with Next.js, UnoCSS and motion",
 			"Optimizations to LCP, load times and bundle sizes",
 		],
 	},

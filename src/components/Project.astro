@@ -5,7 +5,7 @@ interface Props {
 	project: Project;
 }
 
-const { project: { name, link, description, points } } = Astro.props;
+const { project: { name, link, description, points, asPartOf } } = Astro.props;
 ---
 
 <li>
@@ -13,6 +13,14 @@ const { project: { name, link, description, points } } = Astro.props;
 		<a target="_blank" href={link}>{name}</a>{description && ": "}
 		{description}
 	</span>
+	{
+		asPartOf && (
+			<span class="text-xs text-text-2">
+				{"(as part of "}
+				<a target="_blank" href={asPartOf.link}>{asPartOf.name}</a>)
+			</span>
+		)
+	}
 	{
 		points.length > 0 && (
 			<ul class="text-sm text-text-2">

@@ -1,0 +1,34 @@
+---
+import Layout from "~/layouts/Layout.astro";
+---
+
+<Layout
+	title="Curstantine | to_favicon()"
+	description="Convert your logos into a web-friendly favicon all inside your browser!"
+>
+	<main class="min-h-screen flex flex-col items-center justify-center">
+		<h1 class="text-2xl font-semibold font-mono">
+			to_favicon<span class="text-accent-1">()</span>
+		</h1>
+		<span>Convert your logos into a web-friendly favicon all inside your browser!</span>
+
+		<p class="mt-12 text-center text-text-2 leading-tight">
+			Check back in two years. <br /> I will have time to finish this by then.
+		</p>
+		<button
+			type="button"
+			id="take-me-home-country-road"
+			class="group mt-2 inline-flex items-center gap-2 border-1 border-accent-1 bg-transparent px-2 py-1 text-text-1 transition-colors hover:bg-accent-1 hover:text-background"
+		>
+			<div class="i-gravity-arrow-left size-4 group-hover:animate-spin" />
+			Take me back to where I came from!!!
+		</button>
+	</main>
+</Layout>
+
+<script>
+	const button = document.getElementById("take-me-home-country-road");
+	button?.addEventListener("click", () => {
+		window.history.back();
+	});
+</script>
