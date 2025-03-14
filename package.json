@@ -17,6 +17,7 @@
 		"@astrojs/vercel": "^8.1.2",
 		"@iconify-json/bxl": "^1.2.2",
 		"@iconify-json/gravity-ui": "^1.2.5",
+		"@iconify-json/material-symbols": "^1.2.16",
 		"@unocss/reset": "^65.5.0",
 		"@vercel/speed-insights": "^1.2.0",
 		"astro": "^5.4.3",

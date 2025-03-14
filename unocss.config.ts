@@ -48,6 +48,7 @@ export default defineConfig<Theme>({
 			collections: {
 				bxl: importIconCollection("bxl"),
 				gravity: importIconCollection("gravity-ui"),
+				symbols: importIconCollection("material-symbols"),
 				pref: () => {
 					const icons: IconifyJSON = {
 						prefix: "pref",

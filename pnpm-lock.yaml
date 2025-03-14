@@ -26,6 +26,9 @@ importers:
       '@iconify-json/gravity-ui':
         specifier: ^1.2.5
         version: 1.2.5
+      '@iconify-json/material-symbols':
+        specifier: ^1.2.16
+        version: 1.2.16
       '@unocss/reset':
         specifier: ^65.5.0
         version: 65.5.0
@@ -650,6 +653,9 @@ packages:
 
   '@iconify-json/gravity-ui@1.2.5':
     resolution: {integrity: sha512-7uf4xG2ijmcte4AqPpzNTqnEBqxvHBKW/gI0VTZeP0nLtZSvoCybNt5QsJ7f/xyrIQDgCJ4usEmRaX7G86NueA==}
+
+  '@iconify-json/material-symbols@1.2.16':
+    resolution: {integrity: sha512-hCUbIYLWPX9YMChvqEScG5tvFLZ2arXl+bnsvUQDrtsGq00wu4S4qIofH3uZgClYxXhvApkDKtJDlXhoygzmMQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -4015,6 +4021,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/gravity-ui@1.2.5':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/material-symbols@1.2.16':
     dependencies:
       '@iconify/types': 2.0.0
 
