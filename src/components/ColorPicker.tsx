@@ -33,7 +33,7 @@ function Sheet(props: Props) {
 	const [hue, setHue] = createSignal<ColorRGB>([256, 0, 127]);
 
 	return (
-		<div class="absolute top-8 grid grid-cols-[12rem_1fr] w-80 gap-2 border border-text-3 bg-background p-2 shadow-lg">
+		<div class="absolute top-8 grid grid-cols-[12rem_1fr] w-78 gap-2 border border-text-3 bg-background p-2 shadow-lg">
 			<div class="flex flex-col gap-2">
 				<ColorSpace hue={hue} setHue={setHue} color={props.color} setColor={props.setColor} />
 				<div
@@ -47,6 +47,11 @@ function Sheet(props: Props) {
 			<ul class="flex flex-col gap-2 text-xs">
 				<li class="space-y-0.5">
 					<label>Hex</label>
+					<input type="text" class="w-full" />
+				</li>
+
+				<li class="space-y-0.5">
+					<label>hsl</label>
 					<input type="text" class="w-full" />
 				</li>
 
