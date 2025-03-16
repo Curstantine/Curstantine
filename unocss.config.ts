@@ -123,8 +123,8 @@ export default defineConfig<Theme>({
 			"standard-accelerate": "cubic-bezier(0.3, 0, 1, 1)",
 		},
 		duration: {
-			standard: "300ms",
-			emphasized: "500ms",
+			standard: "150ms",
+			emphasized: "300ms",
 		},
 		colors: colorDefinitions,
 	},

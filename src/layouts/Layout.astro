@@ -92,16 +92,25 @@ const { title = "Curstantine", description = "Bird-brained SWE", image } = Astro
 		--uno-apply: m-0 font-normal leading-normal;
 	}
 
-	a {
-		--uno-apply: transition-colors use-transition-standard;
-	}
-
 	a:hover {
 		--uno-apply: underline;
 	}
 
 	h2 {
 		--uno-apply: text-base font-mono leading-loose text-accent-1;
+	}
+
+	input[type="checkbox"] {
+		--uno-apply: appearance-none bg-text-3/25 border border-text-3;
+	}
+
+	input[type="checkbox"]:checked {
+		--uno-apply: bg-accent-1 appearance-none border-transparent;
+	}
+
+	input[type="checkbox"]:checked::before {
+		--uno-apply: size-full inline-block;
+		content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath style='fill:rgb(38,39,49)' d='m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z'/%3E%3C/svg%3E");
 	}
 
 	::selection {
