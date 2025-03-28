@@ -82,6 +82,17 @@ const COMPANY_CREATIVO: Company = { name: "CreativoCode", link: "http://creativo
 
 export const WORK: Project[] = [
 	{
+		name: "Echo Daft",
+		link: "https://echodaft.com",
+		asPartOf: COMPANY_THRIVE,
+		points: [
+			"Made with Next.js and TailwindCSS v4",
+			"Server actions with arktype validation for form submission",
+			"Static optimized, with basic nojs optimization (forms)",
+			"Build time integration with Spotify API, and ripped embed previews",
+		],
+	},
+	{
 		name: "Prasanna Baddewithana",
 		link: "https://pb.lk",
 		asPartOf: COMPANY_CREATIVO,
