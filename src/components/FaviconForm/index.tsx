@@ -1,10 +1,12 @@
+import { TinyColor } from "@ctrl/tinycolor";
 import { createSignal } from "solid-js";
-import ColorPicker, { type ColorRGB } from "~/components/ColorPicker";
+
+import ColorPicker from "~/components/ColorPicker";
 import FaviconSelector from "~/components/FaviconForm/Selector";
 
 export default function FaviconForm() {
 	const [file, setFile] = createSignal<File | null>(null);
-	const [bgColor, setBgColor] = createSignal<ColorRGB>([-1, -1, -1]);
+	const [bgColor, setBgColor] = createSignal<TinyColor>(new TinyColor("#0000000"));
 
 	return (
 		<form class="grid mt-8 justify-items-center gap-6 sm:(grid-cols-[11rem_1fr] justify-items-initial)">

@@ -1,16 +1,19 @@
+/**
+ * # Credits
+ * - React Aria ColorPicker: https://react-spectrum.adobe.com/react-aria/ColorPicker.html
+ * - solid-color: https://github.com/xbmlz/solid-color
+ */
+import { TinyColor } from "@ctrl/tinycolor";
 import { type Accessor, createSignal, type Setter, Show } from "solid-js";
 
 export type ColorRGB = [number, number, number];
-type Props = { color: Accessor<ColorRGB>; setColor: Setter<ColorRGB> };
+type Props = { color: Accessor<TinyColor>; setColor: Setter<TinyColor> };
 
 export default function ColorPicker(props: Props) {
 	const [opened, open] = createSignal();
 
-	const rgb = () => `rgb(${props.color()[0]}, ${props.color()[1]}, ${props.color()[2]})`;
-	const label = () => {
-		const cx = props.color();
-		return cx.some((x) => x === -1) ? "Transparent" : rgb();
-	};
+	const backgroundColor = () => props.color().toHslString();
+	const label = () => props.color().toName();
 
 	return (
 		<div class="relative flex items-end gap-1">
@@ -18,7 +21,7 @@ export default function ColorPicker(props: Props) {
 				type="button"
 				onClick={() => open(!opened())}
 				class="h-6 w-24 border border-text-3"
-				style={{ "background-color": rgb() }}
+				style={{ "background-color": backgroundColor() }}
 			/>
 			<span class="text-xs text-text-2">({label()})</span>
 
@@ -30,14 +33,19 @@ export default function ColorPicker(props: Props) {
 }
 
 function Sheet(props: Props) {
-	const [hue, setHue] = createSignal<ColorRGB>([256, 0, 127]);
+	const [hue, setHue] = createSignal(0);
+
+	const rgb = () => props.color().toRgbString();
+	const hsl = () => props.color().toHslString();
+	const hex = () => props.color().toHexString(true);
 
 	return (
-		<div class="absolute top-8 grid grid-cols-[12rem_1fr] w-78 gap-2 border border-text-3 bg-background p-2 shadow-lg">
-			<div class="flex flex-col gap-2">
-				<ColorSpace hue={hue} setHue={setHue} color={props.color} setColor={props.setColor} />
+		<div class="absolute top-8 grid grid-cols-[13rem_1fr] w-88 gap-2 border border-text-3 bg-background p-2 shadow-lg">
+			<div class="grid grid-cols-[1fr_1rem] gap-2">
+				<ColorSpace hue={hue} color={props.color} setColor={props.setColor} />
+				<AlphaSpace hue={hue} />
 				<div
-					class="h-4 w-full"
+					class="col-span-full h-4"
 					style={{
 						background:
 							"linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)",
@@ -47,41 +55,44 @@ function Sheet(props: Props) {
 			<ul class="flex flex-col gap-2 text-xs">
 				<li class="space-y-0.5">
 					<label>Hex</label>
-					<input type="text" class="w-full" />
+					<input type="text" value={hex()} class="w-full" />
 				</li>
 
 				<li class="space-y-0.5">
-					<label>hsl</label>
-					<input type="text" class="w-full" />
+					<label>HSL</label>
+					<input type="text" value={hsl()} class="w-full" />
 				</li>
 
-				<li class="grid grid-cols-3 gap-1">
-					<div>
-						<label>R</label>
-						<input type="text" class="w-full" />
-					</div>
-					<div>
-						<label>G</label>
-						<input type="text" class="w-full" />
-					</div>
-					<div>
-						<label>B</label>
-						<input type="text" class="w-full" />
-					</div>
+				<li class="space-y-0.5">
+					<label>RGB</label>
+					<input type="text" value={rgb()} class="w-full" />
 				</li>
 			</ul>
 		</div>
 	);
 }
 
-type ColorSpaceProps = Props & { hue: Accessor<ColorRGB>; setHue: Setter<ColorRGB> };
+type ColorSpaceProps = Props & { hue: Accessor<number> };
 function ColorSpace(props: ColorSpaceProps) {
-	const hueBg = () => `rgb(${props.hue()[0]}, ${props.hue()[1]}, ${props.hue()[2]})`;
+	const hueBg = () => "black";
 
 	return (
 		<div class="relative h-36" style={{ "background-color": hueBg() }}>
 			<div class="absolute size-full bg-gradient-from-white bg-gradient-to-r" />
 			<div class="absolute size-full bg-gradient-from-black bg-gradient-to-t" />
 		</div>
+	);
+}
+
+function AlphaSpace(props: Pick<ColorSpaceProps, "hue">) {
+	const hueBg = () => `rgb(${props.hue()[0]}, ${props.hue()[1]}, ${props.hue()[2]})`;
+
+	return (
+		<div
+			class="w-4"
+			style={{
+				background: `linear-gradient(to bottom, ${hueBg()}, transparent)`,
+			}}
+		/>
 	);
 }

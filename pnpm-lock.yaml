@@ -20,6 +20,9 @@ importers:
       '@astrojs/vercel':
         specifier: ^8.1.3
         version: 8.1.3(astro@5.5.5(jiti@2.4.2)(rollup@4.38.0)(tsx@4.19.2)(typescript@5.8.2)(yaml@2.7.1))(rollup@4.38.0)(vue@3.5.13(typescript@5.8.2))
+      '@ctrl/tinycolor':
+        specifier: ^4.1.0
+        version: 4.1.0
       '@iconify-json/bxl':
         specifier: ^1.2.2
         version: 1.2.2
@@ -226,6 +229,10 @@ packages:
   '@babel/types@7.27.0':
     resolution: {integrity: sha512-H45s8fVLYjbhFH62dIJ3WtmJ6RSPt/3DRO0ZcT2SUiYiQyz3BLVb9ADEnLl91m74aQPS3AzzeajZHYOalWe3bg==}
     engines: {node: '>=6.9.0'}
+
+  '@ctrl/tinycolor@4.1.0':
+    resolution: {integrity: sha512-WyOx8cJQ+FQus4Mm4uPIZA64gbk3Wxh0so5Lcii0aJifqwoVOlfFtorjLE0Hen4OYyHZMXDWqMmaQemBhgxFRQ==}
+    engines: {node: '>=14'}
 
   '@dprint/darwin-arm64@0.49.1':
     resolution: {integrity: sha512-ib6KcJWo/M5RJWXOQKhP664FG1hAvG7nrbkh+j8n+oXdzmbyDdXTP+zW+aM3/sIQUkGaZky1xy1j2VeScMEEHQ==}
@@ -3771,6 +3778,8 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
+
+  '@ctrl/tinycolor@4.1.0': {}
 
   '@dprint/darwin-arm64@0.49.1':
     optional: true

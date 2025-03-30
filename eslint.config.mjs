@@ -18,6 +18,7 @@ export default ts.config(
 		languageOptions: {
 			parser: tsParser,
 			parserOptions: {
+				tsconfigRootDir: import.meta.dirname,
 				project: "tsconfig.json",
 			},
 		},
