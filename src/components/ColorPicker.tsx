@@ -42,6 +42,13 @@ function Sheet(props: Props) {
 	const hsl = () => props.color().toHslString();
 	const hex = () => props.color().toHexString(true);
 
+	const onColorInput = (
+		type: "RGB" | "HEX" | "HSL",
+		e: Parameters<JSX.ChangeEventHandler<HTMLInputElement, Event>>[0],
+	) => {
+		props.setColor(new TinyColor(e.target.value, { format: type }));
+	};
+
 	return (
 		<div class="absolute top-8 grid grid-cols-[13rem_1fr] w-88 gap-2 border border-text-3 bg-background p-2 shadow-lg">
 			<div class="grid grid-cols-[1fr_1rem] gap-2">
@@ -52,17 +59,32 @@ function Sheet(props: Props) {
 			<ul class="flex flex-col gap-2 text-xs">
 				<li class="space-y-0.5">
 					<label>Hex</label>
-					<input type="text" value={hex()} class="w-full" />
+					<input
+						type="text"
+						value={hex()}
+						class="w-full"
+						onChange={[onColorInput, "HEX"]}
+					/>
 				</li>
 
 				<li class="space-y-0.5">
 					<label>HSL</label>
-					<input type="text" value={hsl()} class="w-full" />
+					<input
+						type="text"
+						value={hsl()}
+						class="w-full"
+						onChange={[onColorInput, "HSL"]}
+					/>
 				</li>
 
 				<li class="space-y-0.5">
 					<label>RGB</label>
-					<input type="text" value={rgb()} class="w-full" />
+					<input
+						type="text"
+						value={rgb()}
+						class="w-full"
+						onChange={[onColorInput, "RGB"]}
+					/>
 				</li>
 			</ul>
 		</div>
