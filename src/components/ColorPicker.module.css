@@ -19,3 +19,9 @@
 .vertical_selector[type="range"]::-webkit-slider-thumb {
     --at-apply: h-1 w-4;
 }
+
+.display_selector[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    /* opacity: 0; */
+}

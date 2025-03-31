@@ -6,7 +6,7 @@
  */
 import { TinyColor } from "@ctrl/tinycolor";
 import { type Accessor, createSignal, type Setter, Show } from "solid-js";
-import type { JSX } from "solid-js/h/jsx-runtime";
+import type { JSX } from "solid-js/jsx-runtime";
 
 import styles from "./ColorPicker.module.css";
 
@@ -70,12 +70,40 @@ function Sheet(props: Props) {
 
 type ColorSpaceProps = Props;
 function ColorSpace(props: ColorSpaceProps) {
-	const hueBg = () => `hsl(${props.color().toHsl().h}, 100%, 50%)`;
+	const hsl = () => props.color().toHsl();
+	// const saturation =
+	const hueBg = () => `hsl(${hsl().h}, 100%, 50%)`;
 
 	return (
-		<div class="relative h-36" style={{ "background-color": hueBg() }}>
-			<div class="absolute size-full bg-gradient-from-white bg-gradient-to-r" />
-			<div class="absolute size-full bg-gradient-from-black bg-gradient-to-t" />
+		<div
+			class="relative h-42"
+			style={{
+				background:
+					`linear-gradient(to top, black, transparent, white), linear-gradient(to right, rgb(128, 128, 128), transparent), ${hueBg()}`,
+			}}
+		>
+			<div
+				role="presentation"
+				class="absolute z-10 size-2 bg-transparent outline-1 outline-white outline-solid ring-2 ring-black -translate-1/2"
+				style={{ left: `${hsl().s * 100}%`, bottom: `${hsl().l * 100}%` }}
+				onMouseDown={(e) => console.log(e)}
+				onMouseUp={(e) => console.log(e)}
+			>
+				<input
+					type="range"
+					min={0}
+					max={100}
+					value={hsl().s}
+					class={`${styles.display_selector} absolute sr-only`}
+				/>
+				<input
+					type="range"
+					min={0}
+					max={100}
+					value={hsl().l}
+					class={`${styles.display_selector} absolute sr-only`}
+				/>
+			</div>
 		</div>
 	);
 }
