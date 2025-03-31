@@ -1,0 +1,11 @@
+.selector[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    --at-apply: bg-transparent rounded-none;
+}
+
+.selector[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    --at-apply: bg-transparent outline-2 outline-solid outline-white ring-black ring w-1 h-4;
+}

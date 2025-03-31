@@ -6,7 +6,7 @@ import FaviconSelector from "~/components/FaviconForm/Selector";
 
 export default function FaviconForm() {
 	const [file, setFile] = createSignal<File | null>(null);
-	const [bgColor, setBgColor] = createSignal<TinyColor>(new TinyColor("#0000000"));
+	const [bgColor, setBgColor] = createSignal<TinyColor>(new TinyColor("red"));
 
 	return (
 		<form class="grid mt-8 justify-items-center gap-6 sm:(grid-cols-[11rem_1fr] justify-items-initial)">

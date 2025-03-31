@@ -2,9 +2,13 @@
  * # Credits
  * - React Aria ColorPicker: https://react-spectrum.adobe.com/react-aria/ColorPicker.html
  * - solid-color: https://github.com/xbmlz/solid-color
+ * - Math behind colorspace coversions by Nikolai Waldman: https://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/
  */
 import { TinyColor } from "@ctrl/tinycolor";
 import { type Accessor, createSignal, type Setter, Show } from "solid-js";
+import type { JSX } from "solid-js/h/jsx-runtime";
+
+import styles from "./ColorPicker.module.css";
 
 export type ColorRGB = [number, number, number];
 type Props = { color: Accessor<TinyColor>; setColor: Setter<TinyColor> };
@@ -13,7 +17,7 @@ export default function ColorPicker(props: Props) {
 	const [opened, open] = createSignal();
 
 	const backgroundColor = () => props.color().toHslString();
-	const label = () => props.color().toName();
+	const label = () => props.color().toName() || props.color().toHexShortString();
 
 	return (
 		<div class="relative flex items-end gap-1">
@@ -33,8 +37,6 @@ export default function ColorPicker(props: Props) {
 }
 
 function Sheet(props: Props) {
-	const [hue, setHue] = createSignal(0);
-
 	const rgb = () => props.color().toRgbString();
 	const hsl = () => props.color().toHslString();
 	const hex = () => props.color().toHexString(true);
@@ -42,15 +44,9 @@ function Sheet(props: Props) {
 	return (
 		<div class="absolute top-8 grid grid-cols-[13rem_1fr] w-88 gap-2 border border-text-3 bg-background p-2 shadow-lg">
 			<div class="grid grid-cols-[1fr_1rem] gap-2">
-				<ColorSpace hue={hue} color={props.color} setColor={props.setColor} />
-				<AlphaSpace hue={hue} />
-				<div
-					class="col-span-full h-4"
-					style={{
-						background:
-							"linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)",
-					}}
-				/>
+				<ColorSpace color={props.color} setColor={props.setColor} />
+				<AlphaSpace color={props.color} />
+				<HueSpace color={props.color} setColor={props.setColor} />
 			</div>
 			<ul class="flex flex-col gap-2 text-xs">
 				<li class="space-y-0.5">
@@ -72,9 +68,9 @@ function Sheet(props: Props) {
 	);
 }
 
-type ColorSpaceProps = Props & { hue: Accessor<number> };
+type ColorSpaceProps = Props;
 function ColorSpace(props: ColorSpaceProps) {
-	const hueBg = () => "black";
+	const hueBg = () => `hsl(${props.color().toHsl().h}, 100%, 50%)`;
 
 	return (
 		<div class="relative h-36" style={{ "background-color": hueBg() }}>
@@ -84,8 +80,35 @@ function ColorSpace(props: ColorSpaceProps) {
 	);
 }
 
-function AlphaSpace(props: Pick<ColorSpaceProps, "hue">) {
-	const hueBg = () => `rgb(${props.hue()[0]}, ${props.hue()[1]}, ${props.hue()[2]})`;
+function HueSpace(props: ColorSpaceProps) {
+	const onInput: JSX.EventHandler<HTMLInputElement, InputEvent> = (e) => {
+		const newa = props.color().toHsl();
+		props.setColor(new TinyColor({ ...newa, h: e.currentTarget.valueAsNumber }));
+	};
+
+	return (
+		<div class="relative">
+			<div
+				class="col-span-full h-4"
+				style={{
+					background:
+						"linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)",
+				}}
+			/>
+
+			<input
+				type="range"
+				min={0}
+				max={360}
+				onInput={onInput}
+				class={`${styles.selector} absolute top-0 inset-0 bg-transparent`}
+			/>
+		</div>
+	);
+}
+
+function AlphaSpace(props: Pick<ColorSpaceProps, "color">) {
+	const hueBg = () => `hsl(${props.color().toHsl().h}, 100%, 50%)`;
 
 	return (
 		<div
