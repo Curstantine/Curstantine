@@ -45,7 +45,7 @@ function Sheet(props: Props) {
 		<div class="absolute top-8 grid grid-cols-[13rem_1fr] w-88 gap-2 border border-text-3 bg-background p-2 shadow-lg">
 			<div class="grid grid-cols-[1fr_1rem] gap-2">
 				<ColorSpace color={props.color} setColor={props.setColor} />
-				<AlphaSpace color={props.color} />
+				<AlphaSpace color={props.color} setColor={props.setColor} />
 				<HueSpace color={props.color} setColor={props.setColor} />
 			</div>
 			<ul class="flex flex-col gap-2 text-xs">
@@ -81,9 +81,10 @@ function ColorSpace(props: ColorSpaceProps) {
 }
 
 function HueSpace(props: ColorSpaceProps) {
+	const hue = () => props.color().toHsl().h;
 	const onInput: JSX.EventHandler<HTMLInputElement, InputEvent> = (e) => {
-		const newa = props.color().toHsl();
-		props.setColor(new TinyColor({ ...newa, h: e.currentTarget.valueAsNumber }));
+		const newColor = props.color().toHsl();
+		props.setColor(new TinyColor({ ...newColor, h: e.currentTarget.valueAsNumber }));
 	};
 
 	return (
@@ -100,6 +101,7 @@ function HueSpace(props: ColorSpaceProps) {
 				type="range"
 				min={0}
 				max={360}
+				value={hue()}
 				onInput={onInput}
 				class={`${styles.selector} absolute top-0 inset-0 bg-transparent`}
 			/>
@@ -107,15 +109,38 @@ function HueSpace(props: ColorSpaceProps) {
 	);
 }
 
-function AlphaSpace(props: Pick<ColorSpaceProps, "color">) {
+function AlphaSpace(props: ColorSpaceProps) {
+	const alpha = () => props.color().a * 100;
 	const hueBg = () => `hsl(${props.color().toHsl().h}, 100%, 50%)`;
 
+	const onInput: JSX.EventHandler<HTMLInputElement, InputEvent> = (e) => {
+		const targetValue = e.currentTarget.valueAsNumber / 100;
+		const color = props.color().clone();
+
+		if (color.a === targetValue) return;
+
+		color.setAlpha(targetValue);
+		props.setColor(color);
+	};
+
 	return (
-		<div
-			class="w-4"
-			style={{
-				background: `linear-gradient(to bottom, ${hueBg()}, transparent)`,
-			}}
-		/>
+		<div class="relative">
+			<div
+				class="h-full w-4"
+				style={{
+					background: `linear-gradient(to bottom, ${hueBg()}, transparent)`,
+				}}
+			/>
+
+			<input
+				type="range"
+				min={0}
+				max={100}
+				value={alpha()}
+				aria-label="Increase transparency"
+				onInput={onInput}
+				class={`${styles.vertical_selector} absolute top-0 inset-0 bg-transparent rotate-180`}
+			/>
+		</div>
 	);
 }
