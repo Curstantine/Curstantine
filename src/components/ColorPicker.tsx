@@ -100,7 +100,7 @@ function HueSpace(props: ColorSpaceProps) {
 			<input
 				type="range"
 				min={0}
-				max={360}
+				max={359}
 				value={hue()}
 				onInput={onInput}
 				class={`${styles.selector} absolute top-0 inset-0 bg-transparent`}
