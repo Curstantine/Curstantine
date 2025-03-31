@@ -7,6 +7,7 @@
 import { TinyColor } from "@ctrl/tinycolor";
 import { type Accessor, createSignal, type Setter, Show } from "solid-js";
 import type { JSX } from "solid-js/jsx-runtime";
+import {} from "@jabascript/core";
 
 import styles from "./ColorPicker.module.css";
 
@@ -71,23 +72,78 @@ function Sheet(props: Props) {
 type ColorSpaceProps = Props;
 function ColorSpace(props: ColorSpaceProps) {
 	const hsl = () => props.color().toHsl();
-	// const saturation =
 	const hueBg = () => `hsl(${hsl().h}, 100%, 50%)`;
+	const bottom = () => `${hsl().l * 100}%`;
+	const left = () => `${hsl().s * 100}%`;
+
+	let isElementDragging = false;
+
+	const onDragStart = (e: DragEvent) => {
+		isElementDragging = true;
+		e.dataTransfer?.setDragImage(new Image(), 0, 0);
+	};
+
+	const onDragEnd = () => {
+		isElementDragging = false;
+	};
+
+	const onDragOver = (e: DragEvent) => {
+		if (!isElementDragging || !e.target || e.target !== e.currentTarget) return;
+		const { clientHeight, clientWidth } = e.target as Element;
+
+		const x = (e.offsetX / clientWidth) * 100;
+		const y = (e.offsetY / clientHeight) * 100;
+
+		const saturation = Math.round(Math.max(0, Math.min(x, 100)));
+		const lightness = 100 - Math.round(Math.max(0, Math.min(y, 100)));
+		const color = props.color().toHsl();
+
+		// Fix(Curstantine): There's some bug when you drag it to the end, it'll spawn back in s100 l100
+		// Same thing happens with the keyboard input, so I'm assuming it has something to do with the color conversion.
+		props.setColor(new TinyColor({ ...color, s: saturation, l: lightness }));
+	};
+
+	const onKeyDown = (e: KeyboardEvent) => {
+		const color = props.color().toHsl();
+
+		switch (e.key) {
+			case "ArrowDown":
+				if (color.l > 0) color.l -= 0.01;
+				break;
+			case "ArrowUp":
+				if (color.l < 100) color.l += 0.01;
+				break;
+			case "ArrowRight":
+				if (color.s < 100) color.s += 0.01;
+				break;
+			case "ArrowLeft":
+				if (color.s > 0) color.s -= 0.01;
+				break;
+			default:
+				return;
+		}
+
+		props.setColor(new TinyColor(color));
+	};
 
 	return (
 		<div
 			class="relative h-42"
+			onDragOver={onDragOver}
 			style={{
 				background:
 					`linear-gradient(to top, black, transparent, white), linear-gradient(to right, rgb(128, 128, 128), transparent), ${hueBg()}`,
 			}}
 		>
 			<div
+				draggable="true"
 				role="presentation"
-				class="absolute z-10 size-2 bg-transparent outline-1 outline-white outline-solid ring-2 ring-black -translate-1/2"
-				style={{ left: `${hsl().s * 100}%`, bottom: `${hsl().l * 100}%` }}
-				onMouseDown={(e) => console.log(e)}
-				onMouseUp={(e) => console.log(e)}
+				class="absolute z-10 size-2 translate-y-1/2 select-none bg-transparent outline-1 outline-white outline-solid ring-2 ring-black -translate-x-1/2"
+				style={{ left: left(), bottom: bottom() }}
+				onDragStart={onDragStart}
+				onDragEnd={onDragEnd}
+				onKeyDown={onKeyDown}
+				tabIndex={-1}
 			>
 				<input
 					type="range"

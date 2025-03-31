@@ -32,6 +32,9 @@ importers:
       '@iconify-json/material-symbols':
         specifier: ^1.2.17
         version: 1.2.17
+      '@jabascript/core':
+        specifier: ^0.1.3
+        version: 0.1.3
       '@unocss/reset':
         specifier: 66.1.0-beta.7
         version: 66.1.0-beta.7
@@ -782,6 +785,9 @@ packages:
   '@isaacs/fs-minipass@4.0.1':
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
     engines: {node: '>=18.0.0'}
+
+  '@jabascript/core@0.1.3':
+    resolution: {integrity: sha512-/ibkgGmjoy6DvV7VZ5MByDdxF80/Mw5ImG5+EMZkp0KZ3AMWaE5cBXUwh0m9I6FBtBjhDz83ov5SPK6Z1j7Qqw==}
 
   '@jridgewell/gen-mapping@0.3.8':
     resolution: {integrity: sha512-imAbBGkb+ebQyxKgzv5Hu2nmROxoDOXHh80evxdoXNOrvAnVx7zimzc1Oo5h9RlfV4vPXaE2iM5pOFbvOCClWA==}
@@ -4154,6 +4160,8 @@ snapshots:
   '@isaacs/fs-minipass@4.0.1':
     dependencies:
       minipass: 7.1.2
+
+  '@jabascript/core@0.1.3': {}
 
   '@jridgewell/gen-mapping@0.3.8':
     dependencies:
