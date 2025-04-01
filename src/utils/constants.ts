@@ -19,6 +19,8 @@ export const REALTIME_ATTR = "https://www.realtimecolors.com/?colors=200326-f0f0
 export const FONT_SANS_ATTR = "https://fonts.google.com/specimen/Inter";
 export const FONT_MONO_ATTR = "https://www.jetbrains.com/lp/mono/";
 export const ICON_BXL_ATTR = "https://github.com/atisawd/boxicons";
+export const ICON_SYMBOLS_ATTR = "https://github.com/google/material-design-icons";
+export const ICON_GRAVITY_ATTR = "https://github.com/gravity-ui/icons/";
 
 export const SKILLS: [string, string[]][] = [
 	["Rust", []],

@@ -48,6 +48,7 @@ export default defineConfig<Theme>({
 			collections: {
 				bxl: importIconCollection("bxl"),
 				gravity: importIconCollection("gravity-ui"),
+				symbols: importIconCollection("material-symbols"),
 				pref: () => {
 					const icons: IconifyJSON = {
 						prefix: "pref",
@@ -122,13 +123,14 @@ export default defineConfig<Theme>({
 			"standard-accelerate": "cubic-bezier(0.3, 0, 1, 1)",
 		},
 		duration: {
-			standard: "300ms",
-			emphasized: "500ms",
+			standard: "150ms",
+			emphasized: "300ms",
 		},
 		colors: colorDefinitions,
 	},
 	shortcuts: {
 		"use-transition-standard": "duration-standard ease-standard",
 		"use-transition-emphasized": "duration-emphasized ease-emphasized",
+		"button-accent-1": "bg-accent-1 text-background hover:bg-accent-1/90 transition-colors",
 	},
 });

@@ -10,14 +10,12 @@ const { project: { name, link, description, points, asPartOf } } = Astro.props;
 
 <li>
 	<span>
-		<a target="_blank" href={link}>{name}</a>{description && ": "}
-		{description}
+		<a target="_blank" href={link}>{name}</a>{description && ": "} {description}
 	</span>
 	{
 		asPartOf && (
 			<span class="text-xs text-text-2">
-				{"(as part of "}
-				<a target="_blank" href={asPartOf.link}>{asPartOf.name}</a>)
+				{"(as part of "} <a target="_blank" href={asPartOf.link}>{asPartOf.name}</a>)
 			</span>
 		)
 	}
