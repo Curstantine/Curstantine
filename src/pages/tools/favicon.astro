@@ -7,7 +7,12 @@ import Layout from "~/layouts/Layout.astro";
 	title="Curstantine | to_favicon()"
 	description="Convert your logos into a web-friendly favicon all inside your browser!"
 >
-	<main class="min-h-screen px-6 lg:container">
+	<noscript class="py-1 px-6 bg-accent-1 flex text-background gap-2 items-center">
+		<div class="i-gravity-triangle-exclamation size-4 min-w-4" />
+		<span class="text-xs text-wrap md:text-sm"
+		>Unfortunely this tool requires JavaScript to run. Support for nojs will not be considered.</span>
+	</noscript>
+	<main class="px-6 lg:container">
 		<div class="flex flex-col justify-center py-3">
 			<h1 class="font-semibold font-mono">
 				to_favicon<span class="text-accent-1">()</span>

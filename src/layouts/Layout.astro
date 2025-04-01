@@ -114,7 +114,13 @@ const { title = "Curstantine", description = "Bird-brained SWE", image } = Astro
 	}
 
 	input[type="text"] {
-		--uno-apply: border border-text-3 bg-background p-00.5;
+		--uno-apply: border border-text-3 bg-background px-1 h-7;
+	}
+
+	@screen sm {
+		input[type="text"] {
+		    --uno-apply: h-6;
+		}
 	}
 
 	input[type="text"]:focus {

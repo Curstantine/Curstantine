@@ -131,5 +131,6 @@ export default defineConfig<Theme>({
 	shortcuts: {
 		"use-transition-standard": "duration-standard ease-standard",
 		"use-transition-emphasized": "duration-emphasized ease-emphasized",
+		"button-accent-1": "bg-accent-1 text-background hover:bg-accent-1/90 transition-colors",
 	},
 });

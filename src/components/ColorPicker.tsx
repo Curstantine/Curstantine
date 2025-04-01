@@ -7,11 +7,9 @@
 import { TinyColor } from "@ctrl/tinycolor";
 import { type Accessor, createSignal, type Setter, Show } from "solid-js";
 import type { JSX } from "solid-js/jsx-runtime";
-import {} from "@jabascript/core";
 
 import styles from "./ColorPicker.module.css";
 
-export type ColorRGB = [number, number, number];
 type Props = { color: Accessor<TinyColor>; setColor: Setter<TinyColor> };
 
 export default function ColorPicker(props: Props) {
@@ -31,13 +29,13 @@ export default function ColorPicker(props: Props) {
 			<span class="text-xs text-text-2">({label()})</span>
 
 			<Show when={!opened()}>
-				<Sheet color={props.color} setColor={props.setColor} />
+				<Sheet color={props.color} setColor={props.setColor} close={() => open(!false)} />
 			</Show>
 		</div>
 	);
 }
 
-function Sheet(props: Props) {
+function Sheet(props: Props & { close: () => void }) {
 	const rgb = () => props.color().toRgbString();
 	const hsl = () => props.color().toHslString();
 	const hex = () => props.color().toHexString(true);
@@ -50,7 +48,7 @@ function Sheet(props: Props) {
 	};
 
 	return (
-		<div class="absolute top-8 grid grid-cols-[13rem_1fr] w-88 gap-2 border border-text-3 bg-background p-2 shadow-lg">
+		<div class="absolute top-8 grid w-72 gap-2 border border-text-3 bg-background p-2 shadow-lg sm:grid-cols-[13rem_1fr] sm:w-88">
 			<div class="grid grid-cols-[1fr_1rem] gap-2">
 				<ColorSpace color={props.color} setColor={props.setColor} />
 				<AlphaSpace color={props.color} setColor={props.setColor} />
@@ -86,6 +84,10 @@ function Sheet(props: Props) {
 						onChange={[onColorInput, "RGB"]}
 					/>
 				</li>
+
+				<button type="button" class="mt-1 h-6 button-accent-1" onClick={() => props.close()}>
+					Apply
+				</button>
 			</ul>
 		</div>
 	);
