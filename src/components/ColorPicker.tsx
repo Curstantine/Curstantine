@@ -93,6 +93,19 @@ function Sheet(props: Props & { close: () => void }) {
 	);
 }
 
+export function calculateColorEvent<T extends Event & Pick<MouseEvent, "offsetX" | "offsetY">>(e: T, base: TinyColor) {
+	const { clientHeight, clientWidth } = e.target as Element;
+
+	const x = (e.offsetX / clientWidth) * 100;
+	const y = (e.offsetY / clientHeight) * 100;
+
+	const saturation = Math.round(Math.max(0, Math.min(x, 100)));
+	const lightness = 100 - Math.round(Math.max(0, Math.min(y, 100)));
+	const color = base.toHsl();
+
+	return new TinyColor({ ...color, s: saturation, l: lightness });
+}
+
 type ColorSpaceProps = Props;
 function ColorSpace(props: ColorSpaceProps) {
 	const hsl = () => props.color().toHsl();
@@ -113,18 +126,13 @@ function ColorSpace(props: ColorSpaceProps) {
 
 	const onDragOver = (e: DragEvent) => {
 		if (!isElementDragging || !e.target || e.target !== e.currentTarget) return;
-		const { clientHeight, clientWidth } = e.target as Element;
+		const color = calculateColorEvent(e, props.color());
+		props.setColor(color);
+	};
 
-		const x = (e.offsetX / clientWidth) * 100;
-		const y = (e.offsetY / clientHeight) * 100;
-
-		const saturation = Math.round(Math.max(0, Math.min(x, 100)));
-		const lightness = 100 - Math.round(Math.max(0, Math.min(y, 100)));
-		const color = props.color().toHsl();
-
-		// Fix(Curstantine): There's some bug when you drag it to the end, it'll spawn back in s100 l100
-		// Same thing happens with the keyboard input, so I'm assuming it has something to do with the color conversion.
-		props.setColor(new TinyColor({ ...color, s: saturation, l: lightness }));
+	const onClick = (e: MouseEvent) => {
+		const color = calculateColorEvent(e, props.color());
+		props.setColor(color);
 	};
 
 	const onKeyDown = (e: KeyboardEvent) => {
@@ -154,6 +162,7 @@ function ColorSpace(props: ColorSpaceProps) {
 		<div
 			class="relative h-42"
 			onDragOver={onDragOver}
+			onClick={onClick}
 			style={{
 				background:
 					`linear-gradient(to top, black, transparent, white), linear-gradient(to right, rgb(128, 128, 128), transparent), ${hueBg()}`,
