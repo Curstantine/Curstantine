@@ -38,7 +38,7 @@ export default function ColorPicker(props: Props) {
 function Sheet(props: Props & { close: () => void }) {
 	const rgb = () => props.color().toRgbString();
 	const hsl = () => props.color().toHslString();
-	const hex = () => props.color().toHexString(true);
+	const hex = () => props.color().toHexShortString(true);
 
 	const onColorInput = (
 		type: "RGB" | "HEX" | "HSL",
@@ -48,7 +48,7 @@ function Sheet(props: Props & { close: () => void }) {
 	};
 
 	return (
-		<div class="absolute top-8 grid w-72 gap-2 border border-text-3 bg-background p-2 shadow-lg sm:grid-cols-[13rem_1fr] sm:w-88">
+		<div class="absolute top-8 grid w-72 gap-2 border border-text-3 bg-background p-2 shadow-lg sm:grid-cols-[13rem_1fr] sm:w-90">
 			<div class="grid grid-cols-[1fr_1rem] gap-2">
 				<ColorSpace color={props.color} setColor={props.setColor} />
 				<AlphaSpace color={props.color} setColor={props.setColor} />
