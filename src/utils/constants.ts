@@ -26,7 +26,7 @@ export const PROJECTS: Project[] = [
 		link: "https://aggregato.riamu.lol",
 		description: "Music aggregation, and release delivery platform",
 		points: [
-			"Written with SvelteKit, with usuable no-js enhancements",
+			"Written in SvelteKit, with usuable no-js enhancements",
 			"SEC-CH based color scheme preference resolution",
 			"Background sync support with service workers.",
 		],
