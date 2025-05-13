@@ -12,7 +12,9 @@ import {
 import type { Theme } from "unocss/preset-uno";
 
 const importIconCollection = (name: string) => {
-	return () => import(`@iconify-json/${name}/icons.json`).then((i) => i.default) as Promise<IconifyJSON>;
+	return () =>
+		import(`@iconify-json/${name}/icons.json`)
+			.then((i) => i.default) as Promise<IconifyJSON>;
 };
 
 const colorDefinitions = {
@@ -35,7 +37,7 @@ export default defineConfig<Theme>({
 		presetWebFonts({
 			fonts: {
 				sans: {
-					name: "Inter",
+					name: "IBM Plex Sans",
 					weights: [400, 600],
 				},
 				mono: {
@@ -68,8 +70,14 @@ export default defineConfig<Theme>({
 		presetTypography({
 			cssExtend: (theme) => {
 				const colors = theme.colors as typeof colorDefinitions;
-				const fonts = theme.fontFamily as Record<"sans" | "mono", string>;
-				const fontSizes = theme.fontSize as Record<"xs" | "sm" | "lg" | "xl" | `${number}xl`, string>;
+				const fonts = theme.fontFamily as Record<
+					"sans" | "mono",
+					string
+				>;
+				const fontSizes = theme.fontSize as Record<
+					"xs" | "sm" | "lg" | "xl" | `${number}xl`,
+					string
+				>;
 
 				const textOpPatch = (val: string) => val.replace("<alpha-value>", "var(--un-text-opacity)");
 
