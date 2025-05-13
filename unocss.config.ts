@@ -134,8 +134,7 @@ export default defineConfig({
 		},
 		colors: colorDefinitions,
 	},
-	shortcuts: {
-		"use-transition-standard": "duration-standard ease-standard",
-		"use-transition-emphasized": "duration-emphasized ease-emphasized",
-	},
+	shortcuts: [
+    	[/^use-transition-(.*)$/, ([, c]) => `duration-${c} ease-${c}`],
+	],
 });
