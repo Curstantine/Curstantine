@@ -4,12 +4,11 @@ import {
 	presetAttributify,
 	presetIcons,
 	presetTypography,
-	presetUno,
+	presetWind4,
 	presetWebFonts,
 	transformerDirectives,
 	transformerVariantGroup,
 } from "unocss";
-import type { Theme } from "unocss/preset-uno";
 
 const importIconCollection = (name: string) => {
 	return () =>
@@ -30,11 +29,12 @@ const colorDefinitions = {
 	},
 } as const;
 
-export default defineConfig<Theme>({
+export default defineConfig({
 	presets: [
 		presetAttributify(),
-		presetUno({ dark: "media" }),
+		presetWind4({ dark: "media"}),
 		presetWebFonts({
+    		themeKey: "font",
 			fonts: {
 				sans: {
 					name: "IBM Plex Sans",
@@ -93,7 +93,7 @@ export default defineConfig<Theme>({
 					},
 					h2: {
 						color: textOpPatch(colors.accent[1]),
-						font: fonts.mono,
+						"font-family": fonts.mono,
 						"font-weight": 500,
 						"font-size": fontSizes["4xl"],
 						"margin-top": "2rem",
@@ -115,15 +115,14 @@ export default defineConfig<Theme>({
 	transformers: [transformerDirectives(), transformerVariantGroup()],
 	extendTheme: (theme) => ({
 		...theme,
-		breakpoints: {
+		breakpoint: {
 			xs: "375px",
-			...theme.breakpoints,
+			...theme.breakpoint,
 		},
 	}),
 	theme: {
-		container: { center: true },
-
-		easing: {
+		container: { center: "true" },
+		ease: {
 			DEFAULT: "cubic-bezier(0.4, 0.0, 0.2, 1.0)",
 			standard: "cubic-bezier(0.2, 0.0, 0, 1.0)",
 			"standard-decelerate": "cubic-bezier(0, 0, 0, 1)",

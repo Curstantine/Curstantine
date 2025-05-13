@@ -26,9 +26,6 @@ importers:
       '@iconify-json/gravity-ui':
         specifier: ^1.2.5
         version: 1.2.5
-      '@unocss/reset':
-        specifier: ^66.1.1
-        version: 66.1.1
       '@vercel/speed-insights':
         specifier: ^1.2.0
         version: 1.2.0(vue@3.5.13(typescript@5.8.3))
