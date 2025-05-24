@@ -16,20 +16,23 @@ export const PROFILE_IMAGE_SOURCE_LABEL: string | null = null;
 
 export const SONOKAI_ATTR = "https://github.com/sainnhe/sonokai";
 export const REALTIME_ATTR = "https://www.realtimecolors.com/?colors=200326-f0f0f0-c348d8-efb9f9-b612d3";
-export const FONT_SANS_ATTR = "https://fonts.google.com/specimen/Inter";
+export const FONT_SANS_ATTR = "https://fonts.google.com/specimen/IBM+Plex+Sans";
 export const FONT_MONO_ATTR = "https://www.jetbrains.com/lp/mono/";
 export const ICON_BXL_ATTR = "https://github.com/atisawd/boxicons";
 export const ICON_SYMBOLS_ATTR = "https://github.com/google/material-design-icons";
 export const ICON_GRAVITY_ATTR = "https://github.com/gravity-ui/icons/";
 
-export const SKILLS: [string, string[]][] = [
-	["Rust", []],
-	["JavaScript/TypeScript", ["SolidJS", "Astro", "Svelte", "Vue", "React"]],
-	["Dart", ["Flutter"]],
-	["Kotlin", ["Jetpack Compose"]],
-];
-
 export const PROJECTS: Project[] = [
+	{
+		name: "Aggregato",
+		link: "https://aggregato.riamu.lol",
+		description: "Music aggregation, and release delivery platform",
+		points: [
+			"Written in SvelteKit, with usuable no-js enhancements",
+			"SEC-CH based color scheme preference resolution",
+			"Background sync support with service workers.",
+		],
+	},
 	{
 		name: "Melody",
 		link: "https://www.github.com/Curstantine/melody",
@@ -83,6 +86,17 @@ const COMPANY_THRIVE: Company = { name: "Thrive Solutions", link: "https://thriv
 const COMPANY_CREATIVO: Company = { name: "CreativoCode", link: "http://creativo-code.com/" };
 
 export const WORK: Project[] = [
+	{
+		name: "Echo Daft",
+		link: "https://echodaft.com",
+		asPartOf: COMPANY_THRIVE,
+		points: [
+			"Made with Next.js and TailwindCSS v4",
+			"Server actions with arktype validation for form submission",
+			"Static optimized, with basic nojs optimization (forms)",
+			"Build time integration with Spotify API, and ripped embed previews",
+		],
+	},
 	{
 		name: "Prasanna Baddewithana",
 		link: "https://pb.lk",

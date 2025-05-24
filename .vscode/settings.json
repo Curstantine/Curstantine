@@ -2,6 +2,7 @@
 	"editor.defaultFormatter": "dprint.dprint",
 	"cSpell.words": [
 		"Attributify",
+		"Iconify",
 		"LISTENBRAINZ",
 		"prismic",
 		"unocss"
@@ -14,5 +15,6 @@
 		"typescript", // Enable .ts
 		"typescriptreact" // Enable .tsx
 	],
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"dprint.path": "node_modules/.bin/dprint"
 }
