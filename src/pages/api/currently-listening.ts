@@ -25,7 +25,14 @@ export const GET: APIRoute = async () => {
 		headers: {
 			Authorization: `Token ${LISTENBRAINZ_API_TOKEN}`,
 		},
-	});
+	}).catch((e) => console.error(e));
+
+	if (req === undefined) {
+		return new Response(
+			JSON.stringify({ type: "error", message: "ListenBrainz seems to be down..." }),
+			{ status: 500, headers: { ...DEFAULT_HEADERS, "Cache-Control": "no-store" } },
+		);
+	}
 
 	if (!req.ok) {
 		console.error(`Failed to fetch currently listening data: ${req.statusText} (${req.status})`);

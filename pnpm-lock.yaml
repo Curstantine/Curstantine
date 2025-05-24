@@ -20,12 +20,18 @@ importers:
       '@astrojs/vercel':
         specifier: ^8.1.4
         version: 8.1.4(astro@5.7.12(@types/node@22.15.17)(jiti@2.4.2)(rollup@4.40.2)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.1))(rollup@4.40.2)(vue@3.5.13(typescript@5.8.3))
+      '@ctrl/tinycolor':
+        specifier: ^4.1.0
+        version: 4.1.0
       '@iconify-json/bxl':
         specifier: ^1.2.2
         version: 1.2.2
       '@iconify-json/gravity-ui':
         specifier: ^1.2.5
         version: 1.2.5
+      '@iconify-json/material-symbols':
+        specifier: ^1.2.21
+        version: 1.2.21
       '@unocss/reset':
         specifier: ^66.1.2
         version: 66.1.2
@@ -226,6 +232,10 @@ packages:
 
   '@capsizecss/unpack@2.4.0':
     resolution: {integrity: sha512-GrSU71meACqcmIUxPYOJvGKF0yryjN/L1aCuE9DViCTJI7bfkjgYDPD1zbNDcINJwSSP6UaBZY9GAbYDO7re0Q==}
+
+  '@ctrl/tinycolor@4.1.0':
+    resolution: {integrity: sha512-WyOx8cJQ+FQus4Mm4uPIZA64gbk3Wxh0so5Lcii0aJifqwoVOlfFtorjLE0Hen4OYyHZMXDWqMmaQemBhgxFRQ==}
+    engines: {node: '>=14'}
 
   '@dprint/darwin-arm64@0.49.1':
     resolution: {integrity: sha512-ib6KcJWo/M5RJWXOQKhP664FG1hAvG7nrbkh+j8n+oXdzmbyDdXTP+zW+aM3/sIQUkGaZky1xy1j2VeScMEEHQ==}
@@ -653,6 +663,9 @@ packages:
 
   '@iconify-json/gravity-ui@1.2.5':
     resolution: {integrity: sha512-7uf4xG2ijmcte4AqPpzNTqnEBqxvHBKW/gI0VTZeP0nLtZSvoCybNt5QsJ7f/xyrIQDgCJ4usEmRaX7G86NueA==}
+
+  '@iconify-json/material-symbols@1.2.21':
+    resolution: {integrity: sha512-78o99N3oYeWY91EvZDl5bAPSPtO3rgkPwuOfgk4iBLbpb2peE6ueZFiMA/RURpy8jf4Pyt9rUtjP34UJIkVAcA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -4179,6 +4192,8 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
+  '@ctrl/tinycolor@4.1.0': {}
+
   '@dprint/darwin-arm64@0.49.1':
     optional: true
 
@@ -4443,6 +4458,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/gravity-ui@1.2.5':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/material-symbols@1.2.21':
     dependencies:
       '@iconify/types': 2.0.0
 
