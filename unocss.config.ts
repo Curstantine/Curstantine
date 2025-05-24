@@ -43,6 +43,7 @@ export default defineConfig({
 			collections: {
 				bxl: importIconCollection("bxl"),
 				gravity: importIconCollection("gravity-ui"),
+				symbols: importIconCollection("material-symbols"),
 				pref: (): IconifyJSON => ({
 					prefix: "pref",
 					icons: {
@@ -127,5 +128,6 @@ export default defineConfig({
 	},
 	shortcuts: [
 		[/^use-transition-(.*)$/, ([, c]) => `duration-${c} ease-${c}`],
+		[/^button-accent-(.*)$/, ([, c]) => `bg-accent-${c} text-background hover:bg-accent-${c}/90 transition-colors`],
 	],
 });

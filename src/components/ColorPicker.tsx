@@ -85,7 +85,7 @@ function Sheet(props: Props & { close: () => void }) {
 					/>
 				</li>
 
-				<button type="button" class="mt-1 h-6 button-accent-1" onClick={() => props.close()}>
+				<button type="button" class="button-accent-1 mt-1 h-6" onClick={() => props.close()}>
 					Apply
 				</button>
 			</ul>
