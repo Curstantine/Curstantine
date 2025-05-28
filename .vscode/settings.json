@@ -4,7 +4,10 @@
 		"Attributify",
 		"Iconify",
 		"LISTENBRAINZ",
+		"mbid",
+		"MUSICBRAINZ",
 		"prismic",
+		"riamu",
 		"unocss"
 	],
 	"eslint.useFlatConfig": true,
