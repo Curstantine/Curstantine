@@ -29,9 +29,9 @@ export const PROJECTS: Project[] = [
 		link: "https://aggregato.riamu.lol",
 		description: "Music aggregation, and release delivery platform",
 		points: [
-			"Written in SvelteKit, with usuable no-js enhancements",
+			"Written in SvelteKit, with usable no-js enhancements",
 			"SEC-CH based color scheme preference resolution",
-			"Background sync support with service workers.",
+			"Background sync support with service workers",
 		],
 	},
 	{
@@ -45,6 +45,17 @@ export const PROJECTS: Project[] = [
 		],
 	},
 	{
+		name: "jabascript",
+		link: "https://www.github.com/Curstantine/jabascript",
+		description: "Simple yet delightfully created javascript utilities and mix-ins",
+		points: [
+			"Utilities useful for different environments and frameworks (e.g. node, browsers, react)",
+			"Easily tree-shakeable, with a focus on package lightness and performance",
+			"No dependencies",
+			"Typed with JSDocs, targeted at modern ESM",
+		],
+	},
+	{
 		name: "tsync",
 		link: "https://www.github.com/Curstantine/tsync",
 		description: "CLI music library sync utility with on-the-fly transcode support",
@@ -52,16 +63,6 @@ export const PROJECTS: Project[] = [
 			"Uses Android Debug Bridge to sync between devices",
 			"Sync-list support",
 			"Re-encode files on the fly using ffmpeg or opusenc",
-		],
-	},
-	{
-		name: "jabascript",
-		link: "https://www.github.com/Curstantine/jabascript",
-		description: "A collection of JavaScript utils",
-		points: [
-			"Targeted to modern ES modules",
-			"Extends javascript primitive STDs with useful methods like takeIf",
-			"Typed with JSDoc",
 		],
 	},
 	{
@@ -145,5 +146,3 @@ export const WORK: Project[] = [
 		],
 	},
 ];
-
-export const TOOLS = ["Visual Studio Code", "IntelliJ IDEA", "Android Studio", "Figma"];
