@@ -1,6 +1,8 @@
 ---
 import SpeedInsights from "@vercel/speed-insights/astro";
 
+import "~/styles/global.css";
+
 interface Props {
 	title?: string;
 	description?: string;
@@ -50,88 +52,3 @@ const { title = "Curstantine", description = "Bird-brained SWE", image } = Astro
 </html>
 
 <SpeedInsights />
-
-<style is:global>
-	:root {
-		--background: 235 13% 17%;
-		--text-1: 200 5% 89%;
-		--text-2: 229 9% 54%;
-		--text-3: 232 15% 42%;
-
-		--accent-1: 349 95% 68%;
-		--accent-2: 43 79% 66%;
-
-		color-scheme: dark;
-	}
-
-	@media (prefers-color-scheme: light) {
-		:root {
-			--background: 0 0% 94%;
-			--text-1: 300 100% 13%;
-			--text-2: 40 13% 49%;
-			--text-3: 300 87% 86%;
-
-			--accent-1: 291 79% 45%;
-			--accent-2: 288 57% 66%;
-
-			color-scheme: light;
-		}
-	}
-
-	:root {
-		font-synthesis: none;
-		text-rendering: optimizeLegibility;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		-webkit-text-size-adjust: 100%;
-		scroll-behavior: smooth;
-		--at-apply: text-text-1 bg-background font-sans;
-	}
-
-	a, span, blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
-		--uno-apply: m-0 font-normal leading-normal;
-	}
-
-	a:hover {
-		--uno-apply: underline;
-	}
-
-	h2 {
-		--uno-apply: text-base font-mono leading-loose text-accent-1;
-	}
-
-	input[type="checkbox"] {
-		--uno-apply: appearance-none bg-text-3/25 border border-text-3;
-	}
-
-	input[type="checkbox"]:checked {
-		--uno-apply: bg-accent-1 appearance-none border-transparent;
-	}
-
-	input[type="checkbox"]:checked::before {
-		--uno-apply: size-full inline-block;
-		content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath style='fill:rgb(38,39,49)' d='m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z'/%3E%3C/svg%3E");
-	}
-
-	input[type="text"] {
-		--uno-apply: border border-text-3 bg-background px-1 h-7;
-	}
-
-	@screen sm {
-		input[type="text"] {
-		    --uno-apply: h-6;
-		}
-	}
-
-	input[type="text"]:focus {
-		--uno-apply: border-accent-1 outline-none;
-	}
-
-	::selection {
-		--uno-apply: bg-accent-1 text-background;
-	}
-
-	html {
-		--at-apply: overflow-y-auto;
-	}
-</style>
