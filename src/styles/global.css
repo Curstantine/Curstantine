@@ -4,6 +4,8 @@
 @import "@fontsource-variable/jetbrains-mono";
 
 @theme {
+	--color-*: initial;
+
 	--font-sans: "IBM Plex Sans Variable", "sans-serif";
 	--font-mono: "JetBrains Mono Variable", "monospace";
 

@@ -29,15 +29,8 @@ import profileImage from "~/images/profile.jpg";
 ---
 
 <Layout title="Curstantine">
-	<main
-		class="grid min-h-screen lg:container"
-		grid="cols-1 lg:cols-[20rem_1fr] xl:cols-[20rem_1fr_16rem] 2xl:cols-[20rem_1fr_20rem]"
-	>
-		<div
-			class="flex flex-col items-center lg:(sticky inset-y-4 left-0 max-h-[calc(100vh-2rem)])"
-			border="r-0 lg:r-1 r-solid r-text-3"
-			p="x-8 b-4 t-12 lg:t-4"
-		>
+	<main class="grid min-h-screen grid-cols-1 lg:container lg:grid-cols-[20rem_1fr] xl:grid-cols-[20rem_1fr_16rem] 2xl:grid-cols-[20rem_1fr_20rem]">
+		<div class="flex flex-col items-center border-r-0 border-r-text-3 px-8 pt-12 pb-4 lg:sticky lg:inset-y-4 lg:left-0 lg:max-h-[calc(100vh-2rem)] lg:border-r lg:pt-4">
 			<Image
 				src={profileImage}
 				alt=""
@@ -50,41 +43,41 @@ import profileImage from "~/images/profile.jpg";
 				draggable={false}
 			/>
 
-			<div class="flex flex-1 flex-col items-center pb-8 pt-4 lg:pb-0">
-				<h1 class="text-3xl font-medium leading-8 tracking-tight">Curstantine</h1>
+			<div class="flex flex-1 flex-col items-center pt-4 pb-8 lg:pb-0">
+				<h1 class="text-3xl leading-8 font-medium tracking-tight">Curstantine</h1>
 				<span class="text-sm text-text-2">FE, BE and Mobile SWE</span>
 			</div>
 
-			<div class="grid grid-cols-5 max-w-lg w-full justify-items-center gap-4 text-accent-1">
+			<div class="grid w-full max-w-lg grid-cols-5 justify-items-center gap-4 text-accent-1">
 				<a
 					target="_blank"
 					aria-label="GitHub"
 					href={GITHUB}
-					class="i-bxl-github h-6 w-6"
+					class="iconify bxl--github size-6"
 				/>
 				<a
 					target="_blank"
 					aria-label="GitLab"
 					href={GITLAB}
-					class="i-bxl-gitlab h-6 w-6"
+					class="iconify bxl--gitlab size-6"
 				/>
 				<a
 					target="_blank"
 					aria-label="Twitter"
 					href={TWITTER}
-					class="i-bxl-twitter h-6 w-6"
+					class="iconify bxl--twitter size-6"
 				/>
 				<a
 					target="_blank"
 					aria-label="LinkedIn"
 					href={LINKEDIN}
-					class="i-bxl-linkedin h-6 w-6"
+					class="iconify bxl--linkedin size-6"
 				/>
 				<a
 					target="_blank"
 					aria-label="Last.fm"
 					href={LASTFM}
-					class="i-pref-lastfm h-6 w-6"
+					class="i-pref-lastfm size-6"
 				/>
 			</div>
 		</div>
@@ -145,13 +138,13 @@ import profileImage from "~/images/profile.jpg";
 			</div>
 		</div>
 
-		<div class="grid h-fit gap-6 p-6 xl:(sticky top-0 col-start-auto px-0 pb-0) lg:col-start-2">
+		<div class="grid h-fit gap-6 p-6 lg:col-start-2 xl:sticky xl:top-0 xl:col-start-auto xl:px-0 xl:pb-0">
 			<div class="">
 				<div class="mb-1 inline-flex items-center text-text-2">
-					<div class="i-gravity-wrench mr-2 size-4" />
-					<span class="select-none text-sm">Tools</span>
+					<div class="iconify size-4 gravity-ui--wrench" />
+					<span class="text-sm select-none">Tools</span>
 				</div>
-				<ul class="text-sm font-mono">
+				<ul class="font-mono text-sm">
 					<li>
 						<a href="/tools/favicon">
 							to_favicon<span class="text-accent-1">()</span>
