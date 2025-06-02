@@ -49,6 +49,10 @@
 	transition-duration: --modifier(--duration-*, [duration]);
 }
 
+@utility pref--lastfm {
+	--svg: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20512%20512'%20width%3D'512'%20height%3D'512'%3E%0A%20%20%20%20%3Cpath%20fill%3D'currentColor'%20d%3D'm225.8%20367.1l-18.8-51s-30.5%2034-76.2%2034c-40.5%200-69.2-35.2-69.2-91.5c0-72.1%2036.4-97.9%2072.1-97.9c66.5%200%2074.8%2053.3%20100.9%20134.9c18.8%2056.9%2054%20102.6%20155.4%20102.6c72.7%200%20122-22.3%20122-80.9c0-72.9-62.7-80.6-115-92.1c-25.8-5.9-33.4-16.4-33.4-34c0-19.9%2015.8-31.7%2041.6-31.7c28.2%200%2043.4%2010.6%2045.7%2035.8l58.6-7c-4.7-52.8-41.1-74.5-100.9-74.5c-52.8%200-104.4%2019.9-104.4%2083.9c0%2039.9%2019.4%2065.1%2068%2076.8c44.9%2010.6%2079.8%2013.8%2079.8%2045.7c0%2021.7-21.1%2030.5-61%2030.5c-59.2%200-83.9-31.1-97.9-73.9c-32-96.8-43.6-163-161.3-163C45.7%20113.8%200%20168.3%200%20261c0%2089.1%2045.7%20137.2%20127.9%20137.2c66.2%200%2097.9-31.1%2097.9-31.1z'%2F%3E%0A%3C%2Fsvg%3E");
+}
+
 @theme inline {
 	--color-background: var(--theme-color-background);
 	--color-text-1: var(--theme-color-text-1);
@@ -72,69 +76,73 @@
 	@variant dark {
 		:root {
 			color-scheme: dark;
-			--theme-color-background: 235 13% 17%;
-			--theme-color-text-1: 200 5% 89%;
-			--theme-color-text-2: 229 9% 54%;
-			--theme-color-text-3: 232 15% 42%;
-			--theme-color-accent-1: 349 95% 68%;
-			--theme-color-accent-2: 43 79% 66%;
+			--theme-color-background: hsl(235 13% 17%);
+			--theme-color-text-1: hsl(200 5% 89%);
+			--theme-color-text-2: hsl(229 9% 54%);
+			--theme-color-text-3: hsl(232 15% 42%);
+			--theme-color-accent-1: hsl(349 95% 68%);
+			--theme-color-accent-2: hsl(43 79% 66%);
 		}
 	}
 }
 
-:root {
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%;
-	scroll-behavior: smooth;
-	@apply text-text-1 bg-background font-sans;
-}
 
-a, span, blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
-	@apply m-0 font-normal leading-normal;
-}
 
-a:hover {
-	@apply underline;
-}
-
-h2 {
-	@apply text-base font-mono leading-loose text-accent-1;
-}
-
-input[type="checkbox"] {
-	@apply appearance-none bg-text-3/25 border border-text-3;
-}
-
-input[type="checkbox"]:checked {
-	@apply bg-accent-1 appearance-none border-transparent;
-}
-
-input[type="checkbox"]:checked::before {
-	@apply size-full inline-block;
-	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath style='fill:rgb(38,39,49)' d='m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z'/%3E%3C/svg%3E");
-}
-
-input[type="text"] {
-	@apply border border-text-3 bg-background px-1 h-7;
-}
-
-@variant sm {
-	input[type="text"] {
-		@apply h-6;
+@layer base {
+	:root {
+		font-synthesis: none;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-text-size-adjust: 100%;
+		scroll-behavior: smooth;
+		@apply text-text-1 bg-background font-sans;
 	}
-}
 
-input[type="text"]:focus {
-	@apply border-accent-1 outline-none;
-}
+	a, span, blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
+		@apply m-0 font-normal leading-normal;
+	}
 
-::selection {
-	@apply bg-accent-1 text-background;
-}
+	a:hover {
+		@apply underline;
+	}
 
-html {
-	@apply overflow-y-auto;
+	h2 {
+		@apply text-base font-mono leading-loose text-accent-1;
+	}
+
+	input[type="checkbox"] {
+		@apply appearance-none bg-text-3/25 border border-text-3;
+	}
+
+	input[type="checkbox"]:checked {
+		@apply bg-accent-1 appearance-none border-transparent;
+	}
+
+	input[type="checkbox"]:checked::before {
+		@apply size-full inline-block;
+		content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath style='fill:rgb(38,39,49)' d='m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z'/%3E%3C/svg%3E");
+	}
+
+	input[type="text"] {
+		@apply border border-text-3 bg-background px-1 h-7;
+	}
+
+	@variant sm {
+		input[type="text"] {
+			@apply h-6;
+		}
+	}
+
+	input[type="text"]:focus {
+		@apply border-accent-1 outline-none;
+	}
+
+	::selection {
+		@apply bg-accent-1 text-background;
+	}
+
+	html {
+		@apply overflow-y-auto;
+	}
 }

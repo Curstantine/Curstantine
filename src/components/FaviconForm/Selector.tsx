@@ -24,7 +24,7 @@ export default function FaviconSelector(props: Props) {
 						class="absolute right-1 top-1 grid size-6 place-items-center bg-background/75 opacity-0 transition-opacity group-hover:opacity-100"
 						onClick={() => props.setFile(null)}
 					>
-						<div class="i-symbols-close-small size-5" />
+						<div class="iconify material-symbols--close-small size-5" />
 					</button>
 				</div>
 			)}
@@ -53,7 +53,7 @@ function Input(props: Pick<Props, "setFile">) {
 			class="size-44 inline-flex flex-col items-center justify-center gap-1 border border-text-3 border-dashed transition-colors hover:bg-text-3/10"
 			classList={{ "bg-text-3/10": dragging() }}
 		>
-			<span class="i-symbols-upload-file-outline-sharp pointer-events-none size-10" />
+			<span class="iconify material-symbols--upload-file-outline-sharp pointer-events-none size-10" />
 			<span class="pointer-events-none text-center text-sm text-text-1">
 				{dragging() ? "Drop right here!" : "Pick or drag-n-drop image here"}
 			</span>

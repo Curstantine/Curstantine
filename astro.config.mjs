@@ -8,10 +8,12 @@ export default defineConfig({
 	site: import.meta.env.PUBLIC_VERCEL_PROJECT_PRODUCTION_URL ?? "https://riamu.lol",
 	integrations: [
 		sitemap(),
-		tailwindcss(),
 		solidJs(),
 	],
 	adapter: vercel({ webAnalytics: { enabled: true } }),
+	vite: {
+		plugins: [tailwindcss()],
+	},
 	env: {
 		schema: {
 			LISTENBRAINZ_API_TOKEN: envField.string({ context: "server", access: "secret" }),
