@@ -1,28 +1,82 @@
 @import "tailwindcss";
 
-:root {
-	--background: 235 13% 17%;
-	--text-1: 200 5% 89%;
-	--text-2: 229 9% 54%;
-	--text-3: 232 15% 42%;
+@import "@fontsource-variable/ibm-plex-sans/wdth.css";
+@import "@fontsource-variable/jetbrains-mono";
 
-	--accent-1: 349 95% 68%;
-	--accent-2: 43 79% 66%;
+@theme {
+	--font-sans: "IBM Plex Sans Variable", "sans-serif";
+	--font-mono: "JetBrains Mono Variable", "monospace";
 
-	color-scheme: dark;
+	--transition-duration: 300ms;
+	--transition-duration-emphasized: 500ms;
+	--transition-duration-emphasized-decelerate: 400ms;
+	--transition-duration-emphasized-accelerate: 200ms;
+	--transition-duration-standard: 300ms;
+	--transition-duration-standard-decelerate: 250ms;
+	--transition-duration-standard-accelerate: 200ms;
+	--transition-duration-late-afternoon: 1.5s;
+
+	--ease: cubic-bezier(0.2, 0, 0, 1);
+	--ease-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+	--ease-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+	--ease-standard: cubic-bezier(0.2, 0, 0, 1);
+	--ease-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+	--ease-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
 }
 
-@media (prefers-color-scheme: light) {
+@utility container {
+	margin-inline: auto;
+	padding-inline: 1rem;
+	max-width: none;
+
+	@variant sm {
+		padding-inline: 2rem;
+	}
+
+	@variant 2xl {
+		padding-inline: 1rem;
+		max-width: 1536px;
+	}
+}
+
+@plugin "@iconify/tailwind4" {
+	prefixes: material-symbols, gravity-ui, bxl;
+}
+
+@utility use-transition-* {
+	transition-duration: --modifier(--duration-*, [duration]);
+}
+
+@theme inline {
+	--color-background: var(--theme-color-background);
+	--color-text-1: var(--theme-color-text-1);
+	--color-text-2: var(--theme-color-text-2);
+	--color-text-3: var(--theme-color-text-3);
+	--color-accent-1: var(--theme-color-accent-1);
+	--color-accent-2: var(--theme-color-accent-2);
+}
+
+@layer theme {
 	:root {
-		--background: 0 0% 94%;
-		--text-1: 300 100% 13%;
-		--text-2: 40 13% 49%;
-		--text-3: 300 87% 86%;
-
-		--accent-1: 291 79% 45%;
-		--accent-2: 288 57% 66%;
-
 		color-scheme: light;
+		--theme-color-background: hsl(0 0% 94%);
+		--theme-color-text-1: hsl(300 100% 13%);
+		--theme-color-text-2: hsl(40 13% 49%);
+		--theme-color-text-3: hsl(300 87% 86%);
+		--theme-color-accent-1: hsl(291 79% 45%);
+		--theme-color-accent-2: hsl(288 57% 66%);
+	}
+
+	@variant dark {
+		:root {
+			color-scheme: dark;
+			--theme-color-background: 235 13% 17%;
+			--theme-color-text-1: 200 5% 89%;
+			--theme-color-text-2: 229 9% 54%;
+			--theme-color-text-3: 232 15% 42%;
+			--theme-color-accent-1: 349 95% 68%;
+			--theme-color-accent-2: 43 79% 66%;
+		}
 	}
 }
 
@@ -65,7 +119,7 @@ input[type="text"] {
 	@apply border border-text-3 bg-background px-1 h-7;
 }
 
-@utility sm {
+@variant sm {
 	input[type="text"] {
 		@apply h-6;
 	}

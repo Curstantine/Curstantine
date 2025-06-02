@@ -3,15 +3,18 @@
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
+	"editor.quickSuggestions": {
+		"strings": "on"
+	},
 	"cSpell.words": [
 		"Attributify",
+		"fontsource",
 		"Iconify",
 		"LISTENBRAINZ",
 		"mbid",
 		"MUSICBRAINZ",
 		"prismic",
-		"riamu",
-		"unocss"
+		"riamu"
 	],
 	"eslint.useFlatConfig": true,
 	"eslint.validate": [
