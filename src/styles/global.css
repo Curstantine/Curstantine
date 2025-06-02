@@ -36,7 +36,7 @@
 	}
 
 	@variant 2xl {
-		padding-inline: 1rem;
+		padding-inline: 0rem;
 		max-width: 1536px;
 	}
 }
@@ -144,5 +144,40 @@
 
 	html {
 		@apply overflow-y-auto;
+	}
+}
+
+@layer components {
+	.prose {
+		@apply max-w-prose;
+		
+		a {
+			@apply font-normal text-text-1 decoration-from-font underline decoration-text-3;
+			
+			&:hover {
+				@apply decoration-accent-1;
+			}
+		}
+			
+		h2 {
+			@apply font-mono text-accent-1 font-normal mt-8 text-base;
+			/* "font-size": fontHeaderSize, */
+		}
+
+		p, ul, ol  {
+			@apply leading-[1.75em] my-[1em];
+		}
+
+		p:last-child {
+			@apply mb-0;		
+		}
+
+		h2 + p {
+			@apply mt-0;
+		}
+
+		ul {
+			@apply my-0 list-disc pl-4; 
+		}
 	}
 }
