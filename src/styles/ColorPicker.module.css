@@ -16,6 +16,7 @@
 
 .vertical_selector[type="range"] {
 	writing-mode: vertical-lr;
+	direction: rtl;
 }
 
 .vertical_selector[type="range"]::-webkit-slider-thumb {
