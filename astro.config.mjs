@@ -8,7 +8,7 @@ export default defineConfig({
 	site: import.meta.env.PUBLIC_VERCEL_PROJECT_PRODUCTION_URL ?? "https://riamu.lol",
 	integrations: [
 		sitemap(),
-		solidJs(),
+		solidJs({ devtools: import.meta.env.DEV }),
 	],
 	adapter: vercel({ webAnalytics: { enabled: true } }),
 	vite: {
