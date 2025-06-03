@@ -5,8 +5,7 @@
  * - Math behind colorspace coversions by Nikolai Waldman: https://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/
  */
 import { TinyColor } from "@ctrl/tinycolor";
-import { type Accessor, createSignal, type Setter, Show } from "solid-js";
-import type { JSX } from "solid-js";
+import { type Accessor, createSignal, type JSX, type Setter, Show } from "solid-js";
 
 import styles from "~/styles/ColorPicker.module.css";
 
@@ -100,7 +99,7 @@ export function calculateColorEvent<T extends Event & Pick<MouseEvent, "offsetX"
 	const lightness = 100 - Math.round(Math.max(0, Math.min(y, 100)));
 	const color = base.toHsl();
 
-	return new TinyColor({ ...color, s: saturation, l: lightness });
+	return new TinyColor({ h: color.h, a: color.a, s: saturation, l: lightness });
 }
 
 type ColorSpaceProps = Props;
