@@ -1,12 +1,12 @@
-import { TinyColor } from "@ctrl/tinycolor";
 import { createSignal } from "solid-js";
+import { createStore } from "solid-js/store";
 
 import ColorPicker from "~/components/ColorPicker";
 import FaviconSelector from "~/components/FaviconForm/Selector";
 
 export default function FaviconForm() {
 	const [file, setFile] = createSignal<File | null>(null);
-	const [bgColor, setBgColor] = createSignal<TinyColor>(new TinyColor("red"));
+	const [bgColor, setBgColor] = createStore({ h: 0, s: 0, l: 0, a: 0 });
 
 	return (
 		<form class="mt-2 grid justify-items-center gap-6 sm:grid-cols-[11rem_1fr] sm:justify-items-start">
@@ -25,7 +25,7 @@ export default function FaviconForm() {
 					</label>
 				</li>
 				<li class="flex flex-col justify-center gap-1">
-					<label>Background Color</label>
+					<label for="picker-button">Background Color</label>
 					<ColorPicker color={bgColor} setColor={setBgColor} />
 				</li>
 			</ul>
