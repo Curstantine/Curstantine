@@ -8,7 +8,7 @@ import { TinyColor } from "@ctrl/tinycolor";
 import { type Accessor, createSignal, type Setter, Show } from "solid-js";
 import type { JSX } from "solid-js/jsx-runtime";
 
-import styles from "./ColorPicker.module.css";
+import styles from "~/styles/ColorPicker.module.css";
 
 type Props = { color: Accessor<TinyColor>; setColor: Setter<TinyColor> };
 
@@ -171,7 +171,7 @@ function ColorSpace(props: ColorSpaceProps) {
 			<div
 				draggable="true"
 				role="presentation"
-				class="absolute z-10 size-2 translate-y-1/2 select-none bg-transparent outline-1 outline-white outline-solid ring-2 ring-black -translate-x-1/2"
+				class="absolute z-10 size-2 translate-y-1/2 select-none bg-transparent outline-1 outline-white ring-2 ring-black -translate-x-1/2"
 				style={{ left: left(), bottom: bottom() }}
 				onDragStart={onDragStart}
 				onDragEnd={onDragEnd}

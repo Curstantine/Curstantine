@@ -9,7 +9,7 @@ export default function FaviconForm() {
 	const [bgColor, setBgColor] = createSignal<TinyColor>(new TinyColor("red"));
 
 	return (
-		<form class="grid mt-2 justify-items-center gap-6 sm:(grid-cols-[11rem_1fr] justify-items-initial)">
+		<form class="mt-2 grid justify-items-center gap-6 sm:grid-cols-[11rem_1fr] sm:justify-items-start">
 			<FaviconSelector file={file} setFile={setFile} />
 
 			<ul class="grid h-fit gap-2 text-sm">

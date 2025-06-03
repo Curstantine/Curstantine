@@ -1,3 +1,5 @@
+@reference "./global.css";
+
 .selector[type="range"],
 .vertical_selector[type="range"] {
 	-webkit-appearance: none;
