@@ -6,7 +6,7 @@
  */
 import { TinyColor } from "@ctrl/tinycolor";
 import { type Accessor, createSignal, type Setter, Show } from "solid-js";
-import type { JSX } from "solid-js/jsx-runtime";
+import type { JSX } from "solid-js";
 
 import styles from "~/styles/ColorPicker.module.css";
 
@@ -40,10 +40,7 @@ function Sheet(props: Props & { close: () => void }) {
 	const hsl = () => props.color().toHslString();
 	const hex = () => props.color().toHexShortString(true);
 
-	const onColorInput = (
-		type: "RGB" | "HEX" | "HSL",
-		e: Parameters<JSX.ChangeEventHandler<HTMLInputElement, Event>>[0],
-	) => {
+	const onColorInput: JSX.BoundChangeEventHandlerFn<"RGB" | "HEX" | "HSL", HTMLInputElement> = (type, e) => {
 		props.setColor(new TinyColor(e.target.value, { format: type }));
 	};
 

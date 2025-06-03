@@ -1,3 +1,4 @@
+import type { JSX } from "solid-js";
 import { type Accessor, createSignal, type Setter, Show } from "solid-js";
 
 type Props = {
@@ -35,22 +36,21 @@ export default function FaviconSelector(props: Props) {
 function Input(props: Pick<Props, "setFile">) {
 	const [dragging, setDragging] = createSignal(false);
 
+	const onDragEvent: JSX.BoundEventHandlerFn<boolean, HTMLLabelElement, DragEvent> = (data, event) => {
+		event.preventDefault();
+		setDragging(data);
+	};
+
 	return (
 		<label
-			onDragOver={(e) => {
-				e.preventDefault();
-				setDragging(true);
-			}}
-			onDragLeave={(e) => {
-				e.preventDefault();
-				setDragging(false);
-			}}
+			onDragOver={[onDragEvent, true]}
+			onDragLeave={[onDragEvent, false]}
 			onDrop={(e) => {
 				e.preventDefault();
 				const file = e.dataTransfer?.files?.[0];
 				if (file) props.setFile(file);
 			}}
-			class="size-44 inline-flex flex-col items-center justify-center gap-1 border border-text-3 border-dashed transition-colors hover:bg-text-3/10"
+			class="size-44 inline-flex flex-col items-center justify-center gap-1 border border-text-3 border-dashed transition-colors hover:bg-text-3/10 px-4"
 			classList={{ "bg-text-3/10": dragging() }}
 		>
 			<span class="iconify material-symbols--upload-file-outline-sharp pointer-events-none size-10" />
