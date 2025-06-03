@@ -25,7 +25,7 @@ export default function ColorPicker(props: Props) {
 	const tiny = () =>
 		new TinyColor({ h: props.color.h, s: props.color.s, l: props.color.l, a: props.color.a }, { format: "hsl" });
 	const backgroundColor = () => tiny().toHslString();
-	const label = () => tiny().toName() ?? backgroundColor();
+	const label = () => tiny().toName() || tiny().toHexString();
 
 	return (
 		<div class="relative flex items-end gap-1">
