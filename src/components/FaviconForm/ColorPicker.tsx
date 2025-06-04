@@ -2,28 +2,25 @@
  * # Credits
  * - React Aria ColorPicker: https://react-spectrum.adobe.com/react-aria/ColorPicker.html
  * - solid-color: https://github.com/xbmlz/solid-color
- * - Math behind colorspace coversions by Nikolai Waldman: https://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/
+ * - Math behind colorspace conversion by Nikolai Waldman: https://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/
  */
 import { TinyColor } from "@ctrl/tinycolor";
-import { type Accessor, createSignal, type JSX, Show } from "solid-js";
-import type { SetStoreFunction } from "solid-js/store";
+import { type Accessor, createMemo, createSignal, type JSX, Show } from "solid-js";
+
+import { useFaviconForm } from "~/components/FaviconForm/context";
 
 import styles from "~/styles/ColorPicker.module.css";
 
-type HSLA = {
-	h: number;
-	s: number;
-	l: number;
-	a: number;
-};
-
-type Props = { color: HSLA; setColor: SetStoreFunction<HSLA> };
-
-export default function ColorPicker(props: Props) {
+export default function ColorPicker() {
 	const [opened, open] = createSignal(false);
+	const { state } = useFaviconForm();
 
-	const tiny = () =>
-		new TinyColor({ h: props.color.h, s: props.color.s, l: props.color.l, a: props.color.a }, { format: "hsl" });
+	const tiny = createMemo(() => {
+		return new TinyColor({ h: state.bgColor.h, s: state.bgColor.s, l: state.bgColor.l, a: state.bgColor.a }, {
+			format: "hsl",
+		});
+	});
+
 	const backgroundColor = () => tiny().toHslString();
 	const label = () => tiny().toName() || tiny().toHexString();
 
@@ -39,29 +36,31 @@ export default function ColorPicker(props: Props) {
 			<span class="text-xs text-text-2">({label()})</span>
 
 			<Show when={opened()}>
-				<Sheet color={props.color} setColor={props.setColor} tiny={tiny} close={() => open(!false)} />
+				<Sheet tiny={tiny} close={() => open(!false)} />
 			</Show>
 		</div>
 	);
 }
 
-type SheetProps = Props & { tiny: Accessor<TinyColor>; close: () => void };
+type SheetProps = { tiny: Accessor<TinyColor>; close: () => void };
 function Sheet(props: SheetProps) {
 	const rgb = () => props.tiny().toRgbString();
 	const hsl = () => props.tiny().toHslString();
 	const hex = () => props.tiny().toHexShortString(true);
 
+	const { setState } = useFaviconForm();
+
 	const onColorInput: JSX.BoundChangeEventHandlerFn<"RGB" | "HEX" | "HSL", HTMLInputElement> = (type, e) => {
 		const base = new TinyColor(e.target.value, { format: type });
-		props.setColor(base.toHsl());
+		setState("bgColor", base.toHsl());
 	};
 
 	return (
 		<div class="absolute top-8 grid w-72 gap-2 border border-text-3 bg-background p-2 shadow-lg sm:grid-cols-[13rem_1fr] sm:w-108">
 			<div class="grid grid-cols-[1fr_1rem] gap-2">
-				<ColorSpace color={props.color} setColor={props.setColor} />
-				<AlphaSpace color={props.color} setColor={props.setColor} />
-				<HueSpace color={props.color} setColor={props.setColor} />
+				<ColorSpace />
+				<AlphaSpace />
+				<HueSpace />
 			</div>
 			<ul class="flex flex-col gap-2 text-xs">
 				<li class="space-y-0.5">
@@ -114,11 +113,12 @@ export function calculateColorEvent<T extends Event & Pick<MouseEvent, "offsetX"
 	return { saturation, lightness };
 }
 
-type ColorSpaceProps = Props;
-function ColorSpace(props: ColorSpaceProps) {
-	const hueBg = () => `hsl(${props.color.h}, 100%, 50%)`;
-	const bottom = () => `${props.color.l}%`;
-	const left = () => `${props.color.s}%`;
+function ColorSpace() {
+	const { state, setState } = useFaviconForm();
+
+	const hueBg = () => `hsl(${state.bgColor.h}, 100%, 50%)`;
+	const bottom = () => `${state.bgColor.l}%`;
+	const left = () => `${state.bgColor.s}%`;
 
 	let isElementDragging = false;
 
@@ -134,27 +134,27 @@ function ColorSpace(props: ColorSpaceProps) {
 	const onDragOver = (e: DragEvent) => {
 		if (!isElementDragging || !e.target || e.target !== e.currentTarget) return;
 		const color = calculateColorEvent(e);
-		props.setColor({ s: color.saturation, l: color.lightness });
+		setState("bgColor", { s: color.saturation, l: color.lightness });
 	};
 
 	const onClick = (e: MouseEvent) => {
 		const color = calculateColorEvent(e);
-		props.setColor({ s: color.saturation, l: color.lightness });
+		setState("bgColor", { s: color.saturation, l: color.lightness });
 	};
 
 	const onKeyDown = (e: KeyboardEvent) => {
 		switch (e.key) {
 			case "ArrowDown":
-				if (props.color.l > 0) props.setColor("l", (x) => x - 1);
+				if (state.bgColor.l > 0) setState("bgColor", "l", (x) => x - 1);
 				break;
 			case "ArrowUp":
-				if (props.color.l < 100) props.setColor("l", (x) => x + 1);
+				if (state.bgColor.l < 100) setState("bgColor", "l", (x) => x + 1);
 				break;
 			case "ArrowRight":
-				if (props.color.s < 100) props.setColor("s", (x) => x + 1);
+				if (state.bgColor.s < 100) setState("bgColor", "s", (x) => x + 1);
 				break;
 			case "ArrowLeft":
-				if (props.color.s > 0) props.setColor("s", (x) => x - 1);
+				if (state.bgColor.s > 0) setState("bgColor", "s", (x) => x - 1);
 				break;
 			default:
 				return;
@@ -185,14 +185,14 @@ function ColorSpace(props: ColorSpaceProps) {
 					type="range"
 					min={0}
 					max={100}
-					value={props.color.s}
+					value={state.bgColor.s}
 					class={`${styles.display_selector} absolute sr-only`}
 				/>
 				<input
 					type="range"
 					min={0}
 					max={100}
-					value={props.color.l}
+					value={state.bgColor.l}
 					class={`${styles.display_selector} absolute sr-only`}
 				/>
 			</div>
@@ -200,9 +200,11 @@ function ColorSpace(props: ColorSpaceProps) {
 	);
 }
 
-function HueSpace(props: Props) {
+function HueSpace() {
+	const { state, setState } = useFaviconForm();
+
 	const onInput: JSX.EventHandler<HTMLInputElement, InputEvent> = (e) => {
-		props.setColor("h", e.currentTarget.valueAsNumber);
+		setState("bgColor", "h", e.currentTarget.valueAsNumber);
 	};
 
 	return (
@@ -219,7 +221,7 @@ function HueSpace(props: Props) {
 				type="range"
 				min={0}
 				max={359}
-				value={props.color.h}
+				value={state.bgColor.h}
 				onInput={onInput}
 				class={`${styles.selector} absolute top-0 inset-0 bg-transparent`}
 			/>
@@ -227,14 +229,16 @@ function HueSpace(props: Props) {
 	);
 }
 
-function AlphaSpace(props: Props) {
-	const alpha = () => props.color.a * 100;
-	const hueBg = () => `hsl(${props.color.h}, 100%, 50%)`;
+function AlphaSpace() {
+	const { state, setState } = useFaviconForm();
+
+	const alpha = () => state.bgColor.a * 100;
+	const hueBg = () => `hsl(${state.bgColor.h}, 100%, 50%)`;
 
 	const onInput: JSX.EventHandler<HTMLInputElement, InputEvent> = (e) => {
 		const targetValue = e.currentTarget.valueAsNumber / 100;
-		if (props.color.a === targetValue) return;
-		props.setColor("a", targetValue);
+		if (state.bgColor.a === targetValue) return;
+		setState("bgColor", "a", targetValue);
 	};
 
 	return (
@@ -249,8 +253,8 @@ function AlphaSpace(props: Props) {
 				min={0}
 				max={100}
 				value={alpha()}
-				aria-label="Adjust alpha channel"
 				onInput={onInput}
+				aria-label="Adjust alpha channel"
 				class={`${styles.vertical_selector} absolute top-0 inset-0 bg-transparent`}
 			/>
 		</div>

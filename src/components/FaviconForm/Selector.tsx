@@ -1,16 +1,15 @@
 import type { JSX } from "solid-js";
-import { type Accessor, createSignal, type Setter, Show } from "solid-js";
+import { createSignal, Show } from "solid-js";
 
-type Props = {
-	file: Accessor<File | null>;
-	setFile: Setter<File | null>;
-};
+import { useFaviconForm } from "~/components/FaviconForm/context";
 
-export default function FaviconSelector(props: Props) {
+export default function FaviconSelector() {
+	const { state, setState } = useFaviconForm();
+
 	return (
 		<Show
-			when={props.file()}
-			fallback={<Input setFile={props.setFile} />}
+			when={state.file}
+			fallback={<Input />}
 		>
 			{(file) => (
 				<div class="group relative size-44 inline-flex flex-col items-center justify-center border border-text-3 border-dashed">
@@ -23,7 +22,7 @@ export default function FaviconSelector(props: Props) {
 					<button
 						type="button"
 						class="absolute right-1 top-1 grid size-6 place-items-center bg-background/75 opacity-0 transition-opacity group-hover:opacity-100"
-						onClick={() => props.setFile(null)}
+						onClick={() => setState("file", null)}
 					>
 						<div class="iconify material-symbols--close-small size-5" />
 					</button>
@@ -33,7 +32,8 @@ export default function FaviconSelector(props: Props) {
 	);
 }
 
-function Input(props: Pick<Props, "setFile">) {
+function Input() {
+	const { setState } = useFaviconForm();
 	const [dragging, setDragging] = createSignal(false);
 
 	const onDragEvent: JSX.BoundEventHandlerFn<boolean, HTMLLabelElement, DragEvent> = (data, event) => {
@@ -48,7 +48,7 @@ function Input(props: Pick<Props, "setFile">) {
 			onDrop={(e) => {
 				e.preventDefault();
 				const file = e.dataTransfer?.files?.[0];
-				if (file) props.setFile(file);
+				if (file) setState("file", file);
 			}}
 			class="size-44 inline-flex flex-col items-center justify-center gap-1 border border-text-3 border-dashed transition-colors hover:bg-text-3/10 px-4"
 			classList={{ "bg-text-3/10": dragging() }}
@@ -64,7 +64,7 @@ function Input(props: Pick<Props, "setFile">) {
 				accept="image/*"
 				onInput={(e) => {
 					const file = e.target.files?.[0];
-					if (file) props.setFile(file);
+					if (file) setState("file", file);
 				}}
 			/>
 		</label>
