@@ -22,6 +22,7 @@
 		"@iconify-json/gravity-ui": "^1.2.5",
 		"@iconify-json/material-symbols": "^1.2.23",
 		"@iconify/tailwind4": "^1.0.6",
+		"@jabascript/core": "^0.3.2",
 		"@tailwindcss/vite": "^4.1.8",
 		"@unocss/reset": "^66.1.3",
 		"@vercel/speed-insights": "^1.2.0",
