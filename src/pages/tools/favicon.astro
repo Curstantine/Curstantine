@@ -1,4 +1,5 @@
 ---
+import FaviconForm from "~/components/FaviconForm";
 import Layout from "~/layouts/Layout.astro";
 ---
 
@@ -6,29 +7,20 @@ import Layout from "~/layouts/Layout.astro";
 	title="Curstantine | to_favicon()"
 	description="Convert your logos into a web-friendly favicon all inside your browser!"
 >
-	<main class="min-h-screen flex flex-col items-center justify-center">
-		<h1 class="text-2xl font-semibold font-mono">
-			to_favicon<span class="text-accent-1">()</span>
-		</h1>
-		<span>Convert your logos into a web-friendly favicon all inside your browser!</span>
+	<noscript class="flex items-center gap-2 bg-accent-1 px-6 py-1 text-background">
+		<div class="iconify gravity-ui--triangle-exclamation size-4 min-w-4" />
+		<span class="text-wrap text-xs md:text-sm">
+			Unfortunately this tool requires JavaScript to run. Support for no-js will not be considered.
+		</span>
+	</noscript>
+	<main class="px-6 lg:container">
+		<div class="flex flex-col justify-center py-3">
+			<h1 class="font-semibold font-mono">
+				to_favicon<span class="text-accent-1">()</span>
+			</h1>
+			<span class="text-xs">Convert your logos into a web-friendly favicon all inside your browser!</span>
+		</div>
 
-		<p class="mt-12 text-center text-text-2 leading-tight">
-			Check back in two years. <br /> I will have time to finish this by then.
-		</p>
-		<button
-			type="button"
-			id="take-me-home-country-road"
-			class="group mt-2 inline-flex items-center gap-2 border-1 border-accent-1 bg-transparent px-2 py-1 text-text-1 transition-colors hover:bg-accent-1 hover:text-background"
-		>
-			<div class="i-gravity-arrow-left size-4 group-hover:animate-spin" />
-			Take me back to where I came from!!!
-		</button>
+		<FaviconForm client:load />
 	</main>
 </Layout>
-
-<script>
-	const button = document.getElementById("take-me-home-country-road");
-	button?.addEventListener("click", () => {
-		window.history.back();
-	});
-</script>
