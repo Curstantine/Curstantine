@@ -4,7 +4,7 @@
  * - solid-color: https://github.com/xbmlz/solid-color
  * - Math behind colorspace conversion by Nikolai Waldman: https://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/
  */
-import { TinyColor } from "@ctrl/tinycolor";
+import { type ColorFormats, TinyColor } from "@ctrl/tinycolor";
 import { type Accessor, createMemo, createSignal, type JSX, Show } from "solid-js";
 
 import { useFaviconForm } from "~/components/FaviconForm/context";
@@ -15,11 +15,11 @@ export default function ColorPicker() {
 	const [opened, open] = createSignal(false);
 	const { state } = useFaviconForm();
 
-	const tiny = createMemo(() => {
-		return new TinyColor({ h: state.bgColor.h, s: state.bgColor.s, l: state.bgColor.l, a: state.bgColor.a }, {
+	const tiny = createMemo(() =>
+		new TinyColor({ h: state.bgColor.h, s: state.bgColor.s, l: state.bgColor.l, a: state.bgColor.a }, {
 			format: "hsl",
-		});
-	});
+		})
+	);
 
 	const backgroundColor = () => tiny().toHslString();
 	const label = () => tiny().toName() || tiny().toHexString();
@@ -44,13 +44,13 @@ export default function ColorPicker() {
 
 type SheetProps = { tiny: Accessor<TinyColor>; close: () => void };
 function Sheet(props: SheetProps) {
+	const { setState } = useFaviconForm();
+
 	const rgb = () => props.tiny().toRgbString();
 	const hsl = () => props.tiny().toHslString();
 	const hex = () => props.tiny().toHexShortString(true);
 
-	const { setState } = useFaviconForm();
-
-	const onColorInput: JSX.BoundChangeEventHandlerFn<"RGB" | "HEX" | "HSL", HTMLInputElement> = (type, e) => {
+	const onColorInput: JSX.BoundChangeEventHandlerFn<ColorFormats, HTMLInputElement> = (type, e) => {
 		const base = new TinyColor(e.target.value, { format: type });
 		setState("bgColor", base.toHsl());
 	};
@@ -69,7 +69,7 @@ function Sheet(props: SheetProps) {
 						type="text"
 						value={hex()}
 						class="w-full font-mono"
-						onChange={[onColorInput, "HEX"]}
+						onChange={[onColorInput, "hex"]}
 					/>
 				</li>
 
@@ -79,7 +79,7 @@ function Sheet(props: SheetProps) {
 						type="text"
 						value={hsl()}
 						class="w-full font-mono"
-						onChange={[onColorInput, "HSL"]}
+						onChange={[onColorInput, "hsl"]}
 					/>
 				</li>
 
@@ -89,7 +89,7 @@ function Sheet(props: SheetProps) {
 						type="text"
 						value={rgb()}
 						class="w-full font-mono"
-						onChange={[onColorInput, "RGB"]}
+						onChange={[onColorInput, "rgb"]}
 					/>
 				</li>
 
