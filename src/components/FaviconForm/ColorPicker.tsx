@@ -107,18 +107,18 @@ export function calculateColorEvent<T extends Event & Pick<MouseEvent, "offsetX"
 	const x = (e.offsetX / clientWidth) * 100;
 	const y = (e.offsetY / clientHeight) * 100;
 
-	const saturation = Math.round(Math.max(0, Math.min(x, 100)));
-	const lightness = 100 - Math.round(Math.max(0, Math.min(y, 100)));
+	const saturation = Math.trunc(Math.max(0, Math.min(x, 100)));
+	const lightness = Math.trunc(100 - Math.max(0, Math.min(y, 100)));
 
-	return { saturation, lightness };
+	return { saturation: saturation / 100, lightness: lightness / 100 };
 }
 
 function ColorSpace() {
 	const { state, setState } = useFaviconForm();
 
 	const hueBg = () => `hsl(${state.bgColor.h}, 100%, 50%)`;
-	const bottom = () => `${state.bgColor.l}%`;
-	const left = () => `${state.bgColor.s}%`;
+	const bottom = () => `${state.bgColor.l * 100}%`;
+	const left = () => `${state.bgColor.s * 100}%`;
 
 	let isElementDragging = false;
 
@@ -134,6 +134,8 @@ function ColorSpace() {
 	const onDragOver = (e: DragEvent) => {
 		if (!isElementDragging || !e.target || e.target !== e.currentTarget) return;
 		const color = calculateColorEvent(e);
+		console.log(color);
+
 		setState("bgColor", { s: color.saturation, l: color.lightness });
 	};
 
@@ -145,16 +147,16 @@ function ColorSpace() {
 	const onKeyDown = (e: KeyboardEvent) => {
 		switch (e.key) {
 			case "ArrowDown":
-				if (state.bgColor.l > 0) setState("bgColor", "l", (x) => x - 1);
+				if (state.bgColor.l > 0) setState("bgColor", "l", (x) => x - 0.01);
 				break;
 			case "ArrowUp":
-				if (state.bgColor.l < 100) setState("bgColor", "l", (x) => x + 1);
+				if (state.bgColor.l < 100) setState("bgColor", "l", (x) => x + 0.01);
 				break;
 			case "ArrowRight":
-				if (state.bgColor.s < 100) setState("bgColor", "s", (x) => x + 1);
+				if (state.bgColor.s < 100) setState("bgColor", "s", (x) => x + 0.01);
 				break;
 			case "ArrowLeft":
-				if (state.bgColor.s > 0) setState("bgColor", "s", (x) => x - 1);
+				if (state.bgColor.s > 0) setState("bgColor", "s", (x) => x - 0.01);
 				break;
 			default:
 				return;
@@ -182,6 +184,7 @@ function ColorSpace() {
 				tabIndex={-1}
 			>
 				<input
+					id="color-range-s"
 					type="range"
 					min={0}
 					max={100}
@@ -189,6 +192,7 @@ function ColorSpace() {
 					class={`${styles.display_selector} absolute sr-only`}
 				/>
 				<input
+					id="color-range-l"
 					type="range"
 					min={0}
 					max={100}
