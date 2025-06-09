@@ -20,6 +20,8 @@ export const REALTIME_ATTR = "https://www.realtimecolors.com/?colors=200326-f0f0
 export const FONT_SANS_ATTR = "https://fonts.google.com/specimen/IBM+Plex+Sans";
 export const FONT_MONO_ATTR = "https://www.jetbrains.com/lp/mono/";
 export const ICON_BXL_ATTR = "https://github.com/atisawd/boxicons";
+export const ICON_SYMBOLS_ATTR = "https://github.com/google/material-design-icons";
+export const ICON_GRAVITY_ATTR = "https://github.com/gravity-ui/icons/";
 
 export const PROJECTS: Project[] = [
 	{
@@ -27,9 +29,9 @@ export const PROJECTS: Project[] = [
 		link: "https://aggregato.riamu.lol",
 		description: "Music aggregation, and release delivery platform",
 		points: [
-			"Written in SvelteKit, with usuable no-js enhancements",
+			"Written in SvelteKit, with usable no-js enhancements",
 			"SEC-CH based color scheme preference resolution",
-			"Background sync support with service workers.",
+			"Background sync support with service workers",
 		],
 	},
 	{
@@ -43,6 +45,17 @@ export const PROJECTS: Project[] = [
 		],
 	},
 	{
+		name: "jabascript",
+		link: "https://www.github.com/Curstantine/jabascript",
+		description: "Simple yet delightfully created javascript utilities and mix-ins",
+		points: [
+			"Utilities useful for different environments and frameworks (e.g. node, browsers, react)",
+			"Easily tree-shakeable, with a focus on package lightness and performance",
+			"No dependencies",
+			"Typed with JSDocs, targeted at modern ESM",
+		],
+	},
+	{
 		name: "tsync",
 		link: "https://www.github.com/Curstantine/tsync",
 		description: "CLI music library sync utility with on-the-fly transcode support",
@@ -50,16 +63,6 @@ export const PROJECTS: Project[] = [
 			"Uses Android Debug Bridge to sync between devices",
 			"Sync-list support",
 			"Re-encode files on the fly using ffmpeg or opusenc",
-		],
-	},
-	{
-		name: "jabascript",
-		link: "https://www.github.com/Curstantine/jabascript",
-		description: "A collection of JavaScript utils",
-		points: [
-			"Targeted to modern ES modules",
-			"Extends javascript primitive STDs with useful methods like takeIf",
-			"Typed with JSDoc",
 		],
 	},
 	{
@@ -143,5 +146,3 @@ export const WORK: Project[] = [
 		],
 	},
 ];
-
-export const TOOLS = ["Visual Studio Code", "IntelliJ IDEA", "Android Studio", "Figma"];

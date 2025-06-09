@@ -43,6 +43,7 @@ export default defineConfig({
 			collections: {
 				bxl: importIconCollection("bxl"),
 				gravity: importIconCollection("gravity-ui"),
+				symbols: importIconCollection("material-symbols"),
 				pref: (): IconifyJSON => ({
 					prefix: "pref",
 					icons: {
@@ -120,12 +121,13 @@ export default defineConfig({
 			"standard-accelerate": "cubic-bezier(0.3, 0, 1, 1)",
 		},
 		duration: {
-			standard: "300ms",
-			emphasized: "500ms",
+			standard: "150ms",
+			emphasized: "300ms",
 		},
 		colors: colorDefinitions,
 	},
 	shortcuts: [
 		[/^use-transition-(.*)$/, ([, c]) => `duration-${c} ease-${c}`],
+		[/^button-accent-(.*)$/, ([, c]) => `bg-accent-${c} text-background hover:bg-accent-${c}/90 transition-colors`],
 	],
 });

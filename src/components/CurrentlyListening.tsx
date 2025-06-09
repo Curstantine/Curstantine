@@ -16,7 +16,7 @@ export default function CurrentlyListening() {
 	return (
 		<div class="flex flex-col">
 			<div class="mb-1 inline-flex items-center text-text-2">
-				<div class="i-gravity-music-note mr-2 size-4" />
+				<div class="iconify gravity-ui--music-note mr-2 size-4" />
 				<span class="select-none text-sm">Currently Listening</span>
 			</div>
 

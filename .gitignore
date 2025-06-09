@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 .bkg/
 .vercel/
+
+.vercel
+.env*.local

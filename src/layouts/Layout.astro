@@ -1,6 +1,8 @@
 ---
 import SpeedInsights from "@vercel/speed-insights/astro";
 
+import "~/styles/global.css";
+
 interface Props {
 	title?: string;
 	description?: string;
@@ -50,65 +52,3 @@ const { title = "Curstantine", description = "Bird-brained SWE", image } = Astro
 </html>
 
 <SpeedInsights />
-
-<style is:global>
-	:root {
-		--background: 235 13% 17%;
-		--text-1: 200 5% 89%;
-		--text-2: 229 9% 54%;
-		--text-3: 232 15% 42%;
-
-		--accent-1: 349 95% 68%;
-		--accent-2: 43 79% 66%;
-
-		color-scheme: dark;
-	}
-
-	@media (prefers-color-scheme: light) {
-		:root {
-			--background: 0 0% 94%;
-			--text-1: 300 100% 13%;
-			--text-2: 40 13% 49%;
-			--text-3: 300 87% 86%;
-
-			--accent-1: 291 79% 45%;
-			--accent-2: 288 57% 66%;
-
-			color-scheme: light;
-		}
-	}
-
-	:root {
-		font-synthesis: none;
-		text-rendering: optimizeLegibility;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		-webkit-text-size-adjust: 100%;
-		scroll-behavior: smooth;
-		--at-apply: text-text-1 bg-background font-sans;
-	}
-
-	a, span, blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
-		--uno-apply: m-0 font-normal leading-normal;
-	}
-
-	a {
-		--uno-apply: transition-colors use-transition-standard;
-	}
-
-	a:hover {
-		--uno-apply: underline;
-	}
-
-	h2 {
-		--uno-apply: text-base font-mono leading-loose text-accent-1;
-	}
-
-	::selection {
-		--uno-apply: bg-accent-1 text-background;
-	}
-
-	html {
-		--at-apply: overflow-y-auto;
-	}
-</style>
