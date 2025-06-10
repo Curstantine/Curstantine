@@ -13,7 +13,7 @@ type FaviconContextValue = {
 const FaviconContext = createContext<FaviconContextValue>();
 
 export function FaviconFormProvider(props: ParentProps) {
-	const [state, setState] = createStore<State>({ file: null, bgColor: { h: 349, s: 95, l: 68, a: 1 } });
+	const [state, setState] = createStore<State>({ file: null, bgColor: { h: 349, s: 0.95, l: 0.68, a: 1 } });
 
 	return (
 		<FaviconContext.Provider value={{ state, setState }}>

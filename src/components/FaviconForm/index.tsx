@@ -1,5 +1,6 @@
 import ColorPicker from "~/components/FaviconForm/ColorPicker";
 import { FaviconFormProvider } from "~/components/FaviconForm/context";
+import GenerateButton from "~/components/FaviconForm/GenerateButton";
 import FaviconSelector from "~/components/FaviconForm/Selector";
 
 export default function FaviconForm() {
@@ -25,6 +26,8 @@ export default function FaviconForm() {
 						<ColorPicker />
 					</li>
 				</ul>
+
+				<GenerateButton />
 			</form>
 		</FaviconFormProvider>
 	);
