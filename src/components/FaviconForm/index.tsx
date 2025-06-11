@@ -16,26 +16,40 @@ export default function FaviconForm() {
 
 		const formData = new FormData(e.currentTarget);
 		const generateSizeVariants = formData.get("generate-size-variants") === "on";
+		const includeExtras = formData.get("include-extras") === "on";
 
-		const downloadFavicon = async (size: number, type = "image/png"): Promise<TarFileInput> => {
+		const getIconData = async (
+			size: number,
+			filename: string,
+			type = "image/x-icon",
+		): Promise<TarFileInput> => {
 			const cn = renderSizedCanvas(canvasRef, size);
 			const blob = await promisifyToBlob(cn, type);
 			if (!blob) throw new Error("Blob not found");
 
 			return {
-				name: `favicon@${size}.ico`,
+				name: filename,
 				data: await blob.arrayBuffer(),
 			};
 		};
 
-		const files: Array<TarFileInput> = [await downloadFavicon(32)];
+		const files: Array<TarFileInput> = [await getIconData(32, "favicon.ico")];
 		if (generateSizeVariants) {
 			files.push(
 				...await Promise.all([
-					downloadFavicon(16),
-					downloadFavicon(64),
-					downloadFavicon(96),
-					downloadFavicon(128),
+					getIconData(16, "favicon@16.ico"),
+					getIconData(64, "favicon@64.ico"),
+					getIconData(96, "favicon@96.ico"),
+					getIconData(128, "favicon@128.ico"),
+				]),
+			);
+		}
+
+		if (includeExtras) {
+			files.push(
+				...await Promise.all([
+					getIconData(180, "apple-touch.png", "image/png"),
+					getIconData(256, "icon.png", "image/png"),
 				]),
 			);
 		}
