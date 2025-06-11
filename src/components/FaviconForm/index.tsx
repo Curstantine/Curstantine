@@ -1,13 +1,24 @@
+import type { JSX } from "solid-js";
+
 import ColorPicker from "~/components/FaviconForm/ColorPicker";
 import { FaviconFormProvider } from "~/components/FaviconForm/context";
 import GenerateButton from "~/components/FaviconForm/GenerateButton";
 import FaviconSelector from "~/components/FaviconForm/Selector";
 
 export default function FaviconForm() {
+	let canvasRef!: HTMLCanvasElement;
+
+	const onSubmit: JSX.EventHandler<HTMLFormElement, SubmitEvent> = (e) => {
+		e.preventDefault();
+	};
+
 	return (
 		<FaviconFormProvider>
-			<form class="mt-2 grid justify-items-center gap-y-4 gap-x-6 sm:grid-cols-[11rem_1fr] sm:justify-items-start">
-				<FaviconSelector />
+			<form
+				onSubmit={onSubmit}
+				class="mt-2 grid justify-items-center gap-y-4 gap-x-6 sm:grid-cols-[11rem_1fr] sm:justify-items-start"
+			>
+				<FaviconSelector ref={canvasRef} />
 
 				<ul class="grid h-fit gap-2 text-sm">
 					<li class="inline-flex items-center gap-2">
