@@ -1,4 +1,4 @@
-import type { JSX } from "solid-js";
+import type { JSX, Ref } from "solid-js";
 import { createEffect, createSignal, onCleanup, Show } from "solid-js";
 
 import { contain } from "~/utils/canvas";
@@ -6,7 +6,9 @@ import { type HSLA, toHSLAString } from "~/utils/colors";
 
 import { useFaviconForm } from "~/components/FaviconForm/context";
 
-export default function FaviconSelector() {
+type FaviconSelectorProps = { ref?: Ref<HTMLCanvasElement> };
+
+export default function FaviconSelector(props: FaviconSelectorProps) {
 	const { state, setState } = useFaviconForm();
 
 	let canvasRef!: HTMLCanvasElement;
@@ -14,6 +16,7 @@ export default function FaviconSelector() {
 
 	const init = (e: HTMLCanvasElement) => {
 		canvasRef = e;
+		if (typeof props.ref === "function") props.ref(e);
 
 		if (!offscreen) {
 			offscreen = document.createElement("canvas");

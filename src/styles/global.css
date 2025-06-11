@@ -62,7 +62,7 @@
 
 @utility button-accent-* {
 	background-color: --value(--color-accent-*);
-	@apply use-transition-standard-decelerate transition-colors text-background;
+	@apply use-transition-standard-decelerate transition-colors text-background disabled:opacity-50 disabled:pointer-events-none;
 
 	&:hover {
 		background-color: --alpha(--value(--color-accent-*) / 85%);
