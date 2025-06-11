@@ -6,7 +6,7 @@ import FaviconSelector from "~/components/FaviconForm/Selector";
 export default function FaviconForm() {
 	return (
 		<FaviconFormProvider>
-			<form class="mt-2 grid justify-items-center gap-6 sm:grid-cols-[11rem_1fr] sm:justify-items-start">
+			<form class="mt-2 grid justify-items-center gap-y-4 gap-x-6 sm:grid-cols-[11rem_1fr] sm:justify-items-start">
 				<FaviconSelector />
 
 				<ul class="grid h-fit gap-2 text-sm">

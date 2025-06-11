@@ -22,3 +22,8 @@ export function contain(
 		offsetY: (parentHeight - height) / 2,
 	};
 }
+
+export function isTransparencySupported(mimeType: string): boolean {
+	const transparentFormats = ["image/png", "image/gif", "image/webp", "image/svg+xml"];
+	return transparentFormats.includes(mimeType.toLowerCase());
+}

@@ -11,7 +11,7 @@
 .vertical_selector[type="range"]::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	appearance: none;
-	@apply bg-transparent outline-2 outline-solid outline-white ring-black ring w-1 h-4;
+	@apply bg-transparent outline-2 outline-solid outline-text-1 ring-black ring w-1.5 h-4 sm:w-1;
 }
 
 .vertical_selector[type="range"] {
@@ -20,7 +20,7 @@
 }
 
 .vertical_selector[type="range"]::-webkit-slider-thumb {
-	@apply h-1 w-4;
+	@apply h-1.5 w-4 sm:h-1;
 }
 
 .display_selector[type="range"] {

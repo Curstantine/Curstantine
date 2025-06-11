@@ -7,6 +7,8 @@
 import { type ColorFormats, TinyColor } from "@ctrl/tinycolor";
 import { type Accessor, createMemo, createSignal, type JSX, Show } from "solid-js";
 
+import { isTransparencySupported } from "~/utils/canvas";
+
 import { useFaviconForm } from "~/components/FaviconForm/context";
 
 import styles from "~/styles/ColorPicker.module.css";
@@ -23,12 +25,14 @@ export default function ColorPicker() {
 
 	const backgroundColor = () => tiny().toHslString();
 	const label = () => tiny().toName() || tiny().toHexString();
+	const disabled = () => state.file !== null && isTransparencySupported(state.file.type);
 
 	return (
 		<div class="relative flex items-end gap-1">
 			<button
 				type="button"
 				id="picker-button"
+				disabled={disabled()}
 				onClick={() => open(!opened())}
 				class="h-6 w-24 border border-text-3"
 				style={{ "background-color": backgroundColor() }}
@@ -36,7 +40,7 @@ export default function ColorPicker() {
 			<span class="text-xs text-text-2">({label()})</span>
 
 			<Show when={opened()}>
-				<Sheet tiny={tiny} close={() => open(!false)} />
+				<Sheet tiny={tiny} close={() => open((x) => !x)} />
 			</Show>
 		</div>
 	);
@@ -56,7 +60,7 @@ function Sheet(props: SheetProps) {
 	};
 
 	return (
-		<div class="absolute top-8 grid w-72 gap-2 border border-text-3 bg-background p-2 shadow-lg sm:grid-cols-[13rem_1fr] sm:w-108">
+		<div class="absolute z-50 top-8 grid w-72 gap-2 border border-text-3 bg-background p-2 shadow-lg sm:grid-cols-[13rem_1fr] sm:w-108">
 			<div class="grid grid-cols-[1fr_1rem] gap-2">
 				<ColorSpace />
 				<AlphaSpace />
@@ -134,8 +138,6 @@ function ColorSpace() {
 	const onDragOver = (e: DragEvent) => {
 		if (!isElementDragging || !e.target || e.target !== e.currentTarget) return;
 		const color = calculateColorEvent(e);
-		console.log(color);
-
 		setState("bgColor", { s: color.saturation, l: color.lightness });
 	};
 
