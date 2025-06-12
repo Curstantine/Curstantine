@@ -56,7 +56,7 @@ export default function FaviconForm() {
 		<FaviconFormProvider>
 			<form
 				on:submit={onSubmit}
-				class="mt-2 grid justify-items-center gap-y-4 gap-x-6 sm:grid-cols-[11rem_1fr] sm:justify-items-start"
+				class="mt-2 grid justify-items-center gap-y-8 gap-x-6 sm:gap-y-4 sm:grid-cols-[11rem_1fr] sm:justify-items-start"
 			>
 				<FaviconSelector ref={canvasRef} />
 
