@@ -2,6 +2,7 @@ import type { TarFileInput } from "nanotar";
 import type { JSX } from "solid-js";
 
 import { promisifyToBlob, renderSizedCanvas } from "~/utils/canvas";
+import { toIco } from "~/utils/ico";
 
 import ColorPicker from "~/components/FaviconForm/ColorPicker";
 import { FaviconFormProvider } from "~/components/FaviconForm/context";
@@ -20,17 +21,23 @@ export default function FaviconForm() {
 
 		const getIconData = async (
 			size: number,
-			filename: string,
+			name: string,
 			type = "image/x-icon",
 		): Promise<TarFileInput> => {
 			const cn = renderSizedCanvas(canvasRef, size);
 			const blob = await promisifyToBlob(cn, type);
 			if (!blob) throw new Error("Blob not found");
 
-			return {
-				name: filename,
-				data: await blob.arrayBuffer(),
-			};
+			const data = await blob.arrayBuffer();
+
+			if (type === "image/x-icon") {
+				return {
+					name,
+					data: toIco({ data: new Uint8Array(data), info: { height: cn.height, width: cn.width } }),
+				};
+			}
+
+			return { name, data };
 		};
 
 		const files: Array<TarFileInput> = [await getIconData(32, "favicon.ico")];
