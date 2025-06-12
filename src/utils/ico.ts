@@ -7,7 +7,7 @@ const DIRECTORY_SIZE = 16;
 const COLOR_MODE = 0;
 const BITMAP_SIZE = 40;
 
-type RawImage = { data: Uint8Array; info: { width: number; height: number } };
+type RawImage = { data: Uint8Array | Uint8ClampedArray; info: { width: number; height: number } };
 
 function createHeader(n: number) {
 	const buf = new ArrayBuffer(HEADER_SIZE);
@@ -87,7 +87,7 @@ function createDib(image: RawImage) {
 	return buf;
 }
 
-export function toIco(image: RawImage) {
+export function convertRawToIco(image: RawImage) {
 	const header = createHeader(1);
 	const offset = HEADER_SIZE + DIRECTORY_SIZE;
 

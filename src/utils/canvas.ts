@@ -1,3 +1,7 @@
+import type { TarFileInput } from "nanotar";
+
+import { convertRawToIco } from "~/utils/ico";
+
 export function contain(
 	parentWidth: number,
 	parentHeight: number,
@@ -28,7 +32,7 @@ export function isTransparencySupported(mimeType: string): boolean {
 	return transparentFormats.includes(mimeType.toLowerCase());
 }
 
-export function renderSizedCanvas(source: HTMLCanvasElement, size: number) {
+function renderSizedCanvas(source: HTMLCanvasElement, size: number) {
 	const canvas = document.createElement("canvas");
 	const ctx = canvas.getContext("2d");
 	canvas.width = size;
@@ -39,8 +43,37 @@ export function renderSizedCanvas(source: HTMLCanvasElement, size: number) {
 	return canvas;
 }
 
-export function promisifyToBlob(canvas: HTMLCanvasElement, type?: string, quality?: number): Promise<Blob | null> {
+function getImageData(canvas: HTMLCanvasElement) {
+	const ctx = canvas.getContext("2d");
+	return ctx?.getImageData(0, 0, canvas.width, canvas.height);
+}
+
+function promisifyToBlob(canvas: HTMLCanvasElement, type?: string, quality?: number): Promise<Blob | null> {
 	return new Promise((resolve) => {
 		canvas.toBlob(resolve, type, quality);
 	});
+}
+
+export async function getIconData(
+	canvasRef: HTMLCanvasElement,
+	size: number,
+	name: string,
+	type = "image/x-icon",
+): Promise<TarFileInput> {
+	const cn = renderSizedCanvas(canvasRef, size);
+
+	if (type === "image/x-icon") {
+		const imageData = getImageData(cn);
+		if (imageData?.data === undefined) throw new Error("Failed to get image data from canvas");
+
+		return {
+			name,
+			data: convertRawToIco({ data: imageData?.data, info: { height: size, width: size } }),
+		};
+	}
+
+	const blob = await promisifyToBlob(cn, type);
+	if (!blob) throw new Error("Blob not found");
+
+	return { name, data: await blob.arrayBuffer() };
 }
