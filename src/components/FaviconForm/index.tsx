@@ -1,8 +1,6 @@
 import type { TarFileInput } from "nanotar";
 import type { JSX } from "solid-js";
 
-import { promisifyToBlob, renderSizedCanvas } from "~/utils/canvas";
-
 import ColorPicker from "~/components/FaviconForm/ColorPicker";
 import { FaviconFormProvider } from "~/components/FaviconForm/context";
 import GenerateButton from "~/components/FaviconForm/GenerateButton";
@@ -18,29 +16,16 @@ export default function FaviconForm() {
 		const generateSizeVariants = formData.get("generate-size-variants") === "on";
 		const includeExtras = formData.get("include-extras") === "on";
 
-		const getIconData = async (
-			size: number,
-			filename: string,
-			type = "image/x-icon",
-		): Promise<TarFileInput> => {
-			const cn = renderSizedCanvas(canvasRef, size);
-			const blob = await promisifyToBlob(cn, type);
-			if (!blob) throw new Error("Blob not found");
+		const { getIconData } = await import("~/utils/canvas");
 
-			return {
-				name: filename,
-				data: await blob.arrayBuffer(),
-			};
-		};
-
-		const files: Array<TarFileInput> = [await getIconData(32, "favicon.ico")];
+		const files: Array<TarFileInput> = [await getIconData(canvasRef, 32, "favicon.ico")];
 		if (generateSizeVariants) {
 			files.push(
 				...await Promise.all([
-					getIconData(16, "favicon@16.ico"),
-					getIconData(64, "favicon@64.ico"),
-					getIconData(96, "favicon@96.ico"),
-					getIconData(128, "favicon@128.ico"),
+					getIconData(canvasRef, 16, "favicon@16.ico"),
+					getIconData(canvasRef, 64, "favicon@64.ico"),
+					getIconData(canvasRef, 96, "favicon@96.ico"),
+					getIconData(canvasRef, 128, "favicon@128.ico"),
 				]),
 			);
 		}
@@ -48,8 +33,8 @@ export default function FaviconForm() {
 		if (includeExtras) {
 			files.push(
 				...await Promise.all([
-					getIconData(180, "apple-touch.png", "image/png"),
-					getIconData(256, "icon.png", "image/png"),
+					getIconData(canvasRef, 180, "apple-touch.png", "image/png"),
+					getIconData(canvasRef, 256, "icon.png", "image/png"),
 				]),
 			);
 		}
@@ -71,7 +56,7 @@ export default function FaviconForm() {
 		<FaviconFormProvider>
 			<form
 				on:submit={onSubmit}
-				class="mt-2 grid justify-items-center gap-y-4 gap-x-6 sm:grid-cols-[11rem_1fr] sm:justify-items-start"
+				class="mt-2 grid justify-items-center gap-y-8 gap-x-6 sm:gap-y-4 sm:grid-cols-[11rem_1fr] sm:justify-items-start"
 			>
 				<FaviconSelector ref={canvasRef} />
 

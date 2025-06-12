@@ -25,7 +25,7 @@ export default function ColorPicker() {
 
 	const backgroundColor = () => tiny().toHslString();
 	const label = () => tiny().toName() || tiny().toHexString();
-	const disabled = () => state.file !== null && isTransparencySupported(state.file.type);
+	const disabled = () => state.file !== null && !isTransparencySupported(state.file.type);
 
 	return (
 		<div class="relative flex items-end gap-1">
@@ -34,10 +34,12 @@ export default function ColorPicker() {
 				id="picker-button"
 				disabled={disabled()}
 				onClick={() => open(!opened())}
-				class="h-6 w-24 border border-text-3"
+				class="h-7 w-32 peer border border-text-3 use-transition-standard-decelerate disabled:opacity-50 sm:h-6 sm:w-24"
 				style={{ "background-color": backgroundColor() }}
 			/>
-			<span class="text-xs text-text-2">({label()})</span>
+			<span class="text-xs text-text-2 use-transition-standard-decelerate peer-disabled:opacity-50">
+				({label()})
+			</span>
 
 			<Show when={opened()}>
 				<Sheet tiny={tiny} close={() => open((x) => !x)} />
