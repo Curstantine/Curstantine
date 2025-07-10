@@ -9,7 +9,7 @@ const { blog: { name, link, external, description } } = Astro.props;
 ---
 
 <li>
-	<a target="_blank" target={external && "_blank"} rel={external && "noreferrer noopener"} href={link}>
+	<a target={external ? "_blank" : undefined} rel={external ? "noreferrer noopener" : undefined} href={link}>
 		{name}
 	</a>
 	{external && <span class="iconify gravity-ui--link size-3 mb-1 text-text-2"></span>}
