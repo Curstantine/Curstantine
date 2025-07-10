@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 
 import {
+	BLOGS,
 	CV,
 	EMAIL,
 	FONT_MONO_ATTR,
@@ -22,6 +23,7 @@ import {
 
 import Layout from "~/layouts/Layout.astro";
 
+import Blog from "~/components/Blog.astro";
 import CurrentlyListening from "~/components/CurrentlyListening.tsx";
 import Project from "~/components/Project.astro";
 
@@ -39,42 +41,47 @@ import profileImage from "~/images/profile.png";
 				loading="eager"
 				widths={[256, 512, profileImage.width]}
 				sizes={`256px, (min-width: 1024px): 512px, (min-width: 1280px): ${profileImage.width}px`}
-				class="size-48 rounded-lg"
+				class="size-48"
 				draggable={false}
 			/>
 
 			<div class="flex flex-1 flex-col items-center pt-4 pb-8 lg:pb-0">
 				<h1 class="text-3xl leading-8 font-medium tracking-tight">Curstantine</h1>
-				<span class="text-sm text-text-2">FE, BE and Mobile SWE</span>
+				<span class="text-sm text-text-2">Professional Web Opinionator</span>
 			</div>
 
 			<div class="grid w-full max-w-lg grid-cols-5 justify-items-center gap-4 text-accent-1">
 				<a
 					target="_blank"
+					rel="noopener noreferrer"
 					aria-label="GitHub"
 					href={GITHUB}
 					class="iconify bxl--github size-6"
 				/>
 				<a
 					target="_blank"
+					rel="noopener noreferrer"
 					aria-label="GitLab"
 					href={GITLAB}
 					class="iconify bxl--gitlab size-6"
 				/>
 				<a
 					target="_blank"
+					rel="noopener noreferrer"
 					aria-label="Twitter"
 					href={TWITTER}
 					class="iconify bxl--twitter size-6"
 				/>
 				<a
 					target="_blank"
+					rel="noopener noreferrer"
 					aria-label="LinkedIn"
 					href={LINKEDIN}
 					class="iconify bxl--linkedin size-6"
 				/>
 				<a
 					target="_blank"
+					rel="noopener noreferrer"
 					aria-label="Last.fm"
 					href={LASTFM}
 					class="iconify pref--lastfm size-6"
@@ -86,14 +93,16 @@ import profileImage from "~/images/profile.png";
 			<div id="about" class="prose lg:max-w-2xl">
 				<h2>#about</h2>
 				<p>
-					Generic software engineer of sorts. Currently pursuing an SE degree at UoW. (IIT, LK) <br />
-					Enthusiastic about making the web a faster and a better place.
+					I dabble in everything I take interest in.<br />
+					Currently working as a Trainee Sofware Engineer (HCM) for IFS R&D, while pursuing an SE degree at
+					University of Westminster. (IIT, LK) <br />
 				</p>
 				<p>
-					You can also see my CV <a target="_blank" href={CV}>here.</a>
+					You can see my CV <a target="_blank" href={CV}>here.</a>
 					<br />
 					For work, reach me out at <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
 				</p>
+				<p class="text-text-2">"The rat enjoys the blueprint of his labyrinth."</p>
 			</div>
 
 			<div id="projects" class="prose">
@@ -110,31 +119,40 @@ import profileImage from "~/images/profile.png";
 				</ul>
 			</div>
 
+			<div id="blogs" class="prose">
+				<h2>#blogs</h2>
+				<ul class="space-y-2">
+					{BLOGS.map((blog) => <Blog {blog} />)}
+				</ul>
+			</div>
+
 			<div id="attributions" class="prose">
 				<h2>#attributions</h2>
 				<ul>
 					<li>
-						<span>
-							Fonts: <a href={FONT_SANS_ATTR}>IBM Plex Sans</a>{", "}
-							<a href={FONT_MONO_ATTR}>JetBrains Mono</a>
-						</span>
+						Fonts:
+						<a target="_blank" rel="noopener noreferrer" href={FONT_SANS_ATTR}>IBM Plex Sans</a>,
+						<a target="_blank" rel="noopener noreferrer" href={FONT_MONO_ATTR}>JetBrains Mono</a>
 					</li>
 					<li>
-						Iconsets: <a href={ICON_BXL_ATTR}>BoxIcons Logo</a>,
-						<a href={ICON_SYMBOLS_ATTR}>Material Symbols</a>,
-						<a href={ICON_GRAVITY_ATTR}>Gravity UI</a>
+						Iconsets:
+						<a target="_blank" rel="noopener noreferrer" href={ICON_BXL_ATTR}>BoxIcons Logo</a>,
+						<a target="_blank" rel="noopener noreferrer" href={ICON_SYMBOLS_ATTR}>Material Symbols</a>,
+						<a target="_blank" rel="noopener noreferrer" href={ICON_GRAVITY_ATTR}>Gravity UI</a>
 					</li>
 					<li>
-						Dark color palette: <a href={SONOKAI_ATTR}>Sonokai Andromeda</a>
+						Dark color palette:
+						<a target="_blank" rel="noopener noreferrer" href={SONOKAI_ATTR}>Sonokai Andromeda</a>
 					</li>
 					<li>
-						Light color palette: <a href={REALTIME_ATTR}>Realtime Colors</a>
+						Light color palette:
+						<a target="_blank" rel="noopener noreferrer" href={REALTIME_ATTR}>Realtime Colors</a>
 					</li>
 				</ul>
 			</div>
 
-			<div class="mt-4 flex flex-1 flex-col justify-end xl:pb-4">
-				<p class="text-sm text-text-2">Written in Astro, SolidJS and styled with UnoCSS.</p>
+			<div class="mt-4 flex flex-1 flex-col justify-end xl:pb-4 text-sm text-text-2">
+				<p>Written in astro, solid and styled with tailwindcss.</p>
 			</div>
 		</div>
 

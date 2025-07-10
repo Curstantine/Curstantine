@@ -1,0 +1,18 @@
+---
+import type { Blog } from "~/types";
+
+interface Props {
+	blog: Blog;
+}
+
+const { blog: { name, link, external, description } } = Astro.props;
+---
+
+<li>
+	<a target="_blank" target={external && "_blank"} rel={external && "noreferrer noopener"} href={link}>
+		{name}
+	</a>
+	{external && <span class="iconify gravity-ui--link size-3 mb-1 text-text-2"></span>}
+
+	<span class="text-text-2 text-sm block">{description}</span>
+</li>

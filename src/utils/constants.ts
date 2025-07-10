@@ -1,4 +1,4 @@
-import type { Company, Project } from "~/types";
+import type { Blog, Company, Project } from "~/types";
 
 export const LAST_FM_API_URL = "https://ws.audioscrobbler.com/2.0/";
 export const LISTENBRAINZ_NOW_PLAYING_API = "https://api.listenbrainz.org/1/user/curstantine/playing-now";
@@ -144,5 +144,15 @@ export const WORK: Project[] = [
 			"Made with Next.js, TailwindCSS, framer-motion and firebase",
 			"Collaborated with multiple developers and designers",
 		],
+	},
+];
+
+export const BLOGS: Blog[] = [
+	{
+		external: true,
+		name: "Zustand: The Bear Necessities of Reactive State Management",
+		link: "https://mozilla-iit.org/blogs/zustand-the-bear-necessities-for-reactive-state-management",
+		description:
+			"In-depth explanation on how to use zustand, and how it handles performant reactive changes internally.",
 	},
 ];

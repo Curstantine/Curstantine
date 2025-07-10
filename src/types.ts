@@ -10,3 +10,10 @@ export interface Project {
 	points: string[];
 	link: string;
 }
+
+export interface Blog {
+	name: string;
+	external: boolean;
+	link: string;
+	description: string;
+}
