@@ -42,6 +42,7 @@ export default function FaviconForm() {
 		const { createTar } = await import("nanotar");
 		const tarBuffer = createTar(files);
 
+		// @ts-expect-error ya no
 		const tarBlob = new Blob([tarBuffer], { type: "application/x-tar" });
 		const url = URL.createObjectURL(tarBlob);
 		const link = document.createElement("a");

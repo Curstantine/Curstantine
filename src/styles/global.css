@@ -87,12 +87,19 @@
 	@variant dark {
 		:root {
 			color-scheme: dark;
-			--theme-color-background: hsl(235 13% 17%);
-			--theme-color-text-1: hsl(200 5% 89%);
-			--theme-color-text-2: hsl(229 9% 54%);
-			--theme-color-text-3: hsl(232 15% 42%);
-			--theme-color-accent-1: hsl(349 95% 68%);
-			--theme-color-accent-2: hsl(43 79% 66%);
+			/* --theme-color-background: hsl(235 13% 17%); */
+			/* --theme-color-text-1: hsl(200 5% 89%); */
+			/* --theme-color-text-2: hsl(229 9% 54%); */
+			/* --theme-color-text-3: hsl(232 15% 42%); */
+			/* --theme-color-accent-1: hsl(349 95% 68%); */
+			/* --theme-color-accent-2: hsl(43 79% 66%); */
+
+			--theme-color-background: hsl(0, 0%, 0%);
+			--theme-color-text-1: hsl(0, 0%, 90%);
+			--theme-color-text-2: hsl(0 0% 70%);
+			--theme-color-text-3: hsl(0 0% 60%);
+			--theme-color-accent-1: hsl(0, 0%, 100%);
+			--theme-color-accent-2: hsl(0 0% 50%);
 		}
 	}
 }
