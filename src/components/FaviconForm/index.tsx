@@ -1,6 +1,8 @@
 import type { TarFileInput } from "nanotar";
 import type { JSX } from "solid-js";
 
+import { getIconData } from "~/utils/canvas";
+
 import ColorPicker from "~/components/FaviconForm/ColorPicker";
 import { FaviconFormProvider } from "~/components/FaviconForm/context";
 import GenerateButton from "~/components/FaviconForm/GenerateButton";
@@ -15,8 +17,6 @@ export default function FaviconForm() {
 		const formData = new FormData(e.currentTarget);
 		const generateSizeVariants = formData.get("generate-size-variants") === "on";
 		const includeExtras = formData.get("include-extras") === "on";
-
-		const { getIconData } = await import("~/utils/canvas");
 
 		const files: Array<TarFileInput> = [await getIconData(canvasRef, 32, "favicon.ico")];
 		if (generateSizeVariants) {
