@@ -76,12 +76,18 @@
 @layer theme {
 	:root {
 		color-scheme: light;
-		--theme-color-background: hsl(0 0% 94%);
-		--theme-color-text-1: hsl(300 100% 13%);
-		--theme-color-text-2: hsl(40 13% 49%);
-		--theme-color-text-3: hsl(300 87% 86%);
-		--theme-color-accent-1: hsl(291 79% 45%);
-		--theme-color-accent-2: hsl(288 57% 66%);
+		/* --theme-color-background: hsl(0 0% 94%); */
+		/* --theme-color-text-1: hsl(300 100% 13%); */
+		/* --theme-color-text-2: hsl(40 13% 49%); */
+		/* --theme-color-text-3: hsl(300 87% 86%); */
+		/* --theme-color-accent-1: hsl(291 79% 45%); */
+		/* --theme-color-accent-2: hsl(288 57% 66%); */
+		--theme-color-background: hsl(0, 0%, 100%);
+		--theme-color-text-1: hsl(0, 0%, 10%);
+		--theme-color-text-2: hsl(0 0% 30%);
+		--theme-color-text-3: hsl(0 0% 70%);
+		--theme-color-accent-1: hsl(0, 0%, 0%);
+		--theme-color-accent-2: hsl(0 0% 50%);
 	}
 
 	@variant dark {

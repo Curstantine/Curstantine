@@ -14,11 +14,15 @@ import Layout from "~/layouts/Layout.astro";
 		</span>
 	</noscript>
 	<main class="px-6 lg:container">
-		<div class="flex flex-col justify-center py-3">
-			<h1 class="font-semibold font-mono">
-				to_favicon<span class="text-accent-1">()</span>
-			</h1>
-			<span class="text-xs">Convert your logos into a web-friendly favicon all inside your browser!</span>
+		<div class="flex py-3 items-center justify-between">
+			<div class="flex flex-col justify-center">
+				<h1 class="font-semibold font-mono">
+					to_favicon<span class="text-accent-1">()</span>
+				</h1>
+				<span class="text-xs">Convert your logos into a web-friendly favicon all inside your browser!</span>
+			</div>
+
+			<a href="/" class="text-sm underline">go back to my cool site</a>
 		</div>
 
 		<FaviconForm client:load />
