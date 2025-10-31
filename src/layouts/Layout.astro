@@ -11,7 +11,12 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title = "Curstantine", description = "Bird-brained SWE", image } = Astro.props;
+const {
+	title = "Curstantine",
+	description =
+		"A figure of most enigmatic and confounding nature! One whose very name reverberates through the corridors of mystery with thunderous portent!",
+	image,
+} = Astro.props;
 ---
 
 <!DOCTYPE html>

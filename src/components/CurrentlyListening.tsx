@@ -28,7 +28,7 @@ export default function CurrentlyListening() {
 					{(error) => <span class="text-sm">{error().message}</span>}
 				</Match>
 				<Match when={resource()?.type === "ok" && !resource()?.data}>
-					<span class="text-sm">Not listening to anything...</span>
+					<span class="text-sm text-text-2">Not listening to anything...</span>
 				</Match>
 				<Match when={resource()?.type === "ok" && resource()?.data}>
 					{(data) => (
