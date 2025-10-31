@@ -1,0 +1,56 @@
+---
+import Layout from "~/layouts/Layout.astro";
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Layout
+	title={`${title}() | Curstantine`}
+	{description}
+>
+	<noscript class="flex items-center gap-2 bg-accent-1 px-6 py-1 text-background">
+		<div class="iconify gravity-ui--triangle-exclamation size-4 min-w-4" />
+		<span class="text-wrap text-xs md:text-sm">
+			Unfortunately this tool requires JavaScript to run. Support for no-js will not be considered.
+		</span>
+	</noscript>
+	<main class="px-6 lg:container">
+		<div class="flex py-3 items-center justify-between">
+			<div class="flex flex-col justify-center">
+				<h1 class="font-semibold font-mono">
+					{title}<span class="text-accent-1">()</span>
+				</h1>
+				<span class="text-xs">{description}</span>
+			</div>
+
+			<a href="/" class="text-sm">back to my cool site</a>
+		</div>
+
+		<slot>
+			<p class="mb-2">
+				Guck! You find yourself alone in this strange place, cut off from everything familiar. Your thoughts
+				begin to wander with growing curiosity—what lies beyond? What secrets are kept here? As you wait in this
+				peculiar limbo, you notice something: certain paths are sealed off, certain doors remain closed. Signs
+				of work in progress, of things not yet ready to be revealed. Tools scattered about. Dust sheets covering
+				mysterious shapes.
+			</p>
+			<p>Then, the god appears before you.</p>
+			<p class="mb-2">
+				"These things you seek..." the deity begins, gesturing to the veiled wonders around you, "...they are
+				not yet complete. Still being crafted, refined, prepared for their proper unveiling."
+			</p>
+			<p>The god's eyes gleam with knowing amusement.</p>
+			<p>
+				"But tell me; do you wish to return? To come back when all has been made ready<a
+					href="/"
+					class="animate-blink"
+				>?</a>"
+			</p>
+		</slot>
+	</main>
+</Layout>

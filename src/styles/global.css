@@ -26,6 +26,13 @@
 	--ease-standard: cubic-bezier(0.2, 0, 0, 1);
 	--ease-standard-decelerate: cubic-bezier(0, 0, 0, 1);
 	--ease-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
+
+	--animate-blink: blinker 1.25s steps(1,end) infinite;
+	@keyframes blinker {
+		50% {
+			opacity: 0;
+		}
+	}
 }
 
 @theme inline {
