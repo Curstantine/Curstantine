@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
-@import "@fontsource-variable/ibm-plex-sans/wdth.css";
-@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/ibm-plex-sans/wdth.css" layer(base);
+@import "@fontsource-variable/jetbrains-mono" layer(base);
 
 @theme {
+	/* dprint-ignore */
 	--color-*: initial;
 	--color-white: oklch(98.5% 0 0);
 	--color-black: oklch(0 0 0);
@@ -62,7 +63,8 @@
 
 @utility button-accent-* {
 	background-color: --value(--color-accent-*);
-	@apply use-transition-standard-decelerate transition-colors text-background disabled:opacity-50 disabled:pointer-events-none;
+	@apply use-transition-standard-decelerate transition-colors text-background disabled:opacity-50
+		disabled:pointer-events-none;
 
 	&:hover {
 		background-color: --alpha(--value(--color-accent-*) / 85%);
@@ -172,25 +174,25 @@
 @layer components {
 	.prose {
 		@apply max-w-prose;
-		
+
 		a {
 			@apply font-normal text-text-1 decoration-from-font underline decoration-text-3;
 		}
-		
+
 		a:hover {
 			@apply decoration-accent-1;
 		}
-			
+
 		h2 {
 			@apply font-mono text-accent-1 font-normal mt-8 text-base;
 		}
 
-		p, ul, ol  {
+		p, ul, ol {
 			@apply leading-[1.75em] my-[1em];
 		}
 
 		p:last-child {
-			@apply mb-0;		
+			@apply mb-0;
 		}
 
 		h2 + p {
@@ -198,7 +200,7 @@
 		}
 
 		ul {
-			@apply my-0 list-disc pl-4; 
+			@apply my-0 list-disc pl-4;
 		}
 	}
 }
