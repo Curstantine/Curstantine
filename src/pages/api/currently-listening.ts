@@ -1,3 +1,4 @@
+import { takeMapped } from "@jabascript/core";
 import type { APIRoute } from "astro";
 
 import { LISTENBRAINZ_API_TOKEN } from "astro:env/server";
@@ -60,6 +61,7 @@ export const GET: APIRoute = async () => {
 	const artist = trackMeta["artist_name"];
 	const track = trackMeta["track_name"];
 	const info = trackMeta["additional_info"];
+	const release = trackMeta["release_name"];
 	const releaseId = info["release_mbid"];
 
 	const parsed = encodeURIComponent(`${artist} - ${track}`);
@@ -68,9 +70,10 @@ export const GET: APIRoute = async () => {
 		data: {
 			artist,
 			track,
-			release: trackMeta["release_name"],
+			release,
 			links: {
-				release_mbz: `https://musicbrainz.org/release/${releaseId}`,
+				release_mbz: takeMapped(releaseId, (x) => `https://musicbrainz.org/release/${x}`)
+					?? `https://musicbrainz.org/search?query=${release}&type=release&method=indexed`,
 				track_apple: `https://music.apple.com/us/search?term=${parsed}`,
 				track_youtube: `https://www.youtube.com/results?search_query=${parsed}`,
 			},
