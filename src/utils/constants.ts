@@ -89,6 +89,14 @@ const COMPANY_CREATIVO: Company = { name: "CreativoCode", link: "http://creativo
 
 export const WORK: Project[] = [
 	{
+		name: "Unique Accessories International - Web Store",
+		link: "https://uniqueacc.lk",
+		points: [
+			"Made with SvelteKit, BetterAuth and Drizzle",
+			"Dynamic content system with user ordering and admin item management",
+		],
+	},
+	{
 		name: "Echo Daft",
 		link: "https://echodaft.com",
 		asPartOf: COMPANY_THRIVE,
