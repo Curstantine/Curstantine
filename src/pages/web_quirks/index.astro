@@ -11,7 +11,7 @@ const quirks = quirksCol.sort((a, b) => b.data.when.getTime() - a.data.when.getT
 	keywords={["web development", "quirks", "web specifications"]}
 	description="A collection of quirks I come across while developing for the web."
 >
-	<ul class="mt-2 lg:container">
+	<ul class="mt-2 container">
 		{quirks.map((quirk, i) => (
 			<li class="grid grid-cols-[--spacing(10)_1fr]">
 				<div class="font-mono text-lg tabular-nums">

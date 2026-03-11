@@ -1,4 +1,5 @@
 ---
+import { takeMapped } from "@jabascript/core";
 import { getCollection, render } from "astro:content";
 import ContentLayout from "~/layouts/ContentLayout.astro";
 
@@ -12,12 +13,14 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const description = takeMapped(post.body, (b) => b.substring(0, 160) + "...") || "N/A";
 ---
 
 <ContentLayout
 	title={`${post.data.title} - web_quirks`}
 	navTitle="web_quirks"
-	description={post.body?.substring(0, 160) ?? "N/A"}
+	description={description}
 	navDescription="A collection of quirks I come across while developing for the web."
 	keywords={post.data.tags}
 >
