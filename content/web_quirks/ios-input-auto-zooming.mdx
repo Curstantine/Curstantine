@@ -1,0 +1,31 @@
+---
+title: Input auto zooming in iOS WebKit
+author: Curstantine
+tags: [webkit, ios, nonstandard]
+when: 2026-03-11
+---
+
+On iOS WebKit if an input font size is smaller than 16px, a non-standard zooming is triggered to make the text more legible.
+While it sounds great as an accessibility feature, it more often than not breaks the flow of an application. 
+
+The two fixes to this issue would be to either:
+1. Increase the text sizing of the input to `>=16px`.
+2. Add a `maximum-scale: 1` to the viewport header. (Please see below before making a rash decision)
+
+The second option however is problematic for browsers that respect the specification as it essentially prevents the user from zooming in...
+Fortunately for the ever so standard following WebKit this scale is ignored for pinch-and-zoom. For other mobile browsers like chromium and firefox it is possible to change this selectively at runtime.
+
+```js
+const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) 
+    || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+if (!ios) return;
+
+const vp = document.querySelector("meta[name=viewport]");
+if (!vp) return;
+
+const ct = vp.getAttribute("content");
+if (ct && !ct.includes("maximum-scale")) vp.setAttribute("content", `${ct}, maximum-scale=1`);
+```
+## #sources
+
+Rick Strahl's more in-depth post covering this: [Preventing iOS Textbox Auto Zooming and ViewPort Sizing](https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Textbox-Auto-Zooming-and-ViewPort-Sizing)

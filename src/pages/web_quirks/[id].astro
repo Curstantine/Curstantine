@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from "astro:content";
+import ContentLayout from "~/layouts/ContentLayout.astro";
+
+export async function getStaticPaths() {
+	const quirks = await getCollection("web_quirks");
+	return quirks.map(post => ({
+		params: { id: post.id },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<ContentLayout
+	title={`${post.data.title} - web_quirks`}
+	navTitle="web_quirks"
+	description={post.body?.substring(0, 160) ?? "N/A"}
+	navDescription="A collection of quirks I come across while developing for the web."
+	keywords={post.data.tags}
+>
+	<header class="pb-8 mt-2 max-w-prose flex flex-col container">
+		<h1 class="text-2xl font-medium">{post.data.title}</h1>
+
+		<div class="grid grid-cols-2 justify-center">
+			<time datetime={post.data.when.toISOString()} class="">
+				{post.data.when.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+			</time>
+			<div class="inline-flex gap-2 justify-end">
+				{post.data.tags.map((tag) => <a href={`/web-quirks?tags[]=${tag}`} class="underline">{tag}</a>)}
+			</div>
+		</div>
+	</header>
+
+	<article class="flex flex-col prose-mdx">
+		<Content />
+	</article>
+</ContentLayout>

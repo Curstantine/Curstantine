@@ -28,7 +28,7 @@ import Project from "~/components/Project.astro";
 import profileImage from "~/images/profile.jpg";
 ---
 
-<Layout title="Curstantine">
+<Layout title="Curstantine" description="I 'engineer' software thingies.">
 	<main class="grid min-h-screen grid-cols-1 lg:container lg:grid-cols-[20rem_1fr] xl:grid-cols-[20rem_1fr_16rem] 2xl:grid-cols-[20rem_1fr_20rem]">
 		<div class="flex flex-col items-center border-r-0 border-r-text-3 px-8 pt-12 pb-4 lg:sticky lg:inset-y-4 lg:left-0 lg:max-h-[calc(100vh-2rem)] lg:border-r lg:pt-4">
 			<Image
@@ -45,7 +45,7 @@ import profileImage from "~/images/profile.jpg";
 
 			<div class="flex flex-1 flex-col items-center pt-4 pb-8 lg:pb-0">
 				<h1 class="text-3xl leading-8 font-medium tracking-tight">Curstantine</h1>
-				<span class="text-sm text-text-2">Certified PL/SQL Enthusiast*</span>
+				<span class="text-sm text-text-2">Software Engineer</span>
 			</div>
 
 			<div class="grid w-full max-w-lg grid-cols-5 justify-items-center gap-4 text-accent-1">
@@ -154,7 +154,18 @@ import profileImage from "~/images/profile.jpg";
 		</div>
 
 		<div class="grid h-fit gap-6 p-6 lg:col-start-2 xl:sticky xl:top-0 xl:col-start-auto xl:px-0 xl:pb-0">
-			<div class="">
+			<div>
+				<div class="mb-1 inline-flex items-center text-text-2">
+					<div class="iconify size-4 gravity-ui--book mr-2" />
+					<span class="text-sm select-none">Content</span>
+				</div>
+				<ul class="font-mono text-sm">
+					<li>
+						<a href="/web_quirks">.web_quirks</a>
+					</li>
+				</ul>
+			</div>
+			<div>
 				<div class="mb-1 inline-flex items-center text-text-2">
 					<div class="iconify size-4 gravity-ui--wrench mr-2" />
 					<span class="text-sm select-none">Tools</span>

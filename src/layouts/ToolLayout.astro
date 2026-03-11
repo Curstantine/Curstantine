@@ -1,36 +1,32 @@
 ---
-import Layout from "~/layouts/Layout.astro";
+import SecondaryNav from "~/components/SecondaryNav.astro";
+import Layout, { type Props as LayoutProps } from "~/layouts/Layout.astro";
 
-interface Props {
+interface Props extends LayoutProps {
 	title: string;
 	description: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, ...rest } = Astro.props;
 ---
 
 <Layout
 	title={`${title}() | Curstantine`}
 	{description}
+	{...rest}
 >
-	<noscript class="flex items-center gap-2 bg-accent-1 px-6 py-1 text-background">
-		<div class="iconify gravity-ui--triangle-exclamation size-4 min-w-4" />
-		<span class="text-wrap text-xs md:text-sm">
-			Unfortunately this tool requires JavaScript to run. Support for no-js will not be considered.
-		</span>
-	</noscript>
-	<main class="px-6 lg:container">
-		<div class="flex py-3 items-center justify-between">
-			<div class="flex flex-col justify-center">
-				<h1 class="font-semibold font-mono">
-					{title}<span class="text-accent-1">()</span>
-				</h1>
-				<span class="text-xs">{description}</span>
-			</div>
-
-			<a href="/" class="text-sm">back to my cool site</a>
+	<noscript class="bg-accent-1 text-background block">
+		<div class="flex items-center gap-2 container py-1">
+			<div class="iconify gravity-ui--triangle-exclamation size-4 min-w-4" />
+			<span class="text-wrap text-xs md:text-sm">
+				Unfortunately this tool requires JavaScript to run. Support for no-js will not be considered.
+			</span>
 		</div>
+	</noscript>
 
+	<SecondaryNav title={title} description={description} deco="tool" />
+
+	<main class="container">
 		<slot>
 			<p class="mb-2">
 				Guck! You find yourself alone in this strange place, cut off from everything familiar. Your thoughts

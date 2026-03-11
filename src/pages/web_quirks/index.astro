@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import ContentLayout from "~/layouts/ContentLayout.astro";
+
+const quirksCol = await getCollection("web_quirks");
+const quirks = quirksCol.sort((a, b) => b.data.when.getTime() - a.data.when.getTime());
+---
+
+<ContentLayout
+	title="web_quirks"
+	keywords={["web development", "quirks", "web specifications"]}
+	description="A collection of quirks I come across while developing for the web."
+>
+	<ul class="mt-2 lg:container">
+		{quirks.map((quirk, i) => (
+			<li class="grid grid-cols-[--spacing(10)_1fr]">
+				<div class="font-mono text-lg tabular-nums">
+					{String(i + 1).padStart(2, "0")}.
+				</div>
+
+				<div class="flex flex-col">
+					<a
+						href={`/web_quirks/${quirk.id}`}
+						class="font-medium decoration-from-font underline decoration-text-3"
+					>
+						{quirk.data.title}
+					</a>
+					<div class="text-sm text-text-2">
+						{quirk.data.when.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+					</div>
+					<div class="text-sm text-text-2 inline-flex">
+						tags: {quirk.data.tags.map((tag) => (
+							<a href={`/web_quirks?tags[]=${tag}`} class="ml-1">{tag}</a>
+						))}
+					</div>
+				</div>
+			</li>
+		))}
+	</ul>
+</ContentLayout>

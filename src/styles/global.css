@@ -221,4 +221,40 @@
 			@apply my-0 list-disc pl-4;
 		}
 	}
+
+	.prose-mdx {
+		@apply max-w-prose container;
+
+		a {
+			@apply font-normal text-text-1 decoration-from-font underline decoration-text-3;
+		}
+
+		a:hover {
+			@apply decoration-accent-1;
+		}
+
+		h2 {
+			@apply text-lg font-semibold mt-4;
+		}
+
+		p {
+			@apply mb-4;
+		}
+
+		ul {
+			@apply list-disc list-inside mb-4 space-y-2;
+		}
+
+		ol {
+			@apply list-decimal list-inside mb-4 space-y-2;
+		}
+
+		:not(pre) code {
+			@apply bg-accent-2/20 px-1 py-0.5;
+		}
+
+		pre {
+			@apply py-1 px-2 text-sm;
+		}
+	}
 }
