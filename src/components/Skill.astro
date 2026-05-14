@@ -9,11 +9,9 @@ const { skill, subSkills } = Astro.props;
 
 <li>
 	{skill}
-	{
-		subSkills.length > 0 && (
-			<ul class="my-1">
-				{subSkills.map((sub) => <li class="text-sm text-text-2">{sub}</li>)}
-			</ul>
-		)
-	}
+	{subSkills.length > 0 && (
+		<ul class="my-1">
+			{subSkills.map((sub) => <li class="text-sm text-text-2">{sub}</li>)}
+		</ul>
+	)}
 </li>

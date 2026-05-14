@@ -12,18 +12,14 @@ const { project: { name, link, description, points, asPartOf } } = Astro.props;
 	<span>
 		<a target="_blank" rel="noopener noreferrer" href={link}>{name}</a>{description && ": "} {description}
 	</span>
-	{
-		asPartOf && (
-			<span class="text-xs text-text-2">
-				{"(as part of "} <a target="_blank" rel="noopener noreferrer" href={asPartOf.link}>{asPartOf.name}</a>)
-			</span>
-		)
-	}
-	{
-		points.length > 0 && (
-			<ul class="text-sm text-text-2">
-				{points.map((point) => <li>{point}</li>)}
-			</ul>
-		)
-	}
+	{asPartOf && (
+		<span class="text-xs text-text-2">
+			{"(as part of "} <a target="_blank" rel="noopener noreferrer" href={asPartOf.link}>{asPartOf.name}</a>)
+		</span>
+	)}
+	{points.length > 0 && (
+		<ul class="text-sm text-text-2">
+			{points.map((point) => <li>{point}</li>)}
+		</ul>
+	)}
 </li>
