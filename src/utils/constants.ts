@@ -89,6 +89,17 @@ const COMPANY_CREATIVO: Company = { name: "CreativoCode", link: "http://creativo
 
 export const WORK: Project[] = [
 	{
+		name: "MeetYourPsychic - Tarot",
+		link: "https://tarot.meetyourpsychic.com",
+		asPartOf: COMPANY_CREATIVO,
+		points: [
+			"High-performance animations using a motion, css and offscreen canvases",
+			"Cross-browser compatible and optimized for hardware acceleration",
+			"Interactive gameplay with dynamic asset orchestration and state-managed UI transitions",
+			"AI model integration with Vercel AI SDK",
+		],
+	},
+	{
 		name: "Unique Accessories International - Web Store",
 		link: "https://uniqueacc.lk",
 		points: [
