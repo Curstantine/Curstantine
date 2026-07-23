@@ -25,7 +25,7 @@ import Blog from "~/components/Blog.astro";
 import CurrentlyListening from "~/components/CurrentlyListening.tsx";
 import Project from "~/components/Project.astro";
 
-import profileImage from "~/images/profile.jpg";
+import profileImage from "~/images/profile.webp";
 ---
 
 <Layout title="Curstantine" description="I 'engineer' software thingies.">
@@ -39,7 +39,7 @@ import profileImage from "~/images/profile.jpg";
 				loading="eager"
 				widths={[256, 512, profileImage.width]}
 				sizes={`256px, (min-width: 1024px): 512px, (min-width: 1280px): ${profileImage.width}px`}
-				class="size-48 shadow-tipsy border-2 border-white dark:shadow-none"
+				class="size-48 shadow-tipsy border border-accent-1 dark:shadow-none"
 				draggable={false}
 			/>
 
@@ -92,14 +92,17 @@ import profileImage from "~/images/profile.jpg";
 				<h2>#about</h2>
 				<p>
 					I dabble in everything I take interest in.<br />
-					Working as a Trainee Software Engineer at IFS Research & Development.
+					Working as a Trainee Software Engineer at IFS for Human Capital Managment, ESM & Localizations.
 				</p>
 				<p>
 					See my resume <a target="_blank" href={CV}>here.</a>
 					<br />
 					I am all ears at <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
 				</p>
-				<p class="text-text-2">"The rat enjoys the blueprint of his labyrinth."</p>
+				<p class="text-text-2">
+					"It doesn't matter what needs to be sacrificed. In this world, winning is everything. As long as I
+					win in the end... That's all that matters"
+				</p>
 			</div>
 
 			<div id="projects" class="prose">
@@ -161,7 +164,7 @@ import profileImage from "~/images/profile.jpg";
 				</div>
 				<ul class="font-mono text-sm">
 					<li>
-						<a href="/web_quirks">.web_quirks</a>
+						<a href="/web_quirks"><span class="text-accent-1">.</span>web_quirks</a>
 					</li>
 				</ul>
 			</div>
@@ -179,6 +182,17 @@ import profileImage from "~/images/profile.jpg";
 					<li>
 						<a href="/tools/svgr">
 							as_svgr<span class="text-accent-1">()</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="https://xslt-playground.vercel.app" rel="noopener noreferrer" target="_blank">
+							xslt_to_xml<span class="text-accent-1">()</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://markdown-slides.vercel.app" rel="noopener noreferrer" target="_blank">
+							md_to_slides<span class="text-accent-1">()</span>
 						</a>
 					</li>
 				</ul>

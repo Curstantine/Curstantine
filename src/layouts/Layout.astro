@@ -53,7 +53,7 @@ const {
 		<meta property="twitter:description" content={description} />
 		{image && <meta property="twitter:image" content={new URL(image, Astro.url)} />}
 	</head>
-	<body class="bg-radial from-white to-black/18 dark:from-white/1 dark:to-black min-h-screen">
+	<body class="bg-background min-h-screen">
 		<slot />
 	</body>
 </html>
