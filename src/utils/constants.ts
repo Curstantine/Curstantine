@@ -109,7 +109,7 @@ export const WORK: Project[] = [
 	},
 	{
 		name: "Echo Daft",
-		link: "https://echodaft.com",
+		link: "https://echodaftmusic.com/",
 		asPartOf: COMPANY_THRIVE,
 		points: [
 			"Made with Next.js and TailwindCSS v4",
