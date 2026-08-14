@@ -99,7 +99,7 @@
         --theme-color-text-1: hsl(0, 0%, 10%);
         --theme-color-text-2: hsl(0 0% 30%);
         --theme-color-text-3: hsl(0 0% 70%);
-        --theme-color-accent-1: hsl(340 89% 62%);
+        --theme-color-accent-1: hsl(291, 64%, 56%);
         --theme-color-accent-2: hsl(188 72% 37%);
     }
 
@@ -117,7 +117,7 @@
             --theme-color-text-1: hsl(0, 0%, 90%);
             --theme-color-text-2: hsl(0 0% 70%);
             --theme-color-text-3: hsl(0 0% 30%);
-            --theme-color-accent-1: hsl(340 89% 82%);
+            --theme-color-accent-1: hsl(291, 64%, 70%);
             --theme-color-accent-2: hsl(188 72% 57%);
         }
     }

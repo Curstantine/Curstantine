@@ -37,8 +37,8 @@ import profileImage from "~/images/profile.webp";
 				quality={100}
 				priority
 				loading="eager"
-				widths={[256, 512, profileImage.width]}
-				sizes={`256px, (min-width: 1024px): 512px, (min-width: 1280px): ${profileImage.width}px`}
+				widths={[512, profileImage.width]}
+				sizes={`512px, (min-width: 1024px): 512px, (min-width: 1280px): ${profileImage.width}px`}
 				class="size-48 shadow-tipsy border border-accent-1 dark:shadow-none"
 				draggable={false}
 			/>
@@ -99,10 +99,10 @@ import profileImage from "~/images/profile.webp";
 					<br />
 					I am all ears at <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
 				</p>
-				<p class="text-text-2">
+				<!-- <p class="text-text-2">
 					"It doesn't matter what needs to be sacrificed. In this world, winning is everything. As long as I
 					win in the end... That's all that matters"
-				</p>
+				</p> -->
 			</div>
 
 			<div id="projects" class="prose">
